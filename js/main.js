@@ -13,6 +13,10 @@ $(document).ready(function() {
 		resizeSidebar();
 	});
 
+	$('.main').resize(function() {
+		resizeSidebar();
+	});
+
 	//
 	// Sidebar dropdowns
 	//
@@ -28,14 +32,12 @@ $(document).ready(function() {
 	function loadModule(templateName) {
 		$.get('templates/' + templateName + '.html', function(data) {
 			$('.main').html(data);
-			resizeSidebar();
 		}).fail(function() {
 			if (templateName) {
 				$('.main').html('<h3>Error: could not load ' + templateName + '</h3>');
 			} else {
 				$('.main').html('<h3>Error: the target page must be defined</h3>');
 			}
-			resizeSidebar();
 		});
 	}
 

@@ -24,5 +24,13 @@
 		<div>Jack Dent created a new task for you</div>
 		<div>6:07 PM - 8 Jul 13 - Details</div>
 	</li>
-	<li class="notification-feed-item"><a class="large button expand">Show more activity</a></li>
+	<li class="notification-feed-item"><a class="large button expand show-more-activity">Show more activity</a></li>
 </ul>
+
+<script type="text/javascript">
+	$('.show-more-activity').on('click', function() {
+		for (i = 0; i < 6; i++) {
+			$('.notification-feed').prepend('<li class="notification-feed-item"><div>Jack Dent created a new task for you</div><div>6:07 PM - 8 Jul 13 - Details</div></li>');
+		}
+	});
+</script>
