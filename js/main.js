@@ -30,6 +30,7 @@ $(document).ready(function() {
 	//
 
 	function loadModule(templateName) {
+		$('.main').html('<h3>Loading...</h3>');
 		$.get('templates/' + templateName + '.html', function(data) {
 			$('.main').html(data);
 		}).fail(function() {
