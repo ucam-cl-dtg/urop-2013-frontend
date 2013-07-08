@@ -4280,9 +4280,14 @@ a.th {
 .websymbols-icon {
   font-family: "WebSymbols-Regular";
   padding-right: 5px;
-  line-height: 1em;
-  top: -1px;
-  position: relative; }
+  line-height: 1em; }
+
+.fixed-width-icon {
+  float: left;
+  width: 30px;
+  height: inherit;
+  line-height: inherit;
+  text-align: center; }
 
 .notification-feed {
   margin: 0;
@@ -4396,7 +4401,7 @@ html, body {
 
 .sidebar-sub-navigation-item {
   cursor: pointer;
-  padding: 8px 0 5px 25px; }
+  padding: 8px 0 5px 23px; }
 
 .sidebar-sub-navigation-item-header {
   color: #525252; }

@@ -12,6 +12,12 @@
 	font-family: "WebSymbols-Regular";
 	padding-right: 5px;
 	line-height: 1em;
-	top: -1px;
-	position: relative;
+}
+
+.fixed-width-icon {
+	float: left;
+	width: 30px;
+	height: inherit;
+	line-height: inherit;
+	text-align: center;
 }
