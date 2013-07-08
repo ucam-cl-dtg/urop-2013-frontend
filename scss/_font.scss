@@ -1,0 +1,17 @@
+@font-face {
+	font-family: "WebSymbols-Regular";
+	src: url("websymbols/websymbolsligaregular.eot?") format("eot"),
+		 url("websymbols/websymbolsligaregular.woff") format("woff"),
+		 url("websymbols/websymbolsligaregular.ttf") format("truetype"),
+		 url("websymbols/websymbolsligaregular.svg#WebSymbols-Regular") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.websymbols-icon {
+	font-family: "WebSymbols-Regular";
+	padding-right: 5px;
+	line-height: 1em;
+	top: -1px;
+	position: relative;
+}
