@@ -4331,8 +4331,30 @@ html, body {
 .header-button-array {
   margin-right: 6px; }
 
+.mobile-nav-wrapper {
+  padding: 0 17px 17px 17px;
+  display: none;
+  border-bottom: 40px solid #cccccc; }
+
+.mobile-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height: 40px;
+  font-size: 14px; }
+
+.mobile-nav-header {
+  font-weight: bold;
+  border-bottom: 8px solid #ddd;
+  margin-top: 17px; }
+
+.mobile-nav-item {
+  border-bottom: 1px solid #ddd; }
+
+@media only screen and (min-width: 768px) {
+  .mobile-nav-wrapper {
+    display: none !important; } }
 .central-content {
-  height: 100%;
   min-height: 100%;
   color: #525252;
   font-size: 13px;
