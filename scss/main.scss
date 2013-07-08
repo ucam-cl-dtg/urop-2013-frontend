@@ -22,6 +22,10 @@ html, body {
 	height: 100%;
 }
 
+.module-loader {
+	cursor: pointer;
+}
+
 //
 // Header
 //
@@ -41,7 +45,6 @@ html, body {
 }
 
 .header-logo-inner {
-	cursor: pointer;
 }
 
 .header-button-wrapper {
@@ -67,8 +70,11 @@ html, body {
 //
 
 .mobile-nav-wrapper {
-	padding: 0 17px 17px 17px;
 	display: none;
+}
+
+.mobile-nav-wrapper-inner {
+	padding: 0 17px 17px 17px;
 	border-bottom: $header-height solid #ccc;
 }
 
@@ -130,7 +136,6 @@ html, body {
 }
 
 .sidebar-navigation-item {
-	cursor: pointer;
 	padding: 10px 25px 10px 25px;
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid #ccc;
@@ -153,7 +158,6 @@ html, body {
 }
 
 .sidebar-sub-navigation-item {
-	cursor: pointer;
 	padding: 8px 0 5px 23px;
 }
 

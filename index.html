@@ -35,32 +35,61 @@
 			</div>
 			<div class="header-extra columns large-8 hide-for-small text-right">
 				<div class="header-button-wrapper">
-					<a class="header-button header-button-array"><span class="websymbols-icon">&#85;</span>Account</a>
-					<a class="header-button"><span class="websymbols-icon">&#88;</span>Logout</a>
+					<a class="header-button header-button-array module-loader" data-target="home/account"><span class="websymbols-icon">&#85;</span>Account</a>
+					<a class="header-button module-loader" data-target="home/logout"><span class="websymbols-icon">&#88;</span>Logout</a>
 				</div>
 			</div>
 		</header>
 
 		<div class="mobile-nav-wrapper row full-width">
-			<ul class="mobile-nav">
-				<li class="mobile-nav-header"><div class="websymbols-icon fixed-width-icon">&#80;</div>Timetable/Signups</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#44;</div>Create new supervision</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#67;</div>Browse supervisions</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#99;</div>My supervisions</li>
+			<div class="mobile-nav-wrapper-inner">
+				<ul class="mobile-nav">
+					<li class="mobile-nav-header">
+						<div class="websymbols-icon fixed-width-icon">&#80;</div>Timetable/Signups
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="timetable-signups/create-new-supervision"><div class="websymbols-icon fixed-width-icon">&#44;</div>Create new supervision
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="timetable-signups/browse-supervisions">
+						<div class="websymbols-icon fixed-width-icon">&#67;</div>Browse supervisions
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="timetable-signups/my-supervisions">
+						<div class="websymbols-icon fixed-width-icon">&#99;</div>My supervisions
+					</li>
 
-				<li class="mobile-nav-header"><div class="websymbols-icon fixed-width-icon">&#97;</div>Setting Work</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#44;</div>Create question set</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#67;</div>Browse question sets</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#99;</div>Browse database</li>
+					<li class="mobile-nav-header">
+						<div class="websymbols-icon fixed-width-icon">&#97;</div>Setting Work
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="setting-work/">
+						<div class="websymbols-icon fixed-width-icon">&#44;</div>Create question set
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="setting-work/">
+						<div class="websymbols-icon fixed-width-icon">&#67;</div>Browse question sets
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="setting-work/browse-database">
+						<div class="websymbols-icon fixed-width-icon">&#99;</div>Browse database
+					</li>
 
-				<li class="mobile-nav-header"><div class="websymbols-icon fixed-width-icon">&#70;</div>Marking Work</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#44;</div>Upload answers</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#67;</div>Get feedback</li>
+					<li class="mobile-nav-header">
+						<div class="websymbols-icon fixed-width-icon">&#70;</div>Marking Work
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="marking-work/upload-answers">
+						<div class="websymbols-icon fixed-width-icon">&#44;</div>Upload answers
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="marking-work/">
+						<div class="websymbols-icon fixed-width-icon">&#67;</div>Get feedback
+					</li>
 
-				<li class="mobile-nav-header"><div class="websymbols-icon fixed-width-icon">&#83;</div>Settings</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#85;</div>Account</li>
-				<li class="mobile-nav-item"><div class="websymbols-icon fixed-width-icon">&#88;</div>Logout</li>
-			</ul>
+					<li class="mobile-nav-header">
+						<div class="websymbols-icon fixed-width-icon">&#83;</div>Settings
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="home/account">
+						<div class="websymbols-icon fixed-width-icon">&#85;</div>Account
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="home/logout">
+						<div class="websymbols-icon fixed-width-icon">&#88;</div>Logout
+					</li>
+				</ul>
+			</div>
 		</div>
 
 		<div class="central-content row full-width">

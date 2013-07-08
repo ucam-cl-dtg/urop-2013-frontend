@@ -4307,6 +4307,9 @@ a.th {
 html, body {
   height: 100%; }
 
+.module-loader {
+  cursor: pointer; }
+
 .header {
   background-color: #5092bd;
   height: 40px;
@@ -4318,9 +4321,6 @@ html, body {
   background-color: #3c779e;
   font-size: 19px;
   font-weight: bold; }
-
-.header-logo-inner {
-  cursor: pointer; }
 
 .header-button-wrapper {
   font-size: 12px;
@@ -4337,8 +4337,10 @@ html, body {
   margin-right: 6px; }
 
 .mobile-nav-wrapper {
+  display: none; }
+
+.mobile-nav-wrapper-inner {
   padding: 0 17px 17px 17px;
-  display: none;
   border-bottom: 40px solid #cccccc; }
 
 .mobile-nav {
@@ -4381,7 +4383,6 @@ html, body {
   padding: 0; }
 
 .sidebar-navigation-item {
-  cursor: pointer;
   padding: 10px 25px 10px 25px;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #ccc; }
@@ -4400,7 +4401,6 @@ html, body {
   display: block; }
 
 .sidebar-sub-navigation-item {
-  cursor: pointer;
   padding: 8px 0 5px 23px; }
 
 .sidebar-sub-navigation-item-header {
