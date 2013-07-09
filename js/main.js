@@ -34,20 +34,26 @@ $(document).ready(function() {
 		$.get('templates/' + templateName + '.html', function(data) {
 			$('.main').html(data);
 		}).fail(function() {
-			if (templateName) {
-				$('.main').html('<h3>Error: could not load ' + templateName + '</h3>');
-			} else {
-				$('.main').html('<h3>Error: the target page must be defined</h3>');
-			}
+			$('.main').html('<h3>Error: could not load ' + templateName + '</h3>');
 		});
 	}
 
 	$('.module-loader').on('click', function() {
 		var templateName = $(this).attr('data-target');
-		loadModule(templateName);
+		if (!templateName) {
+			$('.main').html('<h3>Error: the target page must be defined</h3>');
+		} else {
+			location.hash = '#' + templateName;
+			loadModule(templateName);
+		}
 	});
 
-	loadModule('home/notification-feed');
+	if(window.location.hash) {
+		var hash = window.location.hash.substring(1);
+		loadModule(hash);
+	} else {
+		loadModule('home/notification-feed');
+	}
 
 	//
 	// Mobile navigation bar

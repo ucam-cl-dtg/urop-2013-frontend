@@ -4389,7 +4389,8 @@ html, body {
 
 .sidebar-navigation-item-header {
   color: #525252;
-  font-weight: bold; }
+  font-weight: bold;
+  cursor: pointer; }
 
 .sidebar-sub-navigation {
   display: none;
