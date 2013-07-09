@@ -5,11 +5,15 @@ $(document).ready(function() {
 	//
 
 	function resizeSidebar() {
-		var sidebarHeight = Math.max($('.central-content').height(), $(window).height() - $('.sidebar').offset().top);
+		var sidebarHeight = Math.max($('.main').outerHeight(), $(window).height() - $('.sidebar').offset().top);
 		$('.sidebar').height(sidebarHeight);
 	}
 
 	$(window).resize(function() {
+		resizeSidebar();
+	});
+
+	$(document).resize(function() {
 		resizeSidebar();
 	});
 
@@ -31,11 +35,12 @@ $(document).ready(function() {
 
 	function loadModule(templateName) {
 		$('.main').html('<h3>Loading...</h3>');
-		$.get('templates/' + templateName + '.html', function(data) {
+		$.get('modules/' + templateName + '.html', function(data) {
 			$('.main').html(data);
 		}).fail(function() {
 			$('.main').html('<h3>Error: could not load ' + templateName + '</h3>');
 		});
+		resizeSidebar();
 	}
 
 	$('.module-loader').on('click', function() {

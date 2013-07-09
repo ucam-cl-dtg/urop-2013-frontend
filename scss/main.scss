@@ -1,12 +1,8 @@
 // Import libraries
 
 @import "foundation",
-		"font";
-
-// Import templates
-
-@import "templates/notification-feed",
-		"templates/create-new-supervision";
+		"font",
+		"modules";
 
 //
 // Variables
@@ -24,6 +20,11 @@ html, body {
 
 .module-loader {
 	cursor: pointer;
+}
+
+.large-button-wrapper {
+	padding-left: 0;
+	padding-right: 0;
 }
 
 //
@@ -47,22 +48,12 @@ html, body {
 .header-logo-inner {
 }
 
-.header-button-wrapper {
-	font-size: 12px;
-	font-weight: bold;
-}
-
-.header-button {
+.header-icon-button {
 	color: #fff;
-	padding: 6px;
 }
 
-.header-button:hover {
+.header-icon-button:hover {
 	color: #246190;
-}
-
-.header-button-array {
-	margin-right: 6px;
 }
 
 //

@@ -1,0 +1,94 @@
+//
+// Notification feed
+//
+
+.notification-feed {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.notification-feed-item {
+	padding: 15px;
+	border-top: 1px solid #ccc;
+}
+
+//
+// Create new supervision
+//
+
+.form_table {
+	width: 100%;
+}
+
+.form_table td, .form_table th {
+	font-size: 13px;
+}
+
+//
+// Mark answers
+//
+
+.input-search {
+	height: 34px !important;
+}
+
+.upload-marked-work-form {
+	display: none;
+}
+
+.panels {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.panel-wrapper {
+	margin-bottom: 15px;
+}
+
+.list-panel {
+	background-color: $secondary-color;
+	border: 1px solid #d9d9d9;
+	padding: 15px;
+}
+
+.list-inner-panel {
+	line-height: 16px;
+}
+
+.sub-panel {
+	display: none;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.list-sub-panel {
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+	border-top: none;
+	padding: 15px;
+}
+
+.list-inner-sub-panel {
+	line-height: 16px;
+}
+
+.panel-icon-button {
+	font-weight: normal;
+	background-color: #f2f2f2;
+	border: 1px solid #d9d9d9;
+	font-size: 16px;
+	color: #525252;
+}
+
+.list-panel.success {
+	background-color: #B6D08F;
+	border: 1px solid #75B370;
+}
+
+.list-sub-panel.success {
+	background-color: #BEE18E;
+	border-color: #75B370;
+}
