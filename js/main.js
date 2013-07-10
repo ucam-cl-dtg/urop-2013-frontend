@@ -37,13 +37,16 @@ $(document).ready(function() {
 		$('.main').html('<h3>Loading...</h3>');
 		$.get('modules/' + templateName + '.html', function(data) {
 			$('.main').html(data);
-			resizeSidebar();
-			$(document).foundation();
+			postModuleLoad();
 		}).fail(function() {
 			$('.main').html('<h3>Error: could not load ' + templateName + '</h3>');
-			resizeSidebar();
-			$(document).foundation();
+			postModuleLoad();
 		});
+	}
+
+	function postModuleLoad() {
+		resizeSidebar();
+		$(document).foundation();
 	}
 
 	$(document).on('click', '.module-loader', function() {

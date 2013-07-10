@@ -94,6 +94,21 @@
 	font-size: 13px !important;
 }
 
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+	height: 34px;
+	font-size: 13px;
+}
+
+.field-label {
+	height: 34px;
+	line-height: 34px;
+}
+
+.form-button {
+	padding-left: 0;
+	padding-right: 0;
+}
+
 //
 // Notification feed
 //
