@@ -1305,7 +1305,7 @@ blockquote p {
 
   .show-for-print {
     display: inherit !important; } }
-button, .button {
+button, .button, .tag {
   border-style: solid;
   border-width: 1px;
   cursor: pointer;
@@ -1325,63 +1325,63 @@ button, .button {
   background-color: #5092bd;
   border-color: #3c779e;
   color: white; }
-  button:hover, button:focus, .button:hover, .button:focus {
+  button:hover, button:focus, .button:hover, .tag:hover, .button:focus, .tag:focus {
     background-color: #3c779e; }
-  button:hover, button:focus, .button:hover, .button:focus {
+  button:hover, button:focus, .button:hover, .tag:hover, .button:focus, .tag:focus {
     color: white; }
-  button.secondary, .button.secondary {
+  button.secondary, .button.secondary, .secondary.tag {
     background-color: #e9e9e9;
     border-color: #d0d0d0;
     color: #333333; }
-    button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
+    button.secondary:hover, button.secondary:focus, .button.secondary:hover, .secondary.tag:hover, .button.secondary:focus, .secondary.tag:focus {
       background-color: #d0d0d0; }
-    button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
+    button.secondary:hover, button.secondary:focus, .button.secondary:hover, .secondary.tag:hover, .button.secondary:focus, .secondary.tag:focus {
       color: #333333; }
-  button.success, .button.success {
+  button.success, .button.success, .success.tag {
     background-color: #5da423;
     border-color: #457a1a;
     color: white; }
-    button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
+    button.success:hover, button.success:focus, .button.success:hover, .success.tag:hover, .button.success:focus, .success.tag:focus {
       background-color: #457a1a; }
-    button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
+    button.success:hover, button.success:focus, .button.success:hover, .success.tag:hover, .button.success:focus, .success.tag:focus {
       color: white; }
-  button.alert, .button.alert {
+  button.alert, .button.alert, .alert.tag {
     background-color: #c60f13;
     border-color: #970b0e;
     color: white; }
-    button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
+    button.alert:hover, button.alert:focus, .button.alert:hover, .alert.tag:hover, .button.alert:focus, .alert.tag:focus {
       background-color: #970b0e; }
-    button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
+    button.alert:hover, button.alert:focus, .button.alert:hover, .alert.tag:hover, .button.alert:focus, .alert.tag:focus {
       color: white; }
-  button.large, .button.large {
+  button.large, .button.large, .large.tag {
     padding-top: 1em;
     padding-right: 2em;
     padding-bottom: 1.0625em;
     padding-left: 2em;
     font-size: 1.25em; }
-  button.small, .button.small {
+  button.small, .button.small, .small.tag {
     padding-top: 0.5625em;
     padding-right: 1.125em;
     padding-bottom: 0.625em;
     padding-left: 1.125em;
     font-size: 0.8125em; }
-  button.tiny, .button.tiny {
+  button.tiny, .button.tiny, .tiny.tag {
     padding-top: 0.4375em;
     padding-right: 0.875em;
     padding-bottom: 0.5em;
     padding-left: 0.875em;
     font-size: 0.6875em; }
-  button.expand, .button.expand {
+  button.expand, .button.expand, .expand.tag {
     padding-right: 0px;
     padding-left: 0px;
     width: 100%; }
-  button.left-align, .button.left-align {
+  button.left-align, .button.left-align, .left-align.tag {
     text-align: left;
     text-indent: 0.75em; }
-  button.right-align, .button.right-align {
+  button.right-align, .button.right-align, .right-align.tag {
     text-align: right;
     padding-right: 0.75em; }
-  button.disabled, button[disabled], .button.disabled, .button[disabled] {
+  button.disabled, button[disabled], .button.disabled, .disabled.tag, .button[disabled], [disabled].tag {
     background-color: #5092bd;
     border-color: #3c779e;
     color: white;
@@ -1389,13 +1389,13 @@ button, .button {
     opacity: 0.6;
     -webkit-box-shadow: none;
     box-shadow: none; }
-    button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
+    button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .disabled.tag:hover, .button.disabled:focus, .disabled.tag:focus, .button[disabled]:hover, [disabled].tag:hover, .button[disabled]:focus, [disabled].tag:focus {
       background-color: #3c779e; }
-    button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
+    button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .disabled.tag:hover, .button.disabled:focus, .disabled.tag:focus, .button[disabled]:hover, [disabled].tag:hover, .button[disabled]:focus, [disabled].tag:focus {
       color: white; }
-    button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
+    button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .disabled.tag:hover, .button.disabled:focus, .disabled.tag:focus, .button[disabled]:hover, [disabled].tag:hover, .button[disabled]:focus, [disabled].tag:focus {
       background-color: #5092bd; }
-    button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
+    button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .disabled.secondary.tag, .button[disabled].secondary, [disabled].secondary.tag {
       background-color: #e9e9e9;
       border-color: #d0d0d0;
       color: #333333;
@@ -1403,13 +1403,13 @@ button, .button {
       opacity: 0.6;
       -webkit-box-shadow: none;
       box-shadow: none; }
-      button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
+      button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .disabled.secondary.tag:hover, .button.disabled.secondary:focus, .disabled.secondary.tag:focus, .button[disabled].secondary:hover, [disabled].secondary.tag:hover, .button[disabled].secondary:focus, [disabled].secondary.tag:focus {
         background-color: #d0d0d0; }
-      button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
+      button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .disabled.secondary.tag:hover, .button.disabled.secondary:focus, .disabled.secondary.tag:focus, .button[disabled].secondary:hover, [disabled].secondary.tag:hover, .button[disabled].secondary:focus, [disabled].secondary.tag:focus {
         color: #333333; }
-      button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
+      button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .disabled.secondary.tag:hover, .button.disabled.secondary:focus, .disabled.secondary.tag:focus, .button[disabled].secondary:hover, [disabled].secondary.tag:hover, .button[disabled].secondary:focus, [disabled].secondary.tag:focus {
         background-color: #e9e9e9; }
-    button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
+    button.disabled.success, button[disabled].success, .button.disabled.success, .disabled.success.tag, .button[disabled].success, [disabled].success.tag {
       background-color: #5da423;
       border-color: #457a1a;
       color: white;
@@ -1417,13 +1417,13 @@ button, .button {
       opacity: 0.6;
       -webkit-box-shadow: none;
       box-shadow: none; }
-      button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
+      button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .disabled.success.tag:hover, .button.disabled.success:focus, .disabled.success.tag:focus, .button[disabled].success:hover, [disabled].success.tag:hover, .button[disabled].success:focus, [disabled].success.tag:focus {
         background-color: #457a1a; }
-      button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
+      button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .disabled.success.tag:hover, .button.disabled.success:focus, .disabled.success.tag:focus, .button[disabled].success:hover, [disabled].success.tag:hover, .button[disabled].success:focus, [disabled].success.tag:focus {
         color: white; }
-      button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
+      button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .disabled.success.tag:hover, .button.disabled.success:focus, .disabled.success.tag:focus, .button[disabled].success:hover, [disabled].success.tag:hover, .button[disabled].success:focus, [disabled].success.tag:focus {
         background-color: #5da423; }
-    button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
+    button.disabled.alert, button[disabled].alert, .button.disabled.alert, .disabled.alert.tag, .button[disabled].alert, [disabled].alert.tag {
       background-color: #c60f13;
       border-color: #970b0e;
       color: white;
@@ -1431,48 +1431,48 @@ button, .button {
       opacity: 0.6;
       -webkit-box-shadow: none;
       box-shadow: none; }
-      button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
+      button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .disabled.alert.tag:hover, .button.disabled.alert:focus, .disabled.alert.tag:focus, .button[disabled].alert:hover, [disabled].alert.tag:hover, .button[disabled].alert:focus, [disabled].alert.tag:focus {
         background-color: #970b0e; }
-      button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
+      button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .disabled.alert.tag:hover, .button.disabled.alert:focus, .disabled.alert.tag:focus, .button[disabled].alert:hover, [disabled].alert.tag:hover, .button[disabled].alert:focus, [disabled].alert.tag:focus {
         color: white; }
-      button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
+      button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .disabled.alert.tag:hover, .button.disabled.alert:focus, .disabled.alert.tag:focus, .button[disabled].alert:hover, [disabled].alert.tag:hover, .button[disabled].alert:focus, [disabled].alert.tag:focus {
         background-color: #c60f13; }
 
-button, .button {
+button, .button, .tag {
   padding-top: 0.8125em;
   padding-bottom: 0.75em;
   -webkit-appearance: none; }
-  button.tiny, .button.tiny {
+  button.tiny, .button.tiny, .tiny.tag {
     padding-top: 0.5em;
     padding-bottom: 0.4375em;
     -webkit-appearance: none; }
-  button.small, .button.small {
+  button.small, .button.small, .small.tag {
     padding-top: 0.625em;
     padding-bottom: 0.5625em;
     -webkit-appearance: none; }
-  button.large, .button.large {
+  button.large, .button.large, .large.tag {
     padding-top: 1.03125em;
     padding-bottom: 1.03125em;
     -webkit-appearance: none; }
 
 @media only screen {
-  button, .button {
+  button, .button, .tag {
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     -webkit-transition: background-color 300ms ease-out;
     -moz-transition: background-color 300ms ease-out;
     transition: background-color 300ms ease-out; }
-    button:active, .button:active {
+    button:active, .button:active, .tag:active {
       -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset; }
-    button.radius, .button.radius {
+    button.radius, .button.radius, .radius.tag {
       -webkit-border-radius: 3px;
       border-radius: 3px; }
-    button.round, .button.round {
+    button.round, .button.round, .round.tag {
       -webkit-border-radius: 1000px;
       border-radius: 1000px; } }
 @media only screen and (min-width: 768px) {
-  button, .button {
+  button, .button, .tag {
     display: inline-block; } }
 /* Standard Forms */
 form {
@@ -1528,7 +1528,7 @@ label {
   line-height: 2.3125em; }
 
 /* Adjust padding, alignment and radius if pre/post element is a button */
-.postfix.button {
+.postfix.button, .postfix.tag {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
@@ -1536,7 +1536,7 @@ label {
   text-align: center;
   line-height: 2.125em; }
 
-.prefix.button {
+.prefix.button, .prefix.tag {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
@@ -1544,7 +1544,7 @@ label {
   text-align: center;
   line-height: 2.125em; }
 
-.prefix.button.radius {
+.prefix.button.radius, .prefix.radius.tag {
   -webkit-border-radius: 0;
   border-radius: 0;
   -moz-border-radius-bottomleft: 3px;
@@ -1554,7 +1554,7 @@ label {
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px; }
 
-.postfix.button.radius {
+.postfix.button.radius, .postfix.radius.tag {
   -webkit-border-radius: 0;
   border-radius: 0;
   -moz-border-radius-topright: 3px;
@@ -1564,7 +1564,7 @@ label {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px; }
 
-.prefix.button.round {
+.prefix.button.round, .prefix.round.tag {
   -webkit-border-radius: 0;
   border-radius: 0;
   -moz-border-radius-bottomleft: 1000px;
@@ -1574,7 +1574,7 @@ label {
   border-bottom-left-radius: 1000px;
   border-top-left-radius: 1000px; }
 
-.postfix.button.round {
+.postfix.button.round, .postfix.round.tag {
   -webkit-border-radius: 0;
   border-radius: 0;
   -moz-border-radius-topright: 1000px;
@@ -1982,28 +1982,28 @@ form.custom {
     float: left; }
     .button-group > *:first-child {
       margin-left: 0; }
-  .button-group.radius > *:first-child, .button-group.radius > *:first-child > a, .button-group.radius > *:first-child > button, .button-group.radius > *:first-child > .button {
+  .button-group.radius > *:first-child, .button-group.radius > *:first-child > a, .button-group.radius > *:first-child > button, .button-group.radius > *:first-child > .button, .button-group.radius > *:first-child > .tag {
     -moz-border-radius-bottomleft: 3px;
     -moz-border-radius-topleft: 3px;
     -webkit-border-bottom-left-radius: 3px;
     -webkit-border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px; }
-  .button-group.radius > *:last-child, .button-group.radius > *:last-child > a, .button-group.radius > *:last-child > button, .button-group.radius > *:last-child > .button {
+  .button-group.radius > *:last-child, .button-group.radius > *:last-child > a, .button-group.radius > *:last-child > button, .button-group.radius > *:last-child > .button, .button-group.radius > *:last-child > .tag {
     -moz-border-radius-topright: 3px;
     -moz-border-radius-bottomright: 3px;
     -webkit-border-top-right-radius: 3px;
     -webkit-border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px; }
-  .button-group.round > *:first-child, .button-group.round > *:first-child > a, .button-group.round > *:first-child > button, .button-group.round > *:first-child > .button {
+  .button-group.round > *:first-child, .button-group.round > *:first-child > a, .button-group.round > *:first-child > button, .button-group.round > *:first-child > .button, .button-group.round > *:first-child > .tag {
     -moz-border-radius-bottomleft: 1000px;
     -moz-border-radius-topleft: 1000px;
     -webkit-border-bottom-left-radius: 1000px;
     -webkit-border-top-left-radius: 1000px;
     border-bottom-left-radius: 1000px;
     border-top-left-radius: 1000px; }
-  .button-group.round > *:last-child, .button-group.round > *:last-child > a, .button-group.round > *:last-child > button, .button-group.round > *:last-child > .button {
+  .button-group.round > *:last-child, .button-group.round > *:last-child > a, .button-group.round > *:last-child > button, .button-group.round > *:last-child > .button, .button-group.round > *:last-child > .tag {
     -moz-border-radius-topright: 1000px;
     -moz-border-radius-bottomright: 1000px;
     -webkit-border-top-right-radius: 1000px;
@@ -2012,31 +2012,31 @@ form.custom {
     border-bottom-right-radius: 1000px; }
   .button-group.even-2 li {
     width: 50%; }
-    .button-group.even-2 li button, .button-group.even-2 li .button {
+    .button-group.even-2 li button, .button-group.even-2 li .button, .button-group.even-2 li .tag {
       width: 100%; }
   .button-group.even-3 li {
     width: 33.33333%; }
-    .button-group.even-3 li button, .button-group.even-3 li .button {
+    .button-group.even-3 li button, .button-group.even-3 li .button, .button-group.even-3 li .tag {
       width: 100%; }
   .button-group.even-4 li {
     width: 25%; }
-    .button-group.even-4 li button, .button-group.even-4 li .button {
+    .button-group.even-4 li button, .button-group.even-4 li .button, .button-group.even-4 li .tag {
       width: 100%; }
   .button-group.even-5 li {
     width: 20%; }
-    .button-group.even-5 li button, .button-group.even-5 li .button {
+    .button-group.even-5 li button, .button-group.even-5 li .button, .button-group.even-5 li .tag {
       width: 100%; }
   .button-group.even-6 li {
     width: 16.66667%; }
-    .button-group.even-6 li button, .button-group.even-6 li .button {
+    .button-group.even-6 li button, .button-group.even-6 li .button, .button-group.even-6 li .tag {
       width: 100%; }
   .button-group.even-7 li {
     width: 14.28571%; }
-    .button-group.even-7 li button, .button-group.even-7 li .button {
+    .button-group.even-7 li button, .button-group.even-7 li .button, .button-group.even-7 li .tag {
       width: 100%; }
   .button-group.even-8 li {
     width: 12.5%; }
-    .button-group.even-8 li button, .button-group.even-8 li .button {
+    .button-group.even-8 li button, .button-group.even-8 li .button, .button-group.even-8 li .tag {
       width: 100%; }
 
 .button-bar {
@@ -2053,10 +2053,10 @@ form.custom {
       overflow: hidden; }
 
 /* Dropdown Button */
-.dropdown.button {
+.dropdown.button, .dropdown.tag {
   position: relative;
   padding-right: 3.1875em; }
-  .dropdown.button:before {
+  .dropdown.button:before, .dropdown.tag:before {
     position: absolute;
     content: "";
     width: 0;
@@ -2065,51 +2065,51 @@ form.custom {
     border-style: solid;
     border-color: white transparent transparent transparent;
     top: 50%; }
-  .dropdown.button:before {
+  .dropdown.button:before, .dropdown.tag:before {
     border-width: 0.5625em;
     right: 1.5em;
     margin-top: -0.25em; }
-  .dropdown.button:before {
+  .dropdown.button:before, .dropdown.tag:before {
     border-color: white transparent transparent transparent; }
-  .dropdown.button.tiny {
+  .dropdown.button.tiny, .dropdown.tiny.tag {
     padding-right: 2.1875em; }
-    .dropdown.button.tiny:before {
+    .dropdown.button.tiny:before, .dropdown.tiny.tag:before {
       border-width: 0.4375em;
       right: 0.875em;
       margin-top: -0.15625em; }
-    .dropdown.button.tiny:before {
+    .dropdown.button.tiny:before, .dropdown.tiny.tag:before {
       border-color: white transparent transparent transparent; }
-  .dropdown.button.small {
+  .dropdown.button.small, .dropdown.small.tag {
     padding-right: 2.8125em; }
-    .dropdown.button.small:before {
+    .dropdown.button.small:before, .dropdown.small.tag:before {
       border-width: 0.5625em;
       right: 1.125em;
       margin-top: -0.21875em; }
-    .dropdown.button.small:before {
+    .dropdown.button.small:before, .dropdown.small.tag:before {
       border-color: white transparent transparent transparent; }
-  .dropdown.button.large {
+  .dropdown.button.large, .dropdown.large.tag {
     padding-right: 4em; }
-    .dropdown.button.large:before {
+    .dropdown.button.large:before, .dropdown.large.tag:before {
       border-width: 0.625em;
       right: 1.75em;
       margin-top: -0.3125em; }
-    .dropdown.button.large:before {
+    .dropdown.button.large:before, .dropdown.large.tag:before {
       border-color: white transparent transparent transparent; }
-  .dropdown.button.secondary:before {
+  .dropdown.button.secondary:before, .dropdown.secondary.tag:before {
     border-color: #333333 transparent transparent transparent; }
 
 /* Split Buttons */
-.split.button {
+.split.button, .split.tag {
   position: relative;
   padding-right: 4.8em; }
-  .split.button span {
+  .split.button span, .split.tag span {
     display: block;
     height: 100%;
     position: absolute;
     right: 0;
     top: 0;
     border-left: solid 1px; }
-    .split.button span:before {
+    .split.button span:before, .split.tag span:before {
       position: absolute;
       content: "";
       width: 0;
@@ -2117,66 +2117,66 @@ form.custom {
       display: block;
       border-style: inset;
       left: 50%; }
-    .split.button span:active {
+    .split.button span:active, .split.tag span:active {
       background-color: rgba(0, 0, 0, 0.1); }
-  .split.button span {
+  .split.button span, .split.tag span {
     border-left-color: #35698c; }
-  .split.button span {
+  .split.button span, .split.tag span {
     width: 3em; }
-    .split.button span:before {
+    .split.button span:before, .split.tag span:before {
       border-top-style: solid;
       border-width: 0.5625em;
       top: 1.125em;
       margin-left: -0.5625em; }
-  .split.button span:before {
+  .split.button span:before, .split.tag span:before {
     border-color: white transparent transparent transparent; }
-  .split.button.secondary span {
+  .split.button.secondary span, .split.secondary.tag span {
     border-left-color: #c3c3c3; }
-  .split.button.secondary span:before {
+  .split.button.secondary span:before, .split.secondary.tag span:before {
     border-color: white transparent transparent transparent; }
-  .split.button.alert span {
+  .split.button.alert span, .split.alert.tag span {
     border-left-color: #7f0a0c; }
-  .split.button.success span {
+  .split.button.success span, .split.success.tag span {
     border-left-color: #396516; }
-  .split.button.tiny {
+  .split.button.tiny, .split.tiny.tag {
     padding-right: 3.9375em; }
-    .split.button.tiny span {
+    .split.button.tiny span, .split.tiny.tag span {
       width: 2.84375em; }
-      .split.button.tiny span:before {
+      .split.button.tiny span:before, .split.tiny.tag span:before {
         border-top-style: solid;
         border-width: 0.4375em;
         top: 0.875em;
         margin-left: -0.3125em; }
-  .split.button.small {
+  .split.button.small, .split.small.tag {
     padding-right: 3.9375em; }
-    .split.button.small span {
+    .split.button.small span, .split.small.tag span {
       width: 2.8125em; }
-      .split.button.small span:before {
+      .split.button.small span:before, .split.small.tag span:before {
         border-top-style: solid;
         border-width: 0.5625em;
         top: 0.84375em;
         margin-left: -0.5625em; }
-  .split.button.large {
+  .split.button.large, .split.large.tag {
     padding-right: 6em; }
-    .split.button.large span {
+    .split.button.large span, .split.large.tag span {
       width: 3.75em; }
-      .split.button.large span:before {
+      .split.button.large span:before, .split.large.tag span:before {
         border-top-style: solid;
         border-width: 0.625em;
         top: 1.3125em;
         margin-left: -0.5625em; }
-  .split.button.expand {
+  .split.button.expand, .split.expand.tag {
     padding-left: 2em; }
-  .split.button.secondary span:before {
+  .split.button.secondary span:before, .split.secondary.tag span:before {
     border-color: #333333 transparent transparent transparent; }
-  .split.button.radius span {
+  .split.button.radius span, .split.radius.tag span {
     -moz-border-radius-topright: 3px;
     -moz-border-radius-bottomright: 3px;
     -webkit-border-top-right-radius: 3px;
     -webkit-border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px; }
-  .split.button.round span {
+  .split.button.round span, .split.round.tag span {
     -moz-border-radius-topright: 1000px;
     -moz-border-radius-bottomright: 1000px;
     -webkit-border-top-right-radius: 1000px;
@@ -2639,7 +2639,7 @@ form.custom {
     margin-bottom: 0; }
   .top-bar input {
     height: 2.45em; }
-  .top-bar .button {
+  .top-bar .button, .top-bar .tag {
     padding-top: .5em;
     padding-bottom: .5em;
     margin-bottom: 0; }
@@ -2735,22 +2735,22 @@ form.custom {
     font-size: 0.8125em;
     font-weight: bold;
     background: #222222; }
-    .top-bar-section ul li > a.button {
+    .top-bar-section ul li > a.button, .top-bar-section ul li > a.tag {
       background: #5092bd;
       font-size: 0.8125em; }
-      .top-bar-section ul li > a.button.hover {
+      .top-bar-section ul li > a.button.hover, .top-bar-section ul li > a.hover.tag {
         background: #3c779e; }
-    .top-bar-section ul li > a.button.secondary {
+    .top-bar-section ul li > a.button.secondary, .top-bar-section ul li > a.secondary.tag {
       background: #e9e9e9; }
-      .top-bar-section ul li > a.button.secondary.hover {
+      .top-bar-section ul li > a.button.secondary.hover, .top-bar-section ul li > a.secondary.hover.tag {
         background: #d0d0d0; }
-    .top-bar-section ul li > a.button.success {
+    .top-bar-section ul li > a.button.success, .top-bar-section ul li > a.success.tag {
       background: #5da423; }
-      .top-bar-section ul li > a.button.success.hover {
+      .top-bar-section ul li > a.button.success.hover, .top-bar-section ul li > a.success.hover.tag {
         background: #457a1a; }
-    .top-bar-section ul li > a.button.alert {
+    .top-bar-section ul li > a.button.alert, .top-bar-section ul li > a.alert.tag {
       background: #c60f13; }
-      .top-bar-section ul li > a.button.alert.hover {
+      .top-bar-section ul li > a.button.alert.hover, .top-bar-section ul li > a.alert.hover.tag {
         background: #970b0e; }
   .top-bar-section ul li.hover > a {
     background: #090909;
@@ -2829,7 +2829,8 @@ form.custom {
     .top-bar .name h1 a {
       width: auto; }
     .top-bar input,
-    .top-bar .button {
+    .top-bar .button,
+    .top-bar .tag {
       line-height: 2em;
       font-size: 0.875em;
       height: 2em;
@@ -3233,7 +3234,7 @@ form.custom {
 .joyride-content-wrapper {
   width: 100%;
   padding: 1.125em 1.25em 1.5em; }
-  .joyride-content-wrapper .button {
+  .joyride-content-wrapper .button, .joyride-content-wrapper .tag {
     margin-bottom: 0 !important; }
 
 /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
@@ -4299,27 +4300,6 @@ a.th {
 .icon-button-array {
   margin-right: 6px; }
 
-.notification-feed {
-  margin: 0;
-  padding: 0;
-  list-style-type: none; }
-
-.notification-feed-item {
-  padding: 15px;
-  border-top: 1px solid #ccc; }
-
-.form_table {
-  width: 100%; }
-
-.form_table td, .form_table th {
-  font-size: 13px; }
-
-.input-search {
-  height: 34px !important; }
-
-.upload-marked-work-form {
-  display: none; }
-
 .panels {
   margin: 0;
   padding: 0;
@@ -4365,6 +4345,86 @@ a.th {
 .list-sub-panel.success {
   background-color: #BEE18E;
   border-color: #75B370; }
+
+.section-container.tabs > section > .title a, .section-container.tabs > .section > .title a {
+  font-size: 1em;
+  padding: 0.65em 0.85em 0.65em 0.85em; }
+
+.tags {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+.tag {
+  position: relative;
+  padding-right: 4.8em; }
+  .tag span {
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-left: solid 1px; }
+    .tag span:before {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      display: block;
+      border-style: inset;
+      left: 50%; }
+    .tag span:active {
+      background-color: rgba(0, 0, 0, 0.1); }
+  .tag span {
+    border-left-color: #35698c; }
+  .tag span {
+    width: 3em; }
+    .tag span:before {
+      border-top-style: solid;
+      border-width: 0.5625em;
+      top: 1.125em;
+      margin-left: -0.5625em; }
+  .tag span:before {
+    border-color: white transparent transparent transparent; }
+
+.tag span {
+  line-height: 32px; }
+
+.tag span::before {
+  border: none; }
+
+.custom.dropdown, form.custom .custom.dropdown ul li {
+  font-size: 13px !important; }
+
+.notification-feed {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+.notification-feed-item {
+  padding: 15px;
+  border-top: 1px solid #ccc; }
+
+.form_table {
+  width: 100%; }
+
+.form_table td, .form_table th {
+  font-size: 13px; }
+
+.input-search {
+  height: 34px !important; }
+
+.upload-marked-work-form {
+  display: none; }
+
+.star-question-button {
+  color: #5092bd;
+  cursor: pointer; }
+  .star-question-button:hover, .star-question-button:focus {
+    color: #3c779e; }
+
+.question-to-add-to-set {
+  cursor: pointer; }
 
 html, body {
   height: 100%; }

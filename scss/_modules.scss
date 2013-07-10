@@ -1,41 +1,8 @@
 //
-// Notification feed
+// Universal module content
 //
 
-.notification-feed {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-}
-
-.notification-feed-item {
-	padding: 15px;
-	border-top: 1px solid #ccc;
-}
-
-//
-// Create new supervision
-//
-
-.form_table {
-	width: 100%;
-}
-
-.form_table td, .form_table th {
-	font-size: 13px;
-}
-
-//
-// Mark answers
-//
-
-.input-search {
-	height: 34px !important;
-}
-
-.upload-marked-work-form {
-	display: none;
-}
+// List panel
 
 .panels {
 	margin: 0;
@@ -91,4 +58,97 @@
 .list-sub-panel.success {
 	background-color: #BEE18E;
 	border-color: #75B370;
+}
+
+// Tabs
+
+.section-container.tabs > section > .title a, .section-container.tabs > .section > .title a {
+	font-size: 1em;
+	padding: 0.65em 0.85em 0.65em 0.85em;
+}
+
+// Tags
+
+.tags {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.tag {
+	@extend .button;
+	@include split-button;
+}
+
+.tag span {
+	line-height: 32px;
+}
+
+.tag span::before {
+	border: none;
+}
+
+// Forms
+
+.custom.dropdown, form.custom .custom.dropdown ul li {
+	font-size: 13px !important;
+}
+
+//
+// Notification feed
+//
+
+.notification-feed {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.notification-feed-item {
+	padding: 15px;
+	border-top: 1px solid #ccc;
+}
+
+//
+// Create new supervision
+//
+
+.form_table {
+	width: 100%;
+}
+
+.form_table td, .form_table th {
+	font-size: 13px;
+}
+
+//
+// Mark answers
+//
+
+.input-search {
+	height: 34px !important;
+}
+
+.upload-marked-work-form {
+	display: none;
+}
+
+//
+// Specific question
+//
+
+.star-question-button {
+	color: $primary-color;
+	cursor: pointer;
+    &:hover, &:focus { 
+		color: darken($primary-color, $button-function-factor);
+	}
+}
+
+//
+// Specific question set
+//
+
+.question-to-add-to-set {
+	cursor: pointer;
 }

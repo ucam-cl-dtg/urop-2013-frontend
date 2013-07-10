@@ -37,13 +37,16 @@ $(document).ready(function() {
 		$('.main').html('<h3>Loading...</h3>');
 		$.get('modules/' + templateName + '.html', function(data) {
 			$('.main').html(data);
+			resizeSidebar();
+			$(document).foundation();
 		}).fail(function() {
 			$('.main').html('<h3>Error: could not load ' + templateName + '</h3>');
+			resizeSidebar();
+			$(document).foundation();
 		});
-		resizeSidebar();
 	}
 
-	$('.module-loader').on('click', function() {
+	$(document).on('click', '.module-loader', function() {
 		var templateName = $(this).attr('data-target');
 		if (!templateName) {
 			$('.main').html('<h3>Error: the target page must be defined</h3>');
