@@ -47,18 +47,18 @@
 					<li class="mobile-nav-header">
 						<div class="websymbols-icon fixed-width-icon">&#80;</div>Timetable/Signups
 					</li>
-					<li class="mobile-nav-item module-loader" data-target="timetable-signups/events/create-new-event"><div class="websymbols-icon fixed-width-icon">&#63;</div>Create new event
+					<li class="mobile-nav-item module-loader" data-target="timetable-signups/events"><div class="websymbols-icon fixed-width-icon">&#63;</div>Events
 					</li>
-					<li class="mobile-nav-item module-loader" data-target="timetable-signups/events/my-events"><div class="websymbols-icon fixed-width-icon">&#63;</div>My events
+					<li class="mobile-nav-item module-loader" data-target="timetable-signups/specific-event"><div class="websymbols-icon fixed-width-icon">&#63;</div>Specific event
 					</li>
-					<li class="mobile-nav-item module-loader" data-target="timetable-signups/groups/create-new-group">
-						<div class="websymbols-icon fixed-width-icon">&#100;</div>Create new group
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="timetable-signups/groups/my-groups">
-						<div class="websymbols-icon fixed-width-icon">&#100;</div>My groups
+					<li class="mobile-nav-item module-loader" data-target="timetable-signups/groups">
+						<div class="websymbols-icon fixed-width-icon">&#100;</div>Groups
 					</li>
 					<li class="mobile-nav-item module-loader" data-target="timetable-signups/deadlines">
 						<div class="websymbols-icon fixed-width-icon">&#87;</div>Deadlines
+					</li>
+					<li class="mobile-nav-item module-loader" data-target="timetable-signups/dos-dashboard">
+						<div class="websymbols-icon fixed-width-icon">&#90;</div>DoS Dashboard
 					</li>
 
 					<li class="mobile-nav-header">
@@ -110,32 +110,32 @@
 						</div>
 						<ul class="sidebar-sub-navigation expanded">
 							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="timetable-signups/events/create-new-event">
-									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#63;</div>Create new event</div>
+								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="timetable-signups/events">
+									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#63;</div>Events</div>
 									<div class="columns large-2 text-right notifications">8</div>
 								</div>
 							</li>
 							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="timetable-signups/events/my-events">
-									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#63;</div>My events</div>
+								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="timetable-signups/specific-event">
+									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#63;</div>Specific event</div>
 									<div class="columns large-2 text-right notifications">8</div>
 								</div>
 							</li>
 							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="timetable-signups/groups/create-new-group">
-									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#100;</div>Create new group</div>
-									<div class="columns large-2 text-right notifications">1</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="timetable-signups/groups/my-groups">
-									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#100;</div>My groups</div>
+								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="timetable-signups/groups">
+									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#100;</div>Groups</div>
 									<div class="columns large-2 text-right notifications">1</div>
 								</div>
 							</li>
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="timetable-signups/deadlines">
 									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#87;</div>Deadlines</div>
+									<div class="columns large-2 text-right notifications">3</div>
+								</div>
+							</li>
+							<li class="sidebar-sub-navigation-item">
+								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="timetable-signups/dos-dashboard">
+									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#90;</div>DoS Dashboard</div>
 									<div class="columns large-2 text-right notifications">3</div>
 								</div>
 							</li>
@@ -234,6 +234,7 @@
 		<!-- Scripts -->
 		<script src="js/plugins.js"></script>
 		<script src="js/main.js"></script>
+		<script src="js/modules.js"></script>
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
 		<script>

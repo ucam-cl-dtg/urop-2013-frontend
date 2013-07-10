@@ -1,10 +1,10 @@
-<h3>My deadlines</h3>
+<h3>My groups</h3>
 <div class="row">
 	<ul class="panels">
 		<li class="panel-wrapper columns large-12">
 			<div class="list-panel">
 				<div class="row list-inner-panel">
-					<div class="columns large-7 small-7">Jack Dent - jd658</div>
+					<div class="columns large-7 small-7">Queens Compscis - 10 members</div>
 					<div class="columns large-5 small-5 text-right">
 						<div class="icon-button-wrapper">
 							<a class="icon-button panel-icon-button websymbols-icon icon-button-array">&#83;</a>
@@ -17,7 +17,7 @@
 		<li class="panel-wrapper columns large-12">
 			<div class="list-panel">
 				<div class="row list-inner-panel">
-					<div class="columns large-7 small-7">Mistral Constantin - ms231</div>
+					<div class="columns large-7 small-7">Trinity Natscis - 2 members</div>
 					<div class="columns large-5 small-5 text-right">
 						<div class="icon-button-wrapper">
 							<a class="icon-button panel-icon-button websymbols-icon icon-button-array">&#83;</a>
@@ -30,7 +30,7 @@
 		<li class="panel-wrapper columns large-12">
 			<div class="list-panel">
 				<div class="row list-inner-panel">
-					<div class="columns large-7 small-7">Andrew Rice - ad109</div>
+					<div class="columns large-7 small-7">St John's Lovelies - 0 members</div>
 					<div class="columns large-5 small-5 text-right">
 						<div class="icon-button-wrapper">
 							<a class="icon-button panel-icon-button websymbols-icon icon-button-array">&#83;</a>
@@ -43,7 +43,7 @@
 		<li class="panel-wrapper columns large-12">
 			<div class="list-panel">
 				<div class="row list-inner-panel">
-					<div class="columns large-7 small-7">Jack Dent - jd658</div>
+					<div class="columns large-7 small-7">Queens Compscis - 10 members</div>
 					<div class="columns large-5 small-5 text-right">
 						<div class="icon-button-wrapper">
 							<a class="icon-button panel-icon-button websymbols-icon icon-button-array">&#83;</a>
@@ -56,7 +56,7 @@
 		<li class="panel-wrapper columns large-12">
 			<div class="list-panel">
 				<div class="row list-inner-panel">
-					<div class="columns large-7 small-7">Mistral Constantin - ms231</div>
+					<div class="columns large-7 small-7">Trinity Natscis - 2 members</div>
 					<div class="columns large-5 small-5 text-right">
 						<div class="icon-button-wrapper">
 							<a class="icon-button panel-icon-button websymbols-icon icon-button-array">&#83;</a>
@@ -69,7 +69,7 @@
 		<li class="panel-wrapper columns large-12">
 			<div class="list-panel">
 				<div class="row list-inner-panel">
-					<div class="columns large-7 small-7">Andrew Rice - ad109</div>
+					<div class="columns large-7 small-7">St John's Lovelies - 0 members</div>
 					<div class="columns large-5 small-5 text-right">
 						<div class="icon-button-wrapper">
 							<a class="icon-button panel-icon-button websymbols-icon icon-button-array">&#83;</a>
@@ -82,57 +82,39 @@
 	</ul>
 </div>
 <hr />
-<h3>Create new deadline</h3>
+<h3>Create new group</h3>
 <form>
 	<div class="row">
-		<div class="columns large-2 small-4 field-label">Deadline name</div>
+		<div class="columns large-2 small-4 field-label">Group name</div>
 		<div class="columns large-10 small-8">
-			<input type="text" placeholder="Deadline name" />
+			<input type="text" placeholder="Group name" />
 		</div>
 	</div>
 	<div class="row">
-		<div class="columns large-2 small-4 field-label">Recipients</div>
+		<div class="columns large-2 small-4 field-label">Members</div>
 		<div class="columns large-10 small-8">
-			<div class="recipients-wrapper row">
-				<div class="user-recipient-controls columns large-12 small-12 hide">
-					<input type="text" placeholder="User CSRID" />
-				</div>
-				<div class="group-recipient-controls columns large-12 small-12 hide">
-					<input type="text" placeholder="Group name" />
+			<div class="member-controls-wrapper row">
+				<div class="columns large-12 small-12 member-controls hide">
+					<div class="row">
+						<div class="columns large-10 small-8">
+							<input type="text" placeholder="Member CSRID" />
+						</div>
+						<div class="columns large-2 small-4">
+							<a class="button medium full-width form-button delete-member">x</a>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="columns large-6 small-6">
-					<a class="button medium full-width form-button form-control-option-button" data-element-to-clone="user-recipient-controls" data-target="recipients-wrapper">User</a>
-				</div>
-				<div class="columns large-6 small-6">
-					<a class="button medium full-width form-button form-control-option-button" data-element-to-clone="group-recipient-controls" data-target="recipients-wrapper">Group</a>
+				<div class="columns large-12 small-12">
+					<a class="button medium full-width form-button form-control-option-button" data-element-to-clone="member-controls" data-target="member-controls-wrapper">Add member</a>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="columns large-2 small-4 field-label">Time</div>
-		<div class="columns large-10 small-8">
-			<div class="row">
-				<div class="columns large-6 small-6">
-					<input type="text" placeholder="Date" />
-				</div>
-				<div class="columns large-6 small-6">
-					<input type="text" placeholder="Time" />
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="columns large-2 small-4 field-label">Content</div>
-		<div class="columns large-10 small-8">
-			<textarea></textarea>
 		</div>
 	</div>
 	<div class="row">
 		<div class="columns large-12 small-12">
-			<input type="submit" value="Create event" />
+			<input type="submit" value="Save" />
 		</div>
 	</div>
 </form>

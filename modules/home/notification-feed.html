@@ -1,49 +1,3 @@
-<!--
-<h3>Calendar</h3>
-<table class="form_table">
-	<thead>
-		<tr>
-			<th>Monday</th>
-			<th>Tuesday</th>
-			<th>Wednesday</th>
-			<th>Thursday</th>
-			<th>Friday</th>
-			<th>Saturday</th>
-			<th>Sunday</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-		</tr>
-		<tr>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-		</tr>
-		<tr>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-			<td>1 event</td>
-		</tr>
-	</tbody>
-</table>
--->
-
 <h3>Notification feed</h3>
 <ul class="notification-feed">
 	<li class="notification-feed-item">
@@ -74,11 +28,3 @@
 		<a class="large button expand show-more-activity">Show more activity</a>
 	</li>
 </ul>
-
-<script type="text/javascript">
-	$('.show-more-activity').on('click', function() {
-		for (i = 0; i < 6; i++) {
-			$('.notification-feed').prepend('<li class="notification-feed-item"><div>Jack Dent created a new task for you</div><div>6:07 PM - 8 Jul 13 - Details</div></li>');
-		}
-	});
-</script>

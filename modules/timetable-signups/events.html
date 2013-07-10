@@ -16,8 +16,6 @@
 		<div class="columns large-2 small-4 field-label">Location</div>
 		<div class="columns large-10 small-8">
 			<input type="text" placeholder="Location" />
-		</div>
-		<div class="columns large-12">
 			<iframe width="100%" height="300px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/?ie=UTF8&amp;ll=52.202557,0.094757&amp;spn=0.055128,0.154324&amp;t=m&amp;z=13&amp;output=embed"></iframe><br /><br />
 		</div>
 	</div>
@@ -51,10 +49,10 @@
 			</div>
 			<div class="row">
 				<div class="columns large-6 small-6">
-					<a class="button medium full-width form-button append-single-slot-controls">Single slot</a>
+					<a class="button medium full-width form-button form-control-option-button" data-element-to-clone="single-slot-controls" data-target="time-controls-wrapper">Single slot</a>
 				</div>
 				<div class="columns large-6 small-6">
-					<a class="button medium full-width form-button append-range-controls">Range</a>
+					<a class="button medium full-width form-button form-control-option-button" data-element-to-clone="range-controls" data-target="time-controls-wrapper">Range</a>
 				</div>
 			</div>
 		</div>
@@ -71,14 +69,3 @@
 		</div>
 	</div>
 </form>
-
-<script type="text/javascript">
-	$('.append-single-slot-controls').on('click', function() {
-		var controls = $('.single-slot-controls').clone().removeClass('hide').get(0).outerHTML;
-		$('.time-controls-wrapper').append(controls);
-	});
-	$('.append-range-controls').on('click', function() {
-		var controls = $('.range-controls').clone().removeClass('hide').get(0).outerHTML;
-		$('.time-controls-wrapper').append(controls);
-	});
-</script>
