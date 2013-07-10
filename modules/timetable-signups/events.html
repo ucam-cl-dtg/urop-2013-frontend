@@ -3,7 +3,19 @@
 	<div class="row">
 		<div class="columns large-2 small-4 field-label">Event type</div>
 		<div class="columns large-10 small-8">
-			<input type="text" placeholder="Event type" />
+			<input type="text" class="event-type-input" />
+			<script type="text/javascript">
+			$(document).ready(function() {
+				$(".event-type-input").tokenInput("http://shell.loopj.com/tokeninput/tvshows.php", {
+					theme: "facebook",
+					prePopulate: [
+						{id: 123, name: "Slurms MacKenzie"},
+						{id: 555, name: "Bob Hoskins"},
+						{id: 9000, name: "Kriss Akabusi"}
+				]
+				});
+			});
+			</script>
 		</div>
 	</div>
 	<div class="row">
