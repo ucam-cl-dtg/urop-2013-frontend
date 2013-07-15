@@ -240,15 +240,19 @@
         <!-- Backbone -->
 		<script type="text/javascript" src="js/vendor/backbone-min.js"></script>
 
-        <!-- SoyTemplates -->
+        <!-- 
+        SoyTemplates 
         <script src="/soy/js/1/main.js"></script>
+        -->
 
 		<!-- Scripts -->
 		<script src="js/plugins.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/modules.js"></script>
         <script src="js/router.js"></script>
-        <script src="js/routes.js"></script>
+        <!-- The routes should be separate from this app so this app can be used
+        as a separate git project -->
+        <script src="/js/routes.js"></script>
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
 		<script>
