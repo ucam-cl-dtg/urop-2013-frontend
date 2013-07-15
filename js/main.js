@@ -1,13 +1,5 @@
 $(document).ready(function() {
 
-	//
-	// Sidebar resize
-	//
-
-	function resizeSidebar() {
-		var sidebarHeight = Math.max($('.main').outerHeight(), $(window).height() - $('.sidebar').offset().top);
-		$('.sidebar').height(sidebarHeight);
-	}
 
 	$(window).resize(function() {
 		resizeSidebar();
@@ -29,43 +21,12 @@ $(document).ready(function() {
 		$(this).next('.sidebar-sub-navigation').slideToggle();
 	});
 
-	//
-	// Module loader AJAX
-	//
+    // Support for .module-loader
 
-	function loadModule(templateName) {
-		$('.main').html('<h3>Loading...</h3>');
-		$.get('modules/' + templateName + '.html', function(data) {
-			$('.main').html(data);
-			postModuleLoad();
-		}).fail(function() {
-			$('.main').html('<h3>Error: could not load ' + templateName + '</h3>');
-			postModuleLoad();
-		});
-	}
-
-	function postModuleLoad() {
-		resizeSidebar();
-		$(document).foundation();
-	}
-
-	$(document).on('click', '.module-loader', function() {
-		var templateName = $(this).attr('data-target');
-		if (!templateName) {
-			$('.main').html('<h3>Error: the target page must be defined</h3>');
-		} else {
-			location.hash = '#' + templateName;
-			loadModule(templateName);
-		}
-	});
-
-	if(window.location.hash) {
-		var hash = window.location.hash.substring(1);
-		loadModule(hash);
-	} else {
-		loadModule('home/notification-feed');
-	}
-
+    $(document).on("click", ".module-loader", function() {
+        var location = $(this).attr('data-target');
+        router.navigate(location, {trigger: true});
+    });
 	//
 	// Mobile navigation bar
 	//
