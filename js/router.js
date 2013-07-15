@@ -47,7 +47,7 @@ function postModuleLoad () {
 function getLocation(location) {
     if (location[0] == "#")
         location = location.slice(1);
-    return window.location.origin + "/" + location;
+    return window.location.protocol + "//" + window.location.host + "/" + location;
 }
 
 function getTemplate(name) {
