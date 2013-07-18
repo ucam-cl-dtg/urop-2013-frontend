@@ -27,7 +27,7 @@ For example, to load the content of `modules/home/login.html`:
 	
 To modify the AJAX, look in `main.js`
 
-### Routing system
+# Routing system
 
 ## How to set up.
 
@@ -87,11 +87,11 @@ The following function might be usefull if you want to load templates directly f
 
 ## Tips and tricks
 
-# Be carefull with the last `/`
+### Be carefull with the last `/`
 
 Consider  `"/question/:id": "question.show"`. This will match `/question/1` but will not match `/question/1/`
 
-# Using the params from the route in the template
+### Using the params from the route in the template
 
 Consider the route `/question/:id`. Lets assume you need to use the value of the id in the template. You could do something like this
 
@@ -134,6 +134,6 @@ Keep in mind this thing is just something experimental.
 
 ## Current problems / bugs
 
-# Unable to use a soy template that requires no data.
+### Unable to use a soy template that requires no data.
 
 A request is always sent to the server and some data is expected back.
