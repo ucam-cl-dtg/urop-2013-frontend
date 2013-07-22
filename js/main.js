@@ -24,7 +24,9 @@ $(document).ready(function() {
 		$(this).next('.sidebar-sub-navigation').slideToggle();
 	});
 
+    // 
     // Support for .module-loader
+    //
 
     $(document).on("click", ".module-loader", function() {
         var location = $(this).attr('data-target');
