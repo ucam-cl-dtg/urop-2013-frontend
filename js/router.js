@@ -43,6 +43,7 @@ function resizeSidebar() {
 
 function postModuleLoad (elem, templateName) {
   executeModuleScripts(elem, templateName);
+  $(document).foundation();
   resizeSidebar();
 }
 
