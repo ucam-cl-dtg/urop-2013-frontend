@@ -88,14 +88,17 @@ function asyncLoad(elems) {
 
 function applyTemplate(elem, template, data) {
     var templateFunc;
+    var templateName;
     if (typeof template == "string") {
-        templateFunc = getTemplate(template);
+        templateName = template;
     } else if(typeof template == "function") {
-        templateFunc = getTemplate(template(data));
+        templateName = template(data);
     }
 
+    templateFunc = getTemplate(templateName);
     elem.html(templateFunc(data));
-    postModuleLoad();
+
+    postModuleLoad(elem, templateName);
     asyncLoad(elem.find(".async-loader"));
 }
 
