@@ -41,8 +41,8 @@ function resizeSidebar() {
     $('.sidebar').height(sidebarHeight);
 }
 
-function postModuleLoad () {
-  executeModuleScripts();
+function postModuleLoad (elem, templateName) {
+  executeModuleScripts(elem, templateName);
   resizeSidebar();
 }
 
@@ -111,9 +111,7 @@ function loadModule(elem, location, template) {
 
    $.get(location, function(data) {
        applyTemplate(elem, template, data);
-       postModuleLoad();
    }).fail(function() {
        elem.html('<h3>Error: could not load ' + location + '</h3>');
-       postModuleLoad();
    });
 }
