@@ -107,11 +107,13 @@ function applyTemplate(elem, template, data) {
 // template can either be a string with the name of the template
 // or a function that returns the name of the template.
 
-function loadModule(elem, location, template) {
+function loadModule(elem, location, template, callback) {
    var location = getLocation(location);
 
    $.get(location, function(data) {
        applyTemplate(elem, template, data);
+       if (callback)
+            callback.call(elem);
    }).fail(function() {
        elem.html('<h3>Error: could not load ' + location + '</h3>');
    });
