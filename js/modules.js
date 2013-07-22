@@ -47,11 +47,9 @@ $(document).ready(function() {
 //
 
 function executeModuleScripts(elem, templateName) {
-    console.log(templateName);
-
     var templateNamePath = templateName.split('.');
-
     var selected = moduleScripts;
+
     for (i = 0; i < templateNamePath.length; i++) {
     	selected = selected[templateNamePath[i]];
     }
@@ -59,9 +57,8 @@ function executeModuleScripts(elem, templateName) {
     for (j = 0; j < selected.length; j++) {
     	selected[j].call(elem, elem);
     }
-
+    
 	$(document).foundation();
-	console.log('Module scripts executed...');
 }
 
 var moduleScripts = {
