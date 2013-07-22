@@ -41,3 +41,12 @@ $(document).ready(function() {
 	});
 
 });
+
+//
+// Module script config
+//
+
+function executeModuleScripts() {
+	$(document).foundation();
+	console.log('Module scripts executed...');
+}

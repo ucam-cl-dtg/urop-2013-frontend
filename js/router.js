@@ -42,8 +42,8 @@ function resizeSidebar() {
 }
 
 function postModuleLoad () {
+  executeModuleScripts();
   resizeSidebar();
-  $(document).foundation();
 }
 
 function getLocation(location) {

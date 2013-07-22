@@ -27,6 +27,7 @@ $(document).ready(function() {
         var location = $(this).attr('data-target');
         router.navigate(location, {trigger: true});
     });
+    
 	//
 	// Mobile navigation bar
 	//
