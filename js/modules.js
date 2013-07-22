@@ -65,18 +65,7 @@ function executeModuleScripts(elem, templateName) {
 }
 
 var moduleScripts = {
-
-    'main': {
-        'index2' : [
-            function() {
-                alert("It works");
-                this.remove()
-            },
-
-            function() {
-                confirm("Are you sure it works");
-            }
-        ]
-    }
-
+    'signups': signupScripts,
+    'questions': questionScripts,
+    'handins': handinScripts,
 };
