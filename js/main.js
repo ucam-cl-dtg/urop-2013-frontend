@@ -59,14 +59,6 @@ $(document).ready(function() {
 		alert('This question (set) has been added to your favourites');
 	});
 
-	$(document).on('click', '.remove-question-from-set', function() {
-		$(this).closest('.panel-wrapper').slideUp();
-	});
-
-	$(document).on('click', '.question-to-add-to-set', function() {
-		$(this).children('.list-panel').toggleClass('success');
-	});
-
 	$(document).on('click', '.delete-member', function() {
 		$(this).closest('.member-controls').slideUp();
 	});

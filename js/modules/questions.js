@@ -2,9 +2,13 @@ var questionScripts = {
     'view' : {
     	'questionFull': [
 		configureInputField,
-	    ]
+	    ],
+	'set': [
+		configureRemoveQuestion,
+		configureSelectQuestion
+	]
 	},
-    'search' : {
+    'search': {
     	'main': [
 	        function() {
 	            alert("It works");
@@ -16,4 +20,14 @@ var questionScripts = {
 	}
 }
 
+function configureRemoveQuestion () {
+  $(document).on('click', '.remove-question-from-set', function() {
+    alert('adsf');
+  });
+}
 
+function configureSelectQuestion () {
+  $(document).on('click', '.question-to-add-to-set', function() {
+    $(this).children('.list-panel').toggleClass('success');
+  });
+}
