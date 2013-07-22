@@ -57,7 +57,7 @@ function executeModuleScripts(elem, templateName) {
     }
 
     for (j = 0; j < selected.length; j++) {
-    	selected[j].apply();
+    	selected[j].call(elem, elem);
     }
 
 	$(document).foundation();
@@ -70,6 +70,7 @@ var moduleScripts = {
         'index2' : [
             function() {
                 alert("It works");
+                this.remove()
             },
 
             function() {
