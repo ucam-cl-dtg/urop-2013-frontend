@@ -1,4 +1,4 @@
-#Supervisions front-end template
+# Supervisions front-end template
 
 The template is broken down into 4 seperate sections/folders:
 
@@ -26,6 +26,32 @@ For example, to load the content of `modules/home/login.html`:
 	<div class="module-loader" data-target="home/login">When I am clicked, login.html will be loaded</div>
 	
 To modify the AJAX, look in `main.js`
+
+### What to do about JavaScript module dependencies
+
+All JavaScript to do with the modules should be placed inside `js/modules.js`, in which there are two things to be aware of. 
+
+Firstly, to bind any events to elements, append the event listener to the `$(document).ready()` function, making sure to use the syntax
+
+	$(document).on('click', 'your-element', function() {
+		// Your code here
+	});
+
+rather than
+
+	$('your-element').on('click', function() {
+		// Your code here
+	});
+
+Secondly, to run any scripts/configure any plugins, there is a function named `executeModuleScripts()` that is called by `postModuleLoad()`. For example, to make sure that all Foundation elements are configured (i.e. tabs, dropdowns etc.):
+
+	$(document).foundation();
+	
+is included in the function.
+
+### What to do about CSS module dependencies
+
+Fairly simply, include all module-related styles in `scss/_module.scss`.
 
 # Routing system
 
