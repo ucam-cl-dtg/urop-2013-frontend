@@ -1,5 +1,7 @@
+var moduleScripts = {};
+
 //
-// Module script config
+// Module script loader
 //
 
 function executeModuleScripts(elem, templateName) {
@@ -12,7 +14,7 @@ function executeModuleScripts(elem, templateName) {
         haveFunctions = false;
         break;
       }
-    	selected = selected[templateNamePath[i]];
+      selected = selected[templateNamePath[i]];
     }
     if (haveFunctions && selected.length) {
       for (j = 0; j < selected.length; j++) {
@@ -21,4 +23,17 @@ function executeModuleScripts(elem, templateName) {
     }
 }
 
-var moduleScripts = {};
+//
+// Sidebar
+//
+
+function resizeSidebar() {
+    var sidebarHeight = Math.max($('.main').outerHeight(), $(window).height() - $('.sidebar').offset().top);
+    $('.sidebar').height(sidebarHeight);
+}
+
+function postModuleLoad (elem, templateName) {
+  executeModuleScripts(elem, templateName);
+  $(document).foundation();
+  resizeSidebar();
+}
