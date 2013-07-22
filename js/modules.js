@@ -65,7 +65,7 @@ function executeModuleScripts(elem, templateName) {
 }
 
 var moduleScripts = {
-    'signups': signupScripts,
+    'signapp': signupScripts,
     'questions': questionScripts,
     'handins': handinScripts,
 };
