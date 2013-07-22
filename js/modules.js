@@ -67,8 +67,4 @@ function executeModuleScripts(elem, templateName) {
 	$(document).foundation();
 }
 
-var moduleScripts = {
-    'signapp': signupScripts,
-    'questions': questionScripts,
-    'handins': handinScripts,
-};
+var moduleScripts = {};
