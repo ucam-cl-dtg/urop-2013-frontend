@@ -46,7 +46,24 @@ $(document).ready(function() {
 // Module script config
 //
 
-function executeModuleScripts() {
+function executeModuleScripts(elem, templateName) {
+    console.log(templateName);
 	$(document).foundation();
 	console.log('Module scripts executed...');
 }
+
+var moduleScripts = {
+
+    'main': {
+        'index2' : [
+            function() {
+                alert("It works");
+            },
+
+            function() {
+                confirm("Are you sure it works");
+            }
+        ]
+    }
+
+};
