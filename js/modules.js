@@ -47,10 +47,7 @@ $(document).ready(function() {
 //
 
 function executeModuleScripts(elem, templateName) {
-    console.log(templateName);
-
     var templateNamePath = templateName.split('.');
-
     var selected = moduleScripts;
     var haveFunctions = true;
 
@@ -66,13 +63,12 @@ function executeModuleScripts(elem, templateName) {
         selected[j].call(elem, elem);
       }
     }
-
+    
 	$(document).foundation();
-	console.log('Module scripts executed...');
 }
 
 var moduleScripts = {
-    'signups': signupScripts,
+    'signapp': signupScripts,
     'questions': questionScripts,
     'handins': handinScripts,
 };
