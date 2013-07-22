@@ -1,11 +1,12 @@
 var questionScripts = {
-    'test1' : [
-        function() {
-            alert("It works");
-            this.remove()
-        },
-        function() {
-            confirm("Are you sure it works");
-        }
-    ]
+    'view' : {
+    	'questionFull': [
+	        function() {
+	            alert("It works");
+	        },
+	        function() {
+	            confirm("Are you sure it works");
+	        }
+	    ]
+	}
 }
