@@ -95,6 +95,7 @@ function applyTemplate(elem, template, data) {
     }
 
     elem.html(templateFunc(data));
+    postModuleLoad();
     asyncLoad(elem.find(".async-loader"));
 }
 
