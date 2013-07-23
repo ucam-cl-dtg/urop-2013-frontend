@@ -1,4 +1,3 @@
-@charset "UTF-8";
 *,
 *:before,
 *:after {
@@ -4422,6 +4421,11 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
 .form_table td, .form_table th {
   font-size: 13px; }
+
+li.token-input-input-token-facebook input[type="text"]#token-input- {
+  margin: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none; }
 
 .input-search {
   height: 34px !important; }

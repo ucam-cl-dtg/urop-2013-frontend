@@ -29,25 +29,42 @@ To modify the AJAX, look in `main.js`
 
 ### What to do about JavaScript module dependencies
 
-All JavaScript to do with the modules should be placed inside `js/modules.js`, in which there are two things to be aware of. 
+There is a global object named `moduleScripts` that acts as a wrapper for functions that need to be executed after a module has been loaded.
 
-Firstly, to bind any events to elements, append the event listener to the `$(document).ready()` function, making sure to use the syntax
+You should extend `moduleScripts` with an object hierarchy that reflects the directory path of the `.soy` templates in your sub-project. The attribute of the template should be an array of functions.
 
-	$(document).on('click', 'your-element', function() {
-		// Your code here
-	});
+For example, if your sub-project is called `questions`, and you are loading the `.soy` template at `main.view`, you should extend the `moduleScripts` object as follows:
 
-rather than
-
-	$('your-element').on('click', function() {
-		// Your code here
-	});
-
-Secondly, to run any scripts/configure any plugins, there is a function named `executeModuleScripts()` that is called by `postModuleLoad()`. For example, to make sure that all Foundation elements are configured (i.e. tabs, dropdowns etc.):
-
-	$(document).foundation();
+	moduleScripts['questions'] = {
+		'main': {
+			'view': [
+				functionOne,
+				functionTwo
+			]
+		}
+	}
 	
-is included in the function.
+	function functionOne() {
+		// Your code here
+	}
+	
+	function functionTwo() {
+		// Your code here
+	}
+
+It is also possible to include functions directly inside the object:
+
+	moduleScripts['questions'] = {
+		'main': {
+			'view': [
+				function() {
+					// Your code here
+				}
+			]
+		}
+	}
+	
+However, this is not advised, as the functions cannot then be reused in other modules.
 
 ### What to do about CSS module dependencies
 

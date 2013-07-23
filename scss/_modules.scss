@@ -141,6 +141,12 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 	font-size: 13px;
 }
 
+li.token-input-input-token-facebook input[type="text"]#token-input- {
+	margin: 0;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
 //
 // Mark answers
 //
