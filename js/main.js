@@ -57,12 +57,4 @@ $(document).ready(function() {
 		$('.upload-marked-work-form').slideToggle();
 	});
 
-	$(document).on('click', '.star-question-button', function() {
-		alert('This question (set) has been added to your favourites');
-	});
-
-	$(document).on('click', '.delete-member', function() {
-		$(this).closest('.member-controls').slideUp();
-	});
-
 });
