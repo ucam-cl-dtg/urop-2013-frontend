@@ -1,4 +1,51 @@
 var BASE_PATH = "/";
+var moduleScripts = {};
+
+//
+// Module-specific script loader
+//
+
+function executeModuleScripts(elem, templateName) {
+    var templateNamePath = templateName.split('.');
+    var selected = moduleScripts;
+    var haveFunctions = true;
+
+    for (i = 0; i < templateNamePath.length; i++) {
+      if (! selected[templateNamePath[i]]) {
+        haveFunctions = false;
+        break;
+      }
+      selected = selected[templateNamePath[i]];
+    }
+    if (haveFunctions && selected.length) {
+      for (j = 0; j < selected.length; j++) {
+        selected[j].call(elem, elem);
+      }
+    }
+}
+
+//
+// Sidebar
+//
+
+function resizeSidebar() {
+    var sidebarHeight = Math.max($('.main').outerHeight(), $(window).height() - $('.sidebar').offset().top);
+    $('.sidebar').height(sidebarHeight);
+}
+
+//
+// Call JavaScript after module has been loaded
+//
+
+function postModuleLoad (elem, templateName) {
+  executeModuleScripts(elem, templateName);
+  $(document).foundation();
+  resizeSidebar();
+}
+
+//
+// Router
+//
 
 function Router (routes) {
     var router = new Backbone.Router;
@@ -22,6 +69,7 @@ function initializeHistory(router) {
 }
 
 // Create a proper Backbone route from a given route
+
 function config (router, route, value) {
     if ((typeof value != "string") && (typeof value != "function"))
         throw new Error("Unsupported type for route: " + route);
@@ -29,22 +77,6 @@ function config (router, route, value) {
     return router.route(route, route, function(){
         loadModule($('.main'), window.location.hash, value);
     });
-}
-
-
-//
-// Sidebar resize. Should create separate file for resizeSidebar and postModuleLoad
-//
-
-function resizeSidebar() {
-    var sidebarHeight = Math.max($('.main').outerHeight(), $(window).height() - $('.sidebar').offset().top);
-    $('.sidebar').height(sidebarHeight);
-}
-
-function postModuleLoad (elem, templateName) {
-  executeModuleScripts(elem, templateName);
-  $(document).foundation();
-  resizeSidebar();
 }
 
 function getLocation(location) {
@@ -107,11 +139,13 @@ function applyTemplate(elem, template, data) {
 // template can either be a string with the name of the template
 // or a function that returns the name of the template.
 
-function loadModule(elem, location, template) {
+function loadModule(elem, location, template, callback) {
    var location = getLocation(location);
 
    $.get(location, function(data) {
        applyTemplate(elem, template, data);
+       if (callback)
+            callback.call(elem);
    }).fail(function() {
        elem.html('<h3>Error: could not load ' + location + '</h3>');
    });
