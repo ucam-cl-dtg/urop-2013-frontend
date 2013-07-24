@@ -4416,16 +4416,44 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   padding: 15px;
   border-top: 1px solid #ccc; }
 
-.form_table {
+div.events#new .form_table {
   width: 100%; }
-
-.form_table td, .form_table th {
+div.events#new .form_table td, div.events#new .form_table th {
   font-size: 13px; }
-
-li.token-input-input-token-facebook input[type="text"]#token-input- {
+div.events#new li.token-input-input-token-facebook input[type="text"]#token-input- {
   margin: 0;
   box-shadow: none;
   -webkit-box-shadow: none; }
+div.events#new li.token-input-token-facebook {
+  margin: 6px 0 0 5px; }
+div.events#new .delete-time-slot {
+  height: 29px;
+  padding: 8px 0 8px 0; }
+
+div.events#show input[type="text"].slot-field {
+  display: inline;
+  width: 80px;
+  margin-left: 20px; }
+  div.events#show input[type="text"].slot-field:first-child {
+    margin-left: 0; }
+div.events#show .time-label {
+  margin-top: 6px;
+  height: 30px;
+  font-size: 20px; }
+  div.events#show .time-label div {
+    width: 50px;
+    margin: 0 auto 0 auto;
+    position: relative;
+    height: 30px; }
+div.events#show td {
+  padding: 15px 15px 15px 15px; }
+div.events#show div.type-choice {
+  display: inline-block;
+  margin: 0 0 13px 20px; }
+  div.events#show div.type-choice .custom.dropdown {
+    width: 200px; }
+div.events#show .big-table-label {
+  font-size: 20px; }
 
 .input-search {
   height: 34px !important; }

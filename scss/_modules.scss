@@ -128,18 +128,75 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 // Create new supervision
 //
 
-.form_table {
-	width: 100%;
+div.events#new {
+  .form_table {
+    width: 100%;
+  }
+
+  .form_table td, .form_table th {
+    font-size: 13px;
+  }
+
+  li.token-input-input-token-facebook input[type="text"]#token-input- {
+    margin: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  li.token-input-token-facebook {
+    margin: 6px 0 0 5px;
+  }
+
+  .delete-time-slot {
+    height: 29px;
+    padding: 8px 0 8px 0;
+  }
 }
 
-.form_table td, .form_table th {
-	font-size: 13px;
-}
+//
+// Specific event
+//
 
-li.token-input-input-token-facebook input[type="text"]#token-input- {
-	margin: 0;
-	box-shadow: none;
-	-webkit-box-shadow: none;
+div.events#show {
+  input[type="text"].slot-field {
+	  display: inline;
+	  width: 80px;
+	  margin-left: 20px;
+
+	  &:first-child {
+	    margin-left: 0;
+	  }
+  }
+
+  .time-label {
+	  margin-top: 6px;
+	  height: 30px;
+    font-size: 20px;
+
+	  div {
+		  width: 50px;
+		  margin: 0 auto 0 auto;
+		  position: relative;
+      height: 30px;
+	  }
+  }
+
+  td {
+    padding: 15px 15px 15px 15px;
+  }
+
+  div.type-choice {
+    display: inline-block;
+    margin: 0 0 13px 20px;
+
+    .custom.dropdown {
+      width: 200px;
+    }
+  }
+
+  .big-table-label {
+    font-size: 20px;
+  }
 }
 
 //
@@ -161,7 +218,7 @@ li.token-input-input-token-facebook input[type="text"]#token-input- {
 .star-question-button {
 	color: $primary-color;
 	cursor: pointer;
-    &:hover, &:focus { 
+    &:hover, &:focus {
 		color: darken($primary-color, $button-function-factor);
 	}
 }
