@@ -4522,6 +4522,14 @@ html, body {
 .header-icon-button:hover {
   color: #246190; }
 
+.ajax-loader {
+  vertical-align: top;
+  margin-top: 11px;
+  margin-right: 8px;
+  width: 19px;
+  height: 19px;
+  display: none; }
+
 .mobile-nav-wrapper {
   display: none; }
 
