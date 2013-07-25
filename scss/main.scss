@@ -27,6 +27,11 @@ html, body {
 	padding-right: 0;
 }
 
+.custom.dropdown, .custom.dropdown .current, .custom.dropdown .selector {
+	height: 34px !important;
+	line-height: 34px !important;
+}
+
 //
 // Header
 //
@@ -54,6 +59,15 @@ html, body {
 
 .header-icon-button:hover {
 	color: #246190;
+}
+
+.ajax-loader {
+	vertical-align: top;
+	margin-top: 11px;
+	margin-right: 8px;
+	width: 19px;
+	height: 19px;
+	display: none;
 }
 
 //

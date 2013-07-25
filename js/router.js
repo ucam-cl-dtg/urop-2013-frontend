@@ -148,5 +148,6 @@ function loadModule(elem, location, template, callback) {
             callback.call(elem);
    }).fail(function() {
        elem.html('<h3>Error: could not load ' + location + '</h3>');
+       resizeSidebar();
    });
 }

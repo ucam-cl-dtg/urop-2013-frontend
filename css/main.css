@@ -4348,7 +4348,7 @@ a.th {
 .list-panel.delete {
   background-color: #F9F9F9;
   border: 1px solid #E9E9E9;
-  color: #BBB; }
+  color: #AAA; }
 
 .list-sub-panel.success {
   background-color: #BEE18E;
@@ -4452,7 +4452,7 @@ div.events#new li.token-input-input-token-facebook input[type="text"]#token-inpu
 div.events#new li.token-input-token-facebook {
   margin: 6px 0 0 5px; }
 div.events#new .delete-time-slot {
-  height: 29px;
+  height: 34px;
   padding: 8px 0 8px 0; }
 
 div.events#show input[type="text"].slot-field {
@@ -4505,6 +4505,10 @@ html, body {
   padding-left: 0;
   padding-right: 0; }
 
+.custom.dropdown, .custom.dropdown .current, .custom.dropdown .selector {
+  height: 34px !important;
+  line-height: 34px !important; }
+
 .header {
   background-color: #5092bd;
   height: 40px;
@@ -4522,6 +4526,14 @@ html, body {
 
 .header-icon-button:hover {
   color: #246190; }
+
+.ajax-loader {
+  vertical-align: top;
+  margin-top: 11px;
+  margin-right: 8px;
+  width: 19px;
+  height: 19px;
+  display: none; }
 
 .mobile-nav-wrapper {
   display: none; }

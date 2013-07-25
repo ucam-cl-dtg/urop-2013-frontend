@@ -57,4 +57,12 @@ $(document).ready(function() {
 		$('.upload-marked-work-form').slideToggle();
 	});
 
+	// AJAX loader
+	/*
+	$(document).ajaxStart(function() {
+		$(".ajax-loader").clearQueue().fadeIn(200);
+	}).ajaxComplete(function() {
+		$(".ajax-loader").clearQueue().fadeOut(200);
+	});
+	*/
 });
