@@ -4452,7 +4452,7 @@ div.events#new li.token-input-input-token-facebook input[type="text"]#token-inpu
 div.events#new li.token-input-token-facebook {
   margin: 6px 0 0 5px; }
 div.events#new .delete-time-slot {
-  height: 29px;
+  height: 34px;
   padding: 8px 0 8px 0; }
 
 div.events#show input[type="text"].slot-field {
