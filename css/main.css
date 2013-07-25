@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *:before,
 *:after {
@@ -4503,6 +4504,10 @@ html, body {
 .large-button-wrapper {
   padding-left: 0;
   padding-right: 0; }
+
+.custom.dropdown, .custom.dropdown .current, .custom.dropdown .selector {
+  height: 34px !important;
+  line-height: 34px !important; }
 
 .header {
   background-color: #5092bd;

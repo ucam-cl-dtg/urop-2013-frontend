@@ -27,6 +27,11 @@ html, body {
 	padding-right: 0;
 }
 
+.custom.dropdown, .custom.dropdown .current, .custom.dropdown .selector {
+	height: 34px !important;
+	line-height: 34px !important;
+}
+
 //
 // Header
 //
