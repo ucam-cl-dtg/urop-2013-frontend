@@ -1,4 +1,3 @@
-@charset "UTF-8";
 *,
 *:before,
 *:after {
@@ -4299,6 +4298,12 @@ a.th {
 
 .icon-button-array {
   margin-right: 6px; }
+
+.pdf-page {
+  padding-bottom: 15px; }
+
+.pdf-container {
+  background-color: #282828; }
 
 .panels {
   margin: 0;
