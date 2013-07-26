@@ -17,6 +17,7 @@ $header-height: 40px;
 html, body {
 	height: 100%;
 }
+.clearfix { @include clearfix(); }
 
 .module-loader {
 	cursor: pointer;

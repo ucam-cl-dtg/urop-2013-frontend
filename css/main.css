@@ -4503,6 +4503,14 @@ div.events#show .big-table-label {
 html, body {
   height: 100%; }
 
+.clearfix {
+  *zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    content: " ";
+    display: table; }
+  .clearfix:after {
+    clear: both; }
+
 .module-loader {
   cursor: pointer; }
 
