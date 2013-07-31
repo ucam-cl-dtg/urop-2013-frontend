@@ -125,6 +125,17 @@
 	border: none;
 }
 
+// Auto-complete
+.token-input-token-facebook.token-input-criteria-token-facebook {
+  border: 1px solid #999999;
+  background-color: #FFD6AD;
+  color: #000000;
+}
+.token-input-token-facebook.token-input-selected-token-facebook.token-input-criteria-token-facebook {
+    background-color: #B24700;
+    border: 1px solid #000000;
+    color: #FFFFFF;
+}
 // Forms
 
 .custom.dropdown, form.custom .custom.dropdown ul li {
