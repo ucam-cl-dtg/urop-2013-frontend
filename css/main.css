@@ -4566,7 +4566,12 @@ div.events#show hr {
 .question-to-add-to-set {
   cursor: pointer; }
 
+html {
+  min-height: 100%;
+  height: 100%; }
+
 body {
+  min-height: 100%;
   background: url("../img/content-bg.png") left repeat-y white; }
 
 .clearfix {
