@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *:before,
 *:after {
@@ -4492,18 +4493,26 @@ div.events#show .established-slot {
     margin: 7px 3px 3px 3px; }
   div.events#show .established-slot p {
     margin: 0; }
+<<<<<<< HEAD
 div.events#show .draggable-custom {
   cursor: move; }
+=======
+>>>>>>> aeb8f5bbc4e4d5a5d1c46ba674d9550a1975f14c
 div.events#show .token-input-list-facebook {
   display: inline-block;
   width: 145px;
   height: 47px;
   margin-right: 10px; }
   div.events#show .token-input-list-facebook li.token-input-selected-token-facebook {
+<<<<<<< HEAD
     color: black;
     cursor: inherit; }
   div.events#show .token-input-list-facebook li.token-input-token-facebook {
     cursor: inherit;
+=======
+    color: black; }
+  div.events#show .token-input-list-facebook li.token-input-token-facebook {
+>>>>>>> aeb8f5bbc4e4d5a5d1c46ba674d9550a1975f14c
     margin-top: 7px;
     display: inline-block;
     background-color: transparent;
@@ -4569,8 +4578,13 @@ div.events#show hr {
 .question-to-add-to-set {
   cursor: pointer; }
 
-html, body {
+html {
+  min-height: 100%;
   height: 100%; }
+
+body {
+  min-height: 100%;
+  background: url("../img/content-bg.png") left repeat-y white; }
 
 .clearfix {
   *zoom: 1; }
@@ -4591,6 +4605,15 @@ html, body {
   height: 34px !important;
   line-height: 34px !important; }
 
+@media only screen and (max-width: 768px) {
+  body {
+    background: #ffffff; }
+
+  .main {
+    margin-left: 0 !important; }
+
+  .header-logo {
+    width: 100% !important; } }
 .header {
   background-color: #5092bd;
   height: 40px;
@@ -4601,13 +4624,18 @@ html, body {
 .header-logo {
   background-color: #3c779e;
   font-size: 19px;
-  font-weight: bold; }
+  font-weight: bold;
+  float: left;
+  width: 350px; }
 
 .header-icon-button {
   color: #fff; }
 
 .header-icon-button:hover {
   color: #246190; }
+
+.header-extra {
+  padding: 0 0.9375em; }
 
 .ajax-loader {
   vertical-align: top;
@@ -4643,17 +4671,15 @@ html, body {
   .mobile-nav-wrapper {
     display: none !important; } }
 .central-content {
-  min-height: 100%;
   color: #525252;
-  font-size: 13px;
-  margin-top: -40px;
-  padding-top: 40px; }
+  font-size: 13px; }
 
 .sidebar {
   background-color: #F6F6F6;
   padding: 0;
-  min-height: 100%;
-  border-right: 1px solid #ccc; }
+  border-right: 1px solid #ccc;
+  width: 350px;
+  float: left; }
 
 .sidebar .columns {
   padding: 0; }
@@ -4689,6 +4715,7 @@ html, body {
   color: #525252; }
 
 .main {
+  margin-left: 350px;
   padding: 10px 17px 10px 17px; }
 
 .full-width {

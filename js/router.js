@@ -25,22 +25,12 @@ function executeModuleScripts(elem, templateName) {
 }
 
 //
-// Sidebar
-//
-
-function resizeSidebar() {
-    var sidebarHeight = Math.max($('.main').outerHeight(), $(window).height() - $('.sidebar').offset().top);
-    $('.sidebar').height(sidebarHeight);
-}
-
-//
 // Call JavaScript after module has been loaded
 //
 
 function postModuleLoad (elem, templateName) {
   executeModuleScripts(elem, templateName);
   $(document).foundation();
-  resizeSidebar();
 }
 
 //
@@ -156,6 +146,5 @@ function loadModule(elem, location, template, callback) {
             callback.call(elem);
    }).fail(function() {
        elem.html('<h3>Error: could not load ' + location + '</h3>');
-       resizeSidebar();
    });
 }

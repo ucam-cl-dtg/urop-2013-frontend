@@ -26,8 +26,8 @@
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
 
-		<header class="header row full-width">
-			<div class="header-logo columns large-4 small-12">
+		<header class="header full-width">
+			<div class="header-logo">
 				<div class="row">
 					<div class="columns large-12 small-6 header-logo-inner module-loader" data-target="home/notification-feed">
 						<img src="img/ajax-loader.gif" class="ajax-loader" />Supervisions
@@ -39,7 +39,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="header-extra columns large-8 hide-for-small text-right">
+			<div class="header-extra hide-for-small text-right">
 				<div class="icon-button-wrapper">
 					<a class="icon-button header-icon-button icon-button-array module-loader" data-target="home/account"><span class="websymbols-icon">&#85;</span>Account</a>
 					<a class="icon-button header-icon-button module-loader" data-target="home/logout"><span class="websymbols-icon">&#88;</span>Logout</a>
@@ -109,8 +109,8 @@
 			</div>
 		</div>
 
-		<div class="central-content row full-width">
-			<div class="sidebar columns large-4 hide-for-small">
+		<div class="central-content full-width clearfix row">
+			<div class="sidebar hide-for-small">
 				<ul class="sidebar-navigation">
 					<li class="sidebar-navigation-item">
 						<div class="sidebar-navigation-item-header row">
@@ -142,6 +142,12 @@
 									<div class="columns large-2 text-right notifications">3</div>
 								</div>
 							</li>
+							<li class="sidebar-sub-navigation-item">
+								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="dashboard/supervisor">
+									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-users"></i></div>Supervisor Homepage</div>
+									<div class="columns large-2 text-right notifications">3</div>
+								</div>
+							</li>
 						</ul>
 					</li>
 					<li class="sidebar-navigation-item">
@@ -149,7 +155,7 @@
 							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#80;</div>Timetable/Signups</div>
 							<div class="columns large-2 text-right notifications">12</div>
 						</div>
-						<ul class="sidebar-sub-navigation expanded">
+						<ul class="sidebar-sub-navigation">
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="signapp/events">
 									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#63;</div>Events</div>
@@ -170,7 +176,7 @@
 							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#97;</div>Setting Work</div>
 							<div class="columns large-2 text-right notifications">10</div>
 						</div>
-						<ul class="sidebar-sub-navigation expanded">
+						<ul class="sidebar-sub-navigation">
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="q/search">
 									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-list"></i></div>Browse questions</div>
@@ -231,7 +237,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="main columns large-8 small-12"></div>
+			<div class="main"></div>
 		</div>
 
 		<!--
@@ -266,7 +272,6 @@
 		
 		<!-- jQuery plugins -->
 		<script type="text/javascript" src="js/vendor/jquery-ui-1.10.3.min.js"></script>
-		<script type="text/javascript" src="js/vendor/jquery.ba-resize.min.js"></script>
 		<script type="text/javascript" src="js/vendor/jquery.tokeninput.js"></script>
 		<script type="text/javascript" src="js/vendor/jNotify.jquery.min.js"></script>
 
