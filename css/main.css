@@ -5632,7 +5632,7 @@ body {
   body {
     background: #ffffff; }
 
-  .main {
+  .main-wrapper {
     margin-left: 0 !important; }
 
   .header-logo {
@@ -5714,7 +5714,7 @@ body {
   padding: 0; }
 
 .sidebar-navigation-item {
-  padding: 10px 25px 10px 25px;
+  padding: 10px 12px 10px 12px;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #ccc; }
 
@@ -5738,9 +5738,12 @@ body {
 .sidebar-sub-navigation-item-header {
   color: #525252; }
 
-.main {
+.main-wrapper {
   margin-left: 350px;
   padding: 10px 17px 10px 17px; }
+
+.main {
+  max-width: none; }
 
 .full-width {
   width: 100%;

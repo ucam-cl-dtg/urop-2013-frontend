@@ -50,7 +50,7 @@ body {
 	body {
 		background: #ffffff;
 	}
-	.main {
+	.main-wrapper {
 		margin-left: 0 !important;
 	}
 	.header-logo {
@@ -172,7 +172,7 @@ body {
 }
 
 .sidebar-navigation-item {
-	padding: 10px 25px 10px 25px;
+	padding: 10px 12px 10px 12px;
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid #ccc;
 }
@@ -209,9 +209,13 @@ body {
 // Main content
 //
 
-.main {
+.main-wrapper {
 	margin-left: $sidebar-width;
 	padding: 10px 17px 10px 17px;
+}
+
+.main {
+	max-width: none;
 }
 
 //
