@@ -15,6 +15,8 @@
 		<!--  Stylesheets -->
 		<link rel="stylesheet" href="css/vendor/normalize.css">
 		<link rel="stylesheet" href="css/vendor/token-input-facebook.css" type="text/css" />
+    <link rel="stylesheet" href="css/vendor/ui-lightness/jquery-ui-1.10.3.custom.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/vendor/jNotify.jquery.css" type="text/css" />
 		<link rel="stylesheet" href="css/mfglabs_iconset.css" type="text/css" />
 		<link rel="stylesheet" href="css/main.css">
 		<!-- / Stylesheets -->
@@ -174,7 +176,7 @@
 							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#97;</div>Setting Work</div>
 							<div class="columns large-2 text-right notifications">10</div>
 						</div>
-						<ul class="sidebar-sub-navigation">
+						<ul class="sidebar-sub-navigation expanded">
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="q/search">
 									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-list"></i></div>Browse questions</div>
@@ -184,6 +186,12 @@
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="sets">
 									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-file_open"></i></div>Browse question sets</div>
+									<div class="columns large-2 text-right notifications">1</div>
+								</div>
+							</li>
+							<li class="sidebar-sub-navigation-item">
+								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="users/me">
+									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-file_open"></i></div>Browse own content</div>
 									<div class="columns large-2 text-right notifications">1</div>
 								</div>
 							</li>
@@ -206,7 +214,7 @@
 							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#70;</div>Marking Work</div>
 							<div class="columns large-2 text-right notifications">23</div>
 						</div>
-						<ul class="sidebar-sub-navigation">
+						<ul class="sidebar-sub-navigation expanded">
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="bins/create">
 									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#44;</div>Create Bin</div>
@@ -263,7 +271,9 @@
 		<script type="text/javascript" src="js/foundation/foundation.placeholder.js"></script>
 		
 		<!-- jQuery plugins -->
+		<script type="text/javascript" src="js/vendor/jquery-ui-1.10.3.min.js"></script>
 		<script type="text/javascript" src="js/vendor/jquery.tokeninput.js"></script>
+		<script type="text/javascript" src="js/vendor/jNotify.jquery.min.js"></script>
 
 		<!-- Soy Utils -->
 		<script type="text/javascript" src="js/vendor/soyutils.js"></script>
@@ -289,6 +299,7 @@
 		<!-- Scripts -->
 		<script type="text/javascript" src="js/plugins.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		 <script type="text/javascript" src="js/notifications.js"></script>
 		${custom_scripts}
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID.

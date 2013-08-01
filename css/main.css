@@ -4415,6 +4415,16 @@ a.th {
 .tag span::before {
   border: none; }
 
+.token-input-token-facebook.token-input-criteria-token-facebook {
+  border: 1px solid #999999;
+  background-color: #FFD6AD;
+  color: #000000; }
+
+.token-input-token-facebook.token-input-selected-token-facebook.token-input-criteria-token-facebook {
+  background-color: #B24700;
+  border: 1px solid #000000;
+  color: #FFFFFF; }
+
 .custom.dropdown, form.custom .custom.dropdown ul li {
   font-size: 13px !important; }
 
@@ -4455,30 +4465,91 @@ div.events#new .delete-time-slot {
 div.events#new .empty {
   height: 11px; }
 
-div.events#show input[type="text"].slot-field {
-  display: inline;
-  width: 80px;
-  margin-left: 20px; }
-  div.events#show input[type="text"].slot-field:first-child {
-    margin-left: 0; }
+div.events#show .overflow-hidden {
+  overflow: hidden;
+  height: 0;
+  width: 100%; }
+div.events#show .actual.row:first-child {
+  padding-top: 15px; }
+div.events#show .established-slot {
+  display: inline-block;
+  width: 145px;
+  border: 1px solid #CCC;
+  background-color: #E9E9E9;
+  margin: 0 10px 15px 0;
+  vertical-align: top; }
+  div.events#show .established-slot .empty-slot {
+    height: 36px;
+    padding: 1px 3px 1px 3px;
+    margin: 7px 3px 3px 3px;
+    vertical-align: top;
+    text-align: center; }
+    div.events#show .established-slot .empty-slot div p {
+      line-height: 26px;
+      vertical-align: middle; }
+  div.events#show .established-slot .full-slot {
+    height: 36px;
+    padding: 1px 3px 1px 3px;
+    margin: 7px 3px 3px 3px; }
+  div.events#show .established-slot p {
+    margin: 0; }
+div.events#show .token-input-list-facebook {
+  display: inline-block;
+  width: 145px;
+  height: 47px;
+  margin-right: 10px; }
+  div.events#show .token-input-list-facebook li.token-input-selected-token-facebook {
+    color: black; }
+  div.events#show .token-input-list-facebook li.token-input-token-facebook {
+    margin-top: 7px;
+    display: inline-block;
+    background-color: transparent;
+    width: 137px;
+    border: 0;
+    position: relative; }
+    div.events#show .token-input-list-facebook li.token-input-token-facebook .token-input-delete-token-facebook {
+      position: absolute;
+      right: 5px;
+      top: 0; }
+  div.events#show .token-input-list-facebook li.token-input-input-token-facebook {
+    height: 47px; }
+    div.events#show .token-input-list-facebook li.token-input-input-token-facebook input {
+      box-shadow: none;
+      height: 47px; }
 div.events#show .time-label {
-  margin-top: 6px;
-  height: 30px;
-  font-size: 20px; }
+  display: inline-block; }
   div.events#show .time-label div {
-    width: 50px;
-    margin: 0 auto 0 auto;
-    position: relative;
-    height: 30px; }
-div.events#show td {
-  padding: 15px 15px 15px 15px; }
+    font-size: 16px;
+    padding: 20px 0 20px 0;
+    width: 80px;
+    margin-right: 10px;
+    display: inline-block; }
+div.events#show table {
+  width: 100%; }
+  div.events#show table td {
+    padding: 10px 10px 10px 10px; }
 div.events#show div.type-choice {
   display: inline-block;
-  margin: 0 0 13px 20px; }
+  margin: 0 0 5px 0;
+  height: 47px;
+  vertical-align: top;
+  line-height: 47px; }
   div.events#show div.type-choice .custom.dropdown {
-    width: 200px; }
+    width: 145px !important;
+    height: 100% !important; }
+    div.events#show div.type-choice .custom.dropdown .current, div.events#show div.type-choice .custom.dropdown .selector {
+      margin-top: 7px; }
 div.events#show .big-table-label {
-  font-size: 20px; }
+  font-size: 16px;
+  width: 240px; }
+div.events#show .type {
+  width: 145px;
+  font-size: 16px;
+  text-align: center;
+  height: 100%;
+  vertical-align: middle; }
+div.events#show hr {
+  margin-top: 0; }
 
 .input-search {
   height: 34px !important; }
