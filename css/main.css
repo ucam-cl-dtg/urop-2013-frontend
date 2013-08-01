@@ -4667,7 +4667,8 @@ body {
   padding: 0;
   border-right: 1px solid #ccc;
   width: 350px;
-  float: left; }
+  float: left;
+  position: absolute; }
 
 .sidebar .columns {
   padding: 0; }
