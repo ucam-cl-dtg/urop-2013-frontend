@@ -4601,7 +4601,7 @@ body {
   body {
     background: #ffffff; }
 
-  .main {
+  .main-wrapper {
     margin-left: 0 !important; }
 
   .header-logo {
@@ -4707,9 +4707,12 @@ body {
 .sidebar-sub-navigation-item-header {
   color: #525252; }
 
-.main {
+.main-wrapper {
   margin-left: 350px;
   padding: 10px 17px 10px 17px; }
+
+.main {
+  max-width: none; }
 
 .full-width {
   width: 100%;
