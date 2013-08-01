@@ -253,6 +253,10 @@ div.events#show {
     }
   }
 
+  .draggable-custom {
+    cursor: move;
+  }
+
   .token-input-list-facebook {
     display: inline-block;
     width: 145px;
@@ -261,9 +265,11 @@ div.events#show {
 
     li.token-input-selected-token-facebook {
       color: black;
+      cursor: inherit;
     }
 
     li.token-input-token-facebook {
+      cursor: inherit;
       margin-top: 7px;
       display: inline-block;
       background-color: transparent;
