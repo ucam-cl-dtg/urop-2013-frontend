@@ -401,9 +401,8 @@ $.TokenList = function (input, url_or_data, settings) {
         .addClass($(input).data("settings").classes.tokenList)
         .click(function (event) {
             // Check if clicked on input box in category input (search field for questions, for ex, and then don't focus on input box)
-            if($(this).hasClass("token-input-token-facebook") || $(this).parents().hasClass("token-input-token-facebook")){
-                event.stopPropagation();
-                event.preventDefault();
+            //if($(this).hasClass("token-input-token") || $(this).parents().hasClass("token-input-token")){
+            if($(event.target).parents().hasClass("token-input-token")){
                 return false;
             }
             var li = $(event.target).closest("li");
@@ -1059,4 +1058,3 @@ $.TokenList.Cache = function (options) {
     };
 };
 }(jQuery));
-
