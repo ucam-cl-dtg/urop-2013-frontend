@@ -1,22 +1,6 @@
 $(document).ready(function() {
 
 	//
-	// Sidebar resize
-	//
-
-	$(window).resize(function() {
-		resizeSidebar();
-	});
-
-	$(document).resize(function() {
-		resizeSidebar();
-	});
-
-	$('.main').resize(function() {
-		resizeSidebar();
-	});
-
-	//
 	// Sidebar dropdowns
 	//
 
