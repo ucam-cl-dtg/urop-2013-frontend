@@ -4566,9 +4566,6 @@ div.events#show hr {
 .question-to-add-to-set {
   cursor: pointer; }
 
-html, body {
-  height: 100%; }
-
 body {
   background: url("../img/content-bg.png") left repeat-y white; }
 
