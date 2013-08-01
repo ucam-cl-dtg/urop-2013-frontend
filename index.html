@@ -119,7 +119,7 @@
 						</div>
 						<ul class="sidebar-sub-navigation expanded">
 							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="dashboard/">
+								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="dashboard">
 									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-globe"></i></div>Home</div>
 									<div class="columns large-2 text-right notifications">8</div>
 								</div>
@@ -170,7 +170,7 @@
 							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#97;</div>Setting Work</div>
 							<div class="columns large-2 text-right notifications">10</div>
 						</div>
-						<ul class="sidebar-sub-navigation expanded">
+						<ul class="sidebar-sub-navigation">
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="q/search">
 									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-list"></i></div>Browse questions</div>
@@ -180,12 +180,6 @@
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="sets">
 									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-file_open"></i></div>Browse question sets</div>
-									<div class="columns large-2 text-right notifications">1</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="users/me">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-file_open"></i></div>Browse own content</div>
 									<div class="columns large-2 text-right notifications">1</div>
 								</div>
 							</li>
@@ -208,7 +202,7 @@
 							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#70;</div>Marking Work</div>
 							<div class="columns large-2 text-right notifications">23</div>
 						</div>
-						<ul class="sidebar-sub-navigation expanded">
+						<ul class="sidebar-sub-navigation">
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="bins/create">
 									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#44;</div>Create Bin</div>
@@ -246,6 +240,7 @@
 		<!-- jQuery -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script type="text/javascript" src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+		<script type="text/javascript" src="js/vendor/jquery.ba-resize.min.js"></script>
 
 		<!-- Foundation -->
 		<script type="text/javascript" src="js/foundation/foundation.js"></script>
@@ -263,12 +258,11 @@
 		<script type="text/javascript" src="js/foundation/foundation.topbar.js"></script>
 		<script type="text/javascript" src="js/foundation/foundation.interchange.js"></script>
 		<script type="text/javascript" src="js/foundation/foundation.placeholder.js"></script>
-		
+
 		<!-- jQuery plugins -->
-		<script type="text/javascript" src="js/vendor/jquery-ui-1.10.3.min.js"></script>
-		<script type="text/javascript" src="js/vendor/jquery.ba-resize.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery-ui-1.10.3.custom.js"></script>
 		<script type="text/javascript" src="js/vendor/jquery.tokeninput.js"></script>
-		<script type="text/javascript" src="js/vendor/jNotify.jquery.min.js"></script>
+    <script type="text/javascript" src="js/vendor/jNotify.jquery.min.js"></script>
 
 		<!-- Soy Utils -->
 		<script type="text/javascript" src="js/vendor/soyutils.js"></script>
@@ -279,8 +273,8 @@
 		<!-- Backbone -->
 		<script type="text/javascript" src="js/vendor/backbone-min.js"></script>
 
-		<!-- 
-		SoyTemplates 
+		<!--
+		SoyTemplates
 		<script src="soy/js/1/main.js"></script>
 		-->
 		${custom_templates}
@@ -294,7 +288,7 @@
 		<!-- Scripts -->
 		<script type="text/javascript" src="js/plugins.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
-		 <script type="text/javascript" src="js/notifications.js"></script>
+		<script type="text/javascript" src="js/notifications.js"></script>
 		${custom_scripts}
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
