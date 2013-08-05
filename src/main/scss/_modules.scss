@@ -136,16 +136,6 @@
     border: 1px solid #000000;
     color: #FFFFFF;
 }
-
-// Auto-complete checkbox representation
-ul.token-input-list li input[type="checkbox"] {
-    width: 25px;
-    appearance: checkbox;
-    -webkit-appearance: checkbox;
-    -moz-appearance: checkbox;
-    -o-appearance: checkbox;
-    -ms-appearance: checkbox;
-}
 // Forms
 
 .custom.dropdown, form.custom .custom.dropdown ul li {

@@ -1,0 +1,24 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" [
+<!ENTITY frontend SYSTEM "frontend.xml">
+]>
+
+<web-app>
+  <context-param>
+    <param-name>cssNamespace</param-name>
+    <param-value>test</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>cssFiles</param-name>
+    <param-value>test1,test2</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>jsFiles</param-name>
+    <param-value>test1.js,test3.js</param-value>
+  </context-param>
+
+  &frontend;
+</web-app>
