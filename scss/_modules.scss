@@ -187,6 +187,16 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 //
 
 div.events#new {
+
+  ul.error {
+    background-color: rgba(198, 15, 19, 0.1);
+    border-color: #C60F13;
+
+    input {
+      background-color: inherit;
+    }
+  }
+
   .form_table {
     width: 100%;
   }
