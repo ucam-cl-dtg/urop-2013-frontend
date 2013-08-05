@@ -125,7 +125,10 @@ function applyTemplate(elem, template, data) {
     } else if(typeof template == "function") {
         templateName = template(data);
     }
-
+    if (data.redirectTo) {
+      router.navigate(data.redirectTo, {trigger: true});
+      return ;
+    }
     templateFunc = getTemplate(templateName);
     elem.html(templateFunc(data));
 
