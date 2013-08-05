@@ -19,9 +19,8 @@
 		<title>Supervisions</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-		<!-- / Meta -->
 
-		<!--  Stylesheets -->
+		<!--  Global stylesheets -->
 		<link rel="stylesheet" href="css/vendor/normalize.css" />
 		<link rel="stylesheet" href="css/vendor/token-input-facebook.css" type="text/css" />
 		<link rel="stylesheet" href="css/vendor/token-input.css" type="text/css" />
@@ -31,10 +30,10 @@
 		<link rel="stylesheet" href="css/mfglabs_iconset.css" type="text/css" />
 		<link rel="stylesheet" href="css/main.css" />
 		
+		<!--  Custom stylesheets -->
 		{foreach $css in $cssFiles}
-    <link rel="stylesheet" href="{$css}" />
-    {/foreach}
-		<!-- / Stylesheets -->
+		<link rel="stylesheet" href="{$css}" />
+		{/foreach}
 	</head>
 	<body {$cssNamespace}>
 		<!--[if lt IE 7]>
@@ -251,12 +250,6 @@
 			</div>
 		</div>
 
-		<!--
-		<footer class="row full-width">
-			<div class="columns large-12">Footer</div>
-		</footer>
-		-->
-
 		<!-- Modernizr -->
 		<script type="text/javascript" src="js/vendor/custom.modernizr.js"></script>
 
@@ -284,8 +277,8 @@
 		<!-- jQuery plugins -->
 		<script type="text/javascript" src="js/vendor/jquery-ui-1.10.3.min.js"></script>
 		<script type="text/javascript" src="js/vendor/jquery.tokeninput.js"></script>
-    	<script type="text/javascript" src="js/vendor/jNotify.jquery.min.js"></script>
-    	<script type="text/javascript" src="js/vendor/jquery.form.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jNotify.jquery.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery.form.min.js"></script>
 
 		<!-- Soy Utils -->
 		<script type="text/javascript" src="js/vendor/soyutils.js"></script>
@@ -296,24 +289,21 @@
 		<!-- Backbone -->
 		<script type="text/javascript" src="js/vendor/backbone-min.js"></script>
 
-		<!--
-		SoyTemplates
-		<script src="soy/js/1/main.js"></script>
-		-->
-
 		<!-- Router -->
 		<script type="text/javascript" src="js/router.js"></script>
 		<!-- The routes should be separate from this app so this app can be used
 		as a separate git project -->
 		<script type="text/javascript" src="/js/routes.js"></script>
 
-		<!-- Scripts -->
+		<!-- Global scripts -->
 		<script type="text/javascript" src="js/plugins.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/popups.js"></script>
+
+		<!-- Custom scripts -->
 		{foreach $js in $jsFiles}
 		<script type="text/javascript" src="{$js}"></script>
-    {/foreach}
+		{/foreach}
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
 		<script>
