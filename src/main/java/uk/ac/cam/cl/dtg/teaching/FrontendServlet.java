@@ -42,7 +42,7 @@ public class FrontendServlet extends HttpServlet {
       "cssNamespace", cssNamespace,
       "cssFiles",     Arrays.asList(cssFiles),
       "jsFiles",      Arrays.asList(jsFiles),
-      "contextPath",  req.getContextPath()
+      "contextPath",  req.getContextPath() + "/"
     ));
 
     // Direct all requests to the main frontend template via Silken.

@@ -1,4 +1,7 @@
 var BASE_PATH = "/";
+var ROUTER_OPTIONS = {
+    //pushState: true
+};
 var moduleScripts = {};
 
 //
@@ -33,9 +36,31 @@ function postModuleLoad (elem, templateName) {
   $(document).foundation();
 }
 
+function fixLinks(router) {
+    if (ROUTER_OPTIONS.pushState === undefined || ROUTER_OPTIONS.pushState === null)
+        return ;
+    $(document).on('click', 'a', function (evt) {
+        var href = $(this).attr('href');
+        var protocol = this.protocol + '//';
+        var dataBypass = $(this).attr('data-bypass');
+        if (dataBypass != undefined &&  dataBypass != null) {
+            return true;
+        }
+
+
+        if (href.slice(protocol.length) !== protocol) {
+            evt.preventDefault();
+            if (href[0] == "#")
+                href[0] = "/";
+            router.navigate(href, {trigger: true});
+        }
+    });
+}
+
 //
 // Router
 //
+
 
 function Router (routes) {
     var router = new Backbone.Router;
@@ -50,11 +75,13 @@ function Router (routes) {
     return router;
 }
 
+
 function initializeHistory(router) {
-    var ok = Backbone.history.start();
+    var ok = Backbone.history.start(ROUTER_OPTIONS);
+    fixLinks(router);
     // Current page wasn't matched by the router
     if (! ok ) {
-        $('.main').html("<h3> Error: could not match route: " + window.location.hash + "</h3>");
+        $('.main').html("<h3> Error: could not match route: " + Backbone.history.getFragment() + "</h3>");
     }
 }
 
@@ -65,12 +92,15 @@ function config (router, route, value) {
         throw new Error("Unsupported type for route: " + route);
 
     return router.route(route, route, function(){
-        loadModule($('.main'), window.location.hash, value);
+        loadModule($('.main'), Backbone.history.getFragment(), value);
     });
 }
 
+function prepareURL(url) {
+    return getLocation(url);
+}
 function getLocation(location) {
-    if (location[0] == "#")
+    if (location[0] == "#" || location[0] == "/")
         location = location.slice(1);
     return window.location.protocol + "//" + window.location.host + BASE_PATH + location;
 }
