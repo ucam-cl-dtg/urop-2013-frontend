@@ -41,7 +41,8 @@ public class FrontendServlet extends HttpServlet {
     req.setAttribute("model", ImmutableMap.of(
       "cssNamespace", cssNamespace,
       "cssFiles",     Arrays.asList(cssFiles),
-      "jsFiles",      Arrays.asList(jsFiles)
+      "jsFiles",      Arrays.asList(jsFiles),
+      "contextPath",  req.getContextPath() + "/"
     ));
 
     // Direct all requests to the main frontend template via Silken.
