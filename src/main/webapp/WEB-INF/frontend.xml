@@ -1,6 +1,10 @@
 <filter>
 	<filter-name>raven</filter-name>
 	<filter-class>uk.ac.cam.ucs.webauth.RavenFilter</filter-class>
+  <init-param>
+    <param-name>maxSkew</param-name>
+    <param-value>3000</param-value>
+  </init-param>
 </filter>
 
 <filter-mapping>
