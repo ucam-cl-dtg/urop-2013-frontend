@@ -47,6 +47,9 @@ function fixLinks(router) {
             return true;
         }
 
+        if (href == undefined || href == null)
+            return ;
+
 
         if (href.slice(protocol.length) !== protocol) {
             evt.preventDefault();
