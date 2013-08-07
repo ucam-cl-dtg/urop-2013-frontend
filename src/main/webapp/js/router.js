@@ -47,7 +47,7 @@ function fixLinks(router) {
             return true;
         }
 
-        if (href == undefined || href == null)
+        if (href == undefined || href == null || href == "#")
             return ;
 
 
