@@ -115,6 +115,7 @@
 .tag {
 	@extend .button;
 	@include split-button;
+	margin-right: 10px;
 }
 
 .tag span {
