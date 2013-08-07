@@ -1,0 +1,130 @@
+package uk.ac.cam.cl.dtg.teaching;
+
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class APIFilter implements Filter {
+	private static Logger log = LoggerFactory.getLogger(APIFilter.class);
+	
+	/**
+	 * Name of the request attribute populated with the current user.
+	 */
+	public static final String USER_ATTR = "userId";
+	
+	/**
+	 * Base URL used to access dashboard API.
+	 */
+	private String dashboardUrl;
+	
+	/**
+	 * API key with global permissions for checking other API keys.
+	 */
+	private String apiKey;
+	
+	/**
+	 * Whether the service supports global API keys (defaults to true).
+	 */
+	private boolean allowGlobal = true;
+
+	@Override
+	public void init(FilterConfig config) throws ServletException {
+		// Load dashboard API URL from servlet context.
+		dashboardUrl = config.getServletContext().getInitParameter("dashboardUrl");
+		
+		if(dashboardUrl == null) {
+			log.error("Missing dashboard URL from context parameters.");
+		}
+		
+		// Load global API key from servlet context for accessing dashboard.
+		apiKey = config.getServletContext().getInitParameter("apiKey");
+		
+		if(dashboardUrl == null) {
+			log.error("Missing API key from context parameters.");
+		}
+		
+		// Determine whether service supports global API key.
+		String sAllowGlobal = config.getInitParameter("allowGlobal");
+		
+		if(sAllowGlobal != null) {
+			if(sAllowGlobal.toLowerCase().equals("false")) {
+				allowGlobal = false;
+			} else if(sAllowGlobal.toLowerCase().equals("true")) {
+				allowGlobal = true;
+			} else {
+				log.warn("allowGlobal init-param should either be 'true' or 'false'.");
+			}
+		}
+		
+		log.info("API filter initialised.");
+	}
+
+	@Override
+	public void doFilter(ServletRequest servletReq, ServletResponse servletResp,
+			FilterChain chain) throws IOException, ServletException {
+		// Convert arguments to HTTP ones to allow grabbing session etc.
+		HttpServletRequest request = (HttpServletRequest) servletReq;
+		HttpServletResponse response = (HttpServletResponse) servletResp;
+		HttpSession session = request.getSession();
+
+		// API key provided.
+		if(request.getParameter("key") != null) {
+			String key = (String) request.getParameter("key");
+			
+			// TODO: make call to dashboard API using apiKey
+			
+			// Global key
+			if(/* TODO */ false) {
+				// Global supported, allow request with null user.
+				if(allowGlobal) {
+					log.debug("API request permitted for global key.");
+					request.setAttribute(USER_ATTR, null);
+					chain.doFilter(request, response);
+				// Global unsupported, return 405 (unsupported method).
+				} else {
+					log.error("Request with global API key when allowGlobal=false.");
+					response.sendError(405, "Global API keys unsupported.");
+				}
+			// User-specific key.
+			} else if(/* TODO */ false) {
+				String userId = "todo";
+				
+				log.debug("API request permitted with key for " + userId);
+				request.setAttribute(USER_ATTR, userId);
+				chain.doFilter(request, response);
+			// Key was invalid
+			} else {
+				log.error("Request with invalid API key = " + key);
+				response.sendError(401, "Invalid API key.");
+			}
+		// Check whether we're logged in with Raven.
+		} else if(session.getAttribute("RavenRemoteUser") != null) {
+			String crsId = (String) session.getAttribute("RavenRemoteUser");
+			
+			log.debug("API request permitted for user " + crsId);
+			
+			request.setAttribute(USER_ATTR, crsId);
+			
+			chain.doFilter(request, response);
+		// No other authorisation options.
+		} else {
+			response.sendError(401, "Unauthorised API request.");
+		}
+	}
+
+	@Override
+	public void destroy() {
+		// Nothing to do.
+	}
+}
