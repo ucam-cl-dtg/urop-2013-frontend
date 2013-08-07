@@ -47,6 +47,9 @@ function fixLinks(router) {
             return true;
         }
 
+        if (href == undefined || href == null)
+            return ;
+
 
         if (href.slice(protocol.length) !== protocol) {
             evt.preventDefault();
@@ -92,7 +95,7 @@ function config (router, route, value) {
         throw new Error("Unsupported type for route: " + route);
 
     return router.route(route, route, function(){
-        loadModule($('.main'), Backbone.history.getFragment(), value);
+        loadModule($('.main'), Backbone.history.getFragment() + window.location.search, value);
     });
 }
 
