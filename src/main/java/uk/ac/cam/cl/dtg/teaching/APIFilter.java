@@ -87,7 +87,7 @@ public class APIFilter implements Filter {
 			String key = (String) request.getParameter("key");
 			
 			ClientRequestFactory crf = new ClientRequestFactory(UriBuilder.fromUri(dashboardUrl).build());
-			ApiPermissions permissions = crf.createProxy(DashboardApi.class).getApiPermissions();
+			ApiPermissions permissions = crf.createProxy(DashboardApi.class).getApiPermissions(key, apiKey);
 			
 			// Global key
 			if(permissions.getType() == "global") {

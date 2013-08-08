@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 
 public interface DashboardApi {
 	
@@ -67,9 +69,8 @@ public interface DashboardApi {
 	
 	// Permissions
 	
-	
-	@GET @Path("/auth")
-	public ApiPermissions getApiPermissions();
+	@GET @Path("/auth/type/{key}")
+	public ApiPermissions getApiPermissions(@PathParam("key") String key, @QueryParam("auth") String auth);
 
 	public static class ApiPermissions {
 		private String user;
