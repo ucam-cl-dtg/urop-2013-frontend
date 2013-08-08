@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.common.collect.ImmutableMap;
 
 public class FrontendServlet extends HttpServlet {
+	private static final long serialVersionUID = -7875184838824615593L;
+	
 	private String cssNamespace = null;
 	private String[] cssFiles;
 	private String[] jsFiles;
