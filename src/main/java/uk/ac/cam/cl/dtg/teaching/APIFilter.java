@@ -11,9 +11,13 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.core.UriBuilder;
 
+import org.jboss.resteasy.client.ClientRequestFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import uk.ac.cam.cl.dtg.teaching.DashboardApi.ApiPermissions;
 
 public class APIFilter implements Filter {
 	private static Logger log = LoggerFactory.getLogger(APIFilter.class);
@@ -82,10 +86,11 @@ public class APIFilter implements Filter {
 		if(request.getParameter("key") != null) {
 			String key = (String) request.getParameter("key");
 			
-			// TODO: make call to dashboard API using apiKey
+			ClientRequestFactory crf = new ClientRequestFactory(UriBuilder.fromUri(dashboardUrl).build());
+			ApiPermissions permissions = crf.createProxy(DashboardApi.class).getApiPermissions();
 			
 			// Global key
-			if(/* TODO */ false) {
+			if(permissions.getType() == "global") {
 				// Global supported, allow request with null user.
 				if(allowGlobal) {
 					log.debug("API request permitted for global key.");
@@ -97,8 +102,8 @@ public class APIFilter implements Filter {
 					response.sendError(405, "Global API keys unsupported.");
 				}
 			// User-specific key.
-			} else if(/* TODO */ false) {
-				String userId = "todo";
+			} else if(permissions.getType() == "user") {
+				String userId = permissions.getUser();
 				
 				log.debug("API request permitted with key for " + userId);
 				request.setAttribute(USER_ATTR, userId);

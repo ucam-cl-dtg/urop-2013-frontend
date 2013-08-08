@@ -21,7 +21,7 @@
 
 	<context-param>
 		<param-name>dashboardUrl</param-name>
-		<param-value>http://woo</param-value>
+		<param-value>http://localhost:8080/api/dashboard</param-value>
 	</context-param>
 
 	<context-param>

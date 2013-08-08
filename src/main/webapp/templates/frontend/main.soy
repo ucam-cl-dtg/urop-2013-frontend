@@ -6,6 +6,7 @@
  * @param cssFiles
  * @param jsFiles
  * @param contextPath
+ * @param settings
  */
 {template .main}
 <!DOCTYPE html>
@@ -44,7 +45,7 @@
 		<header class="header full-width">
 			<div class="header-logo">
 				<div class="row">
-					<div class="columns large-12 small-6 header-logo-inner module-loader" data-target="home/notification-feed">
+					<div class="columns large-12 small-6 header-logo-inner module-loader" data-target="dashboard">
 						<img src="img/ajax-loader.gif" class="ajax-loader" />Supervisions
 					</div>
 					<div class="columns hide-for-large hide-for-xlarge small-6 show-for-small text-right">
@@ -65,61 +66,26 @@
 		<div class="mobile-nav-wrapper row full-width">
 			<div class="mobile-nav-wrapper-inner">
 				<ul class="mobile-nav">
+					{foreach $menuItem in $settings.sidebar}
 					<li class="mobile-nav-header">
-						<div class="websymbols-icon fixed-width-icon">&#80;</div>Timetable/Signups
+						{if ($menuItem.iconType == 1)}
+						<div class="fixed-width-icon"><i class="icon {$menuItem.icon}"></i></div>
+						{else}
+						<div class="websymbols-icon fixed-width-icon">{$menuItem.icon}</div>
+						{/if}
+						{$menuItem.name}
 					</li>
-					<li class="mobile-nav-item module-loader" data-target="signapp/events"><div class="websymbols-icon fixed-width-icon">&#63;</div>Events
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="signapp/events/new"><div class="websymbols-icon fixed-width-icon">&#63;</div>Create new event
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="signapp/groups">
-						<div class="websymbols-icon fixed-width-icon">&#100;</div>Groups
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="signapp/deadlines">
-						<div class="websymbols-icon fixed-width-icon">&#87;</div>Deadlines
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="signapp/dos-dashboard">
-						<div class="websymbols-icon fixed-width-icon">&#90;</div>DoS Dashboard
-					</li>
-
-					<li class="mobile-nav-header">
-						<div class="websymbols-icon fixed-width-icon">&#97;</div>Setting Work
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="q/search">
-						<div class="ixed-width-icon"><i class="icon icon-list"></i></div>Browse questions
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="sets">
-						<div class="fixed-width-icon"><i class="icon icon-file_open"></i></div>Browse question sets
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="sets/add">
-						<div class="fixed-width-icon"><i class="icon icon-plus"></i></div>Create question set
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="fairytale">
-						<div class="websymbols-icon fixed-width-icon"><i class="icon icon-ringbell"></i></div>Fairytale land
-					</li>
-
-					<li class="mobile-nav-header">
-						<div class="websymbols-icon fixed-width-icon">&#70;</div>Marking Work
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="bins/create">
-						<div class="websymbols-icon fixed-width-icon">&#44;</div>Create Bin
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="bins">
-						<div class="websymbols-icon fixed-width-icon">&#44;</div>Upload answers
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="marking">
-						<div class="websymbols-icon fixed-width-icon">&#44;</div>Mark answers
-					</li>
-
-					<li class="mobile-nav-header">
-						<div class="websymbols-icon fixed-width-icon">&#83;</div>Settings
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="home/account">
-						<div class="websymbols-icon fixed-width-icon">&#85;</div>Account
-					</li>
-					<li class="mobile-nav-item module-loader" data-target="home/logout">
-						<div class="websymbols-icon fixed-width-icon">&#88;</div>Logout
-					</li>
+						{foreach $subMenuItem in $menuItem.links}
+						<li class="mobile-nav-item module-loader" data-target="{$subMenuItem.link}">
+							{if ($subMenuItem.iconType == 1)}
+							<div class="fixed-width-icon"><i class="icon {$subMenuItem.icon}"></i></div>
+							{else}
+							<div class="websymbols-icon fixed-width-icon">{$subMenuItem.icon}</div>
+							{/if}
+							{$subMenuItem.name}
+						</li>
+						{/foreach}
+					{/foreach}
 				</ul>
 			</div>
 		</div>
@@ -127,129 +93,38 @@
 		<div class="central-content full-width clearfix">
 			<div class="sidebar hide-for-small columns">
 				<ul class="sidebar-navigation">
+					{foreach $menuItem in $settings.sidebar}
 					<li class="sidebar-navigation-item">
 						<div class="sidebar-navigation-item-header row">
-							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#97;</div>Dashboard</div>
-							<div class="columns large-2 text-right notifications">10</div>
+							<div class="columns large-10">
+								{if ($menuItem.iconType == 1)}
+								<div class="fixed-width-icon"><i class="icon {$menuItem.icon}"></i></div>
+								{else}
+								<div class="websymbols-icon fixed-width-icon">{$menuItem.icon}</div>
+								{/if}
+								{$menuItem.name}
+							</div>
+							<div class="columns large-2 text-right notifications">{$menuItem.notificationCount}</div>
 						</div>
 						<ul class="sidebar-sub-navigation expanded">
+							{foreach $subMenuItem in $menuItem.links}
 							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="dashboard">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-globe"></i></div>Home</div>
-									<div class="columns large-2 text-right notifications">Never</div>
+								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="{$subMenuItem.link}">
+									<div class="columns large-10">
+										{if ($subMenuItem.iconType == 1)}
+										<div class="fixed-width-icon"><i class="icon {$subMenuItem.icon}"></i></div>
+										{else}
+										<div class="websymbols-icon fixed-width-icon">{$subMenuItem.icon}</div>
+										{/if}
+										{$subMenuItem.name}
+									</div>
+									<div class="columns large-2 text-right notifications">{$subMenuItem.notificationCount}</div>
 								</div>
 							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="dashboard/notifications">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-newspaper"></i></div>Notifications</div>
-									<div class="columns large-2 text-right notifications">gonna</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="dashboard/deadlines">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-ringbell"></i></div>Deadlines</div>
-									<div class="columns large-2 text-right notifications">give</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="dashboard/groups">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-users"></i></div>Groups</div>
-									<div class="columns large-2 text-right notifications">you</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="dashboard/supervisor">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-users"></i></div>Supervisor Homepage</div>
-									<div class="columns large-2 text-right notifications">up</div>
-								</div>
-							</li>
+							{/foreach}
 						</ul>
 					</li>
-					<li class="sidebar-navigation-item">
-						<div class="sidebar-navigation-item-header row">
-							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#80;</div>Timetable/Signups</div>
-							<div class="columns large-2 text-right notifications">12</div>
-						</div>
-						<ul class="sidebar-sub-navigation">
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="signapp/events">
-									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#63;</div>Events</div>
-									<div class="columns large-2 text-right notifications">8</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="signapp/events/new">
-									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#63;</div>Create new event</div>
-									<div class="columns large-2 text-right notifications">8</div>
-								</div>
-							</li>
-						</ul>
-					</li>
-					<li class="sidebar-navigation-item">
-						<div class="sidebar-navigation-item-header row">
-
-							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#97;</div>Setting Work</div>
-							<div class="columns large-2 text-right notifications">10</div>
-						</div>
-						<ul class="sidebar-sub-navigation">
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="q/search">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-list"></i></div>Browse questions</div>
-									<div class="columns large-2 text-right notifications">8</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="sets">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-file_open"></i></div>Browse question sets</div>
-									<div class="columns large-2 text-right notifications">1</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-                                <div class="sidebar-sub-navigation-item-header row module-loader" data-target="users/me">
-                                    <div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-file_open"></i></div>Browse own content</div>
-                                    <div class="columns large-2 text-right notifications">billion</div>
-                                </div>
-                            </li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="sets/add">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-plus"></i></div>Create question set</div>
-									<div class="columns large-2 text-right notifications">3</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="fairytale">
-									<div class="columns large-10"><div class="fixed-width-icon"><i class="icon icon-ringbell"></i></div>Fairytale Land</div>
-									<div class="columns large-2 text-right notifications">3</div>
-								</div>
-							</li>
-						</ul>
-					</li>
-					<li class="sidebar-navigation-item">
-						<div class="sidebar-navigation-item-header row">
-							<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#70;</div>Marking Work</div>
-							<div class="columns large-2 text-right notifications">23</div>
-						</div>
-						<ul class="sidebar-sub-navigation">
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="bins/create">
-									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#44;</div>Create Bin</div>
-									<div class="columns large-2 text-right notifications">8</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="bins">
-									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#44;</div>Upload answers</div>
-									<div class="columns large-2 text-right notifications">8</div>
-								</div>
-							</li>
-							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="marking">
-									<div class="columns large-10"><div class="websymbols-icon fixed-width-icon">&#67;</div>Mark answers</div>
-									<div class="columns large-2 text-right notifications">1</div>
-								</div>
-							</li>
-						</ul>
-					</li>
+					{/foreach}
 				</ul>
 			</div>
 			<div class="main-wrapper">
