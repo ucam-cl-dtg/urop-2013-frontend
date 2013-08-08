@@ -92,7 +92,7 @@
 									<include>**</include>
 								</includes>
 							</source>
-							<destination>${project.build.directory}/${project.build.finalName}/css/</destination>
+							<destination>${project.build.directory}/generated-css/css</destination>
 						</resource>
 					</resources>
 					<sassOptions>
@@ -101,9 +101,21 @@
 					</sassOptions>
 				</configuration>
 			</plugin>
-		</plugins>
 
-    <pluginManagement>
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-war-plugin</artifactId>
+			  <version>2.4</version>
+			  <configuration>
+			    <webResources>
+			      <resource>
+				<directory>${project.build.directory}/generated-css</directory>
+			      </resource>
+			    </webResources>
+			  </configuration>
+			</plugin>
+		</plugins>
+   <pluginManagement>
     	<plugins>
     		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
     		<plugin>
@@ -127,7 +139,9 @@
     								</goals>
     							</pluginExecutionFilter>
     							<action>
-    								<ignore></ignore>
+    								<execute>
+										<runOnIncremental>true</runOnIncremental>
+									</execute>
     							</action>
     						</pluginExecution>
     					</pluginExecutions>
