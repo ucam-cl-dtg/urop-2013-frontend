@@ -115,11 +115,11 @@ public class APIFilter implements Filter {
 			}
 		// Check whether we're logged in with Raven.
 		} else if(session.getAttribute("RavenRemoteUser") != null) {
-			String crsId = (String) session.getAttribute("RavenRemoteUser");
+			String crsid = (String) session.getAttribute("RavenRemoteUser");
 			
-			log.debug("API request permitted for user " + crsId);
+			log.debug("API request permitted for user " + crsid);
 			
-			request.setAttribute(USER_ATTR, crsId);
+			request.setAttribute(USER_ATTR, crsid);
 			
 			chain.doFilter(request, response);
 		// No other authorisation options.
