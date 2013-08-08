@@ -62,7 +62,21 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>${project.build.directory}/generated-css</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+
       <plugin>
         <groupId>org.jasig.maven</groupId>
         <artifactId>sass-maven-plugin</artifactId>
@@ -86,7 +100,7 @@
                   <include>**</include>
                 </includes>
               </source>
-              <destination>${project.build.directory}/${project.build.finalName}/css/</destination>
+              <destination>${project.build.directory}/generated-css/css</destination>
             </resource>
           </resources>
           <sassOptions>
@@ -120,7 +134,9 @@
     								</goals>
     							</pluginExecutionFilter>
     							<action>
-    								<ignore></ignore>
+    								<execute>
+										<runOnIncremental>true</runOnIncremental>
+									</execute>
     							</action>
     						</pluginExecution>
     					</pluginExecutions>
