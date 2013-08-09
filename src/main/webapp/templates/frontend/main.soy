@@ -66,6 +66,7 @@
 		<div class="mobile-nav-wrapper row full-width">
 			<div class="mobile-nav-wrapper-inner">
 				<ul class="mobile-nav">
+					{if $settings.sidebar}
 					{foreach $menuItem in $settings.sidebar}
 					<li class="mobile-nav-header">
 						{if ($menuItem.iconType == 1)}
@@ -86,6 +87,9 @@
 						</li>
 						{/foreach}
 					{/foreach}
+					{else}
+					Error: {$settings.error}
+					{/if}
 				</ul>
 			</div>
 		</div>
@@ -93,6 +97,7 @@
 		<div class="central-content full-width clearfix">
 			<div class="sidebar hide-for-small columns">
 				<ul class="sidebar-navigation">
+					{if $settings.sidebar}
 					{foreach $menuItem in $settings.sidebar}
 					<li class="sidebar-navigation-item">
 						<div class="sidebar-navigation-item-header row">
@@ -125,6 +130,9 @@
 						</ul>
 					</li>
 					{/foreach}
+					{else}
+					Error: {$settings.error}
+					{/if}
 				</ul>
 			</div>
 			<div class="main-wrapper">

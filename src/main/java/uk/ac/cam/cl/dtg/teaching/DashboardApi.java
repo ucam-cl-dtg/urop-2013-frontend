@@ -1,6 +1,7 @@
 package uk.ac.cam.cl.dtg.teaching;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,14 +12,22 @@ public interface DashboardApi {
 	
 	// Settings
 	
-	@GET @Path("/api/dashboard/settings")
-	public Settings getSettings();
+	@GET @Path("/api/dashboard/account/")
+	public Settings getSettings(@QueryParam("userId") String user, @QueryParam("key") String key);
 	
 	public static class Settings {
 		private List<MenuItem> sidebar;
+		private Map<String, Object> user;
+		private String error;
 		
 		public List<MenuItem> getSidebar() {return sidebar;}
 		public void setSidebar(List<MenuItem> sidebar) {this.sidebar = sidebar;}
+		
+		public Map<String, Object> getUser() {return user;}
+		public void setUser(Map<String, Object> user) {this.user = user;}
+		
+		public String getError() {return error;}
+		public void setError(String error) {this.error = error;}
 	}
 	
 	public static class MenuItem {

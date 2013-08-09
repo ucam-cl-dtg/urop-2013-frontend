@@ -70,7 +70,7 @@ public class APIFilter implements Filter {
 		// Load global API key from servlet context for accessing dashboard.
 		apiKey = config.getServletContext().getInitParameter("apiKey");
 		
-		if(dashboardUrl == null) {
+		if(apiKey == null) {
 			log.error("Missing API key from context parameters.");
 		}
 		
