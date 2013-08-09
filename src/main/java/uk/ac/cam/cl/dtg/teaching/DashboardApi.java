@@ -69,8 +69,8 @@ public interface DashboardApi {
 	
 	// Permissions
 	
-	@GET @Path("/auth/type/{key}")
-	public ApiPermissions getApiPermissions(@PathParam("key") String key, @QueryParam("auth") String auth);
+	@GET @Path("/api/keys/type/{key}")
+	public ApiPermissions getApiPermissions(@PathParam("key") String key);
 
 	public static class ApiPermissions {
 		private String user;
