@@ -11,7 +11,7 @@ public interface DashboardApi {
 	
 	// Settings
 	
-	@GET @Path("/settings")
+	@GET @Path("/api/dashboard/settings")
 	public Settings getSettings();
 	
 	public static class Settings {
@@ -73,12 +73,12 @@ public interface DashboardApi {
 	public ApiPermissions getApiPermissions(@PathParam("key") String key);
 
 	public static class ApiPermissions {
-		private String user;
+		private String userId;
 		private String type;
 		private String error;
 		
-		public String getUser() {return user;}
-		public void setUser(String user) {this.user = user;}
+		public String getUserId() {return userId;}
+		public void setUserId(String userId) {this.userId = userId;}
 		
 		public String getType() {return type;}
 		public void setType(String type) {this.type = type;}

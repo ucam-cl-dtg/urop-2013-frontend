@@ -114,9 +114,9 @@ public class APIFilter implements Filter {
 			
 			ClientRequestFactory crf = new ClientRequestFactory(UriBuilder.fromUri(dashboardUrl).build());
 			ApiPermissions permissions = crf.createProxy(DashboardApi.class).getApiPermissions(key);
-			
+						
 			// Global key
-			if(permissions.getType() == "global") {
+			if(permissions.getType().equals("global")) {
 				// Global supported, allow request with null user.
 				if(allowGlobal) {
 					log.debug("API request permitted for global key.");
@@ -128,8 +128,8 @@ public class APIFilter implements Filter {
 					response.sendError(405, "Global API keys unsupported.");
 				}
 			// User-specific key.
-			} else if(permissions.getType() == "user") {
-				String userId = permissions.getUser();
+			} else if(permissions.getType().equals("user")) {
+				String userId = permissions.getUserId();
 				
 				log.debug("API request permitted with key for " + userId);
 				request.setAttribute(USER_ATTR, userId);
