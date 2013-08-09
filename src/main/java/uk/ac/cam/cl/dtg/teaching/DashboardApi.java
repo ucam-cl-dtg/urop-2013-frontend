@@ -12,7 +12,7 @@ public interface DashboardApi {
 	
 	// Settings
 	
-	@GET @Path("/api/dashboard/account/")
+	@GET @Path("/api/account/")
 	public Settings getSettings(@QueryParam("userId") String user, @QueryParam("key") String key);
 	
 	public static class Settings {
