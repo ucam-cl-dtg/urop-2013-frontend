@@ -62,7 +62,7 @@ public class FrontendServlet extends HttpServlet {
 			"cssNamespace", cssNamespace,
 			"cssFiles",     Arrays.asList(cssFiles),
 			"jsFiles",      Arrays.asList(jsFiles),
-			"contextPath",  req.getContextPath() + "/",
+			"contextPath",  req.getContextPath(),
 			"settings", crf.createProxy(DashboardApi.class).getSettings()
 		));
 
