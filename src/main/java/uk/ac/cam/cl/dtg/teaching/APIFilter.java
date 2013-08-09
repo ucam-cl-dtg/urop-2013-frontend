@@ -61,10 +61,10 @@ public class APIFilter implements Filter {
 		String prefixes = config.getServletContext().getInitParameter("excludePrefixes");
 		if(prefixes != null) {
 			excludePrefixes = prefixes.split(",");
-		}
-		
-		for (int i = 0; i < excludePrefixes.length; i++) {
-			excludePrefixes[i] = excludePrefixes[i].trim();
+			
+			for (int i = 0; i < excludePrefixes.length; i++) {
+				excludePrefixes[i] = excludePrefixes[i].trim();
+			}
 		}
 		
 		// Load global API key from servlet context for accessing dashboard.
@@ -100,14 +100,16 @@ public class APIFilter implements Filter {
 		
 		// Check whether the URL should be excluded from the filter
 		// If so, chain through
-		for (String p:excludePrefixes) {
-			if(request.getRequestURI().startsWith(p)) {
-				log.info("Chaining request through API filter with prefix: " + request.getRequestURI());
-				chain.doFilter(request, response);
-				return;
+		if(excludePrefixes != null) {
+			for (String p:excludePrefixes) {
+				if(request.getRequestURI().startsWith(p)) {
+					log.info("Chaining request through API filter with prefix: " + request.getRequestURI());
+					chain.doFilter(request, response);
+					return;
+				}
 			}
 		}
-		
+			
 		// API key provided.
 		if(request.getParameter("key") != null) {
 			String key = (String) request.getParameter("key");
