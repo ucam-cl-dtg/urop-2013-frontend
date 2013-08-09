@@ -1,6 +1,7 @@
 package uk.ac.cam.cl.dtg.teaching;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,14 +12,22 @@ public interface DashboardApi {
 	
 	// Settings
 	
-	@GET @Path("/settings")
-	public Settings getSettings();
+	@GET @Path("/api/account/")
+	public Settings getSettings(@QueryParam("userId") String user, @QueryParam("key") String key);
 	
 	public static class Settings {
 		private List<MenuItem> sidebar;
+		private Map<String, Object> user;
+		private String error;
 		
 		public List<MenuItem> getSidebar() {return sidebar;}
 		public void setSidebar(List<MenuItem> sidebar) {this.sidebar = sidebar;}
+		
+		public Map<String, Object> getUser() {return user;}
+		public void setUser(Map<String, Object> user) {this.user = user;}
+		
+		public String getError() {return error;}
+		public void setError(String error) {this.error = error;}
 	}
 	
 	public static class MenuItem {
@@ -73,12 +82,12 @@ public interface DashboardApi {
 	public ApiPermissions getApiPermissions(@PathParam("key") String key);
 
 	public static class ApiPermissions {
-		private String user;
+		private String userId;
 		private String type;
 		private String error;
 		
-		public String getUser() {return user;}
-		public void setUser(String user) {this.user = user;}
+		public String getUserId() {return userId;}
+		public void setUserId(String userId) {this.userId = userId;}
 		
 		public String getType() {return type;}
 		public void setType(String type) {this.type = type;}
