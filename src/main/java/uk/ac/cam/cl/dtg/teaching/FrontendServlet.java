@@ -8,10 +8,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.UriBuilder;
+
+import org.jboss.resteasy.client.ClientRequest;
+import org.jboss.resteasy.client.ClientRequestFactory;
 
 import com.google.common.collect.ImmutableMap;
 
 public class FrontendServlet extends HttpServlet {
+	private static final long serialVersionUID = -7875184838824615593L;
+	private String dashboardUrl;
+	
 	private String cssNamespace = null;
 	private String[] cssFiles;
 	private String[] jsFiles;
@@ -19,6 +26,9 @@ public class FrontendServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+
+		// Load dashboard API URL from servlet context.
+		dashboardUrl = config.getServletContext().getInitParameter("dashboardUrl");
 
 		cssNamespace = config.getServletContext().getInitParameter("cssNamespace");
 
@@ -44,14 +54,16 @@ public class FrontendServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
-		// TODO: Pull menu information from dashboard API
+
+		ClientRequestFactory crf = new ClientRequestFactory(UriBuilder.fromUri(dashboardUrl).build());
 
 		// Load extra javascript/CSS as required.
 		req.setAttribute("model", ImmutableMap.of(
 			"cssNamespace", cssNamespace,
 			"cssFiles",     Arrays.asList(cssFiles),
 			"jsFiles",      Arrays.asList(jsFiles),
-			"contextPath",  req.getContextPath() + "/"
+			"contextPath",  req.getContextPath(),
+			"settings", crf.createProxy(DashboardApi.class).getSettings()
 		));
 
 		// Direct all requests to the main frontend template via Silken.

@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>uk.ac.cam.cl.dtg.teaching</groupId>
-  <artifactId>frontend</artifactId>
-  <packaging>war</packaging>
-  <version>1.0.0-SNAPSHOT</version>
-  <name>Unified Frontend for Teaching Applications</name>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>uk.ac.cam.cl.dtg.teaching</groupId>
+	<artifactId>frontend</artifactId>
+	<packaging>war</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>Unified Frontend for Teaching Applications</name>
 
 	<repositories>
 		<repository>
@@ -19,40 +19,52 @@
 		</repository>
 	</repositories>
 
-  <dependencies>
-    <dependency>
-  		<groupId>javax.servlet</groupId>
-  		<artifactId>servlet-api</artifactId>
-  		<version>2.5</version>
-  	</dependency>
-  	
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>11.0.1</version>
-    </dependency>
-    
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>2.3.1.GA</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>11.0.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>uk.ac.cam.ucs</groupId>
 			<artifactId>webauth</artifactId>
 			<version>0.7.2</version>
 		</dependency>
-  	
+
 		<dependency>
 			<groupId>com.papercut.silken</groupId>
 			<artifactId>silken</artifactId>
 			<version>2013-03-05</version>
 		</dependency>
-  </dependencies>
+	</dependencies>
 
-  <build>
-    <plugins>
+	<build>
+		<plugins>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>7.2.0.v20101020</version>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -62,40 +74,88 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			
-      <plugin>
-        <groupId>org.jasig.maven</groupId>
-        <artifactId>sass-maven-plugin</artifactId>
-        <version>1.1.0</version>
-        
-        <executions>
-          <execution>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>update-stylesheets</goal>
-            </goals>
-          </execution>
-        </executions>
-        
-        <configuration>
-          <resources>
-            <resource>
-              <source>
-                <directory>${project.basedir}/src/main/scss/</directory>
-                <includes>
-                  <include>**</include>
-                </includes>
-              </source>
-              <destination>${project.build.directory}/${project.build.finalName}/css/</destination>
-            </resource>
-          </resources>
-          <sassOptions>
-            <style>:compressed</style>
-            <syntax>:scss</syntax>
-          </sassOptions>
-        </configuration>
-      </plugin>
-    </plugins>
+
+			<plugin>
+				<groupId>org.jasig.maven</groupId>
+				<artifactId>sass-maven-plugin</artifactId>
+				<version>1.1.0</version>
+
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>update-stylesheets</goal>
+						</goals>
+					</execution>
+				</executions>
+
+				<configuration>
+					<resources>
+						<resource>
+							<source>
+								<directory>${project.basedir}/src/main/scss/</directory>
+								<includes>
+									<include>**</include>
+								</includes>
+							</source>
+							<destination>${project.build.directory}/generated-css/css</destination>
+						</resource>
+					</resources>
+					<sassOptions>
+						<style>:compressed</style>
+						<syntax>:scss</syntax>
+					</sassOptions>
+				</configuration>
+			</plugin>
+
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-war-plugin</artifactId>
+			  <version>2.4</version>
+			  <configuration>
+			    <webResources>
+			      <resource>
+				<directory>${project.build.directory}/generated-css</directory>
+			      </resource>
+			    </webResources>
+			  </configuration>
+			</plugin>
+		</plugins>
+   <pluginManagement>
+    	<plugins>
+    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+    		<plugin>
+    			<groupId>org.eclipse.m2e</groupId>
+    			<artifactId>lifecycle-mapping</artifactId>
+    			<version>1.0.0</version>
+    			<configuration>
+    				<lifecycleMappingMetadata>
+    					<pluginExecutions>
+    						<pluginExecution>
+    							<pluginExecutionFilter>
+    								<groupId>org.jasig.maven</groupId>
+    								<artifactId>
+    									sass-maven-plugin
+    								</artifactId>
+    								<versionRange>
+    									[1.1.0,)
+    								</versionRange>
+    								<goals>
+    									<goal>update-stylesheets</goal>
+    								</goals>
+    							</pluginExecutionFilter>
+    							<action>
+    								<execute>
+										<runOnIncremental>true</runOnIncremental>
+									</execute>
+    							</action>
+    						</pluginExecution>
+    					</pluginExecutions>
+    				</lifecycleMappingMetadata>
+    			</configuration>
+    		</plugin>
+    	</plugins>
+    </pluginManagement>
   </build>
   
   <distributionManagement>

@@ -94,7 +94,7 @@ function config (router, route, value) {
     if ((typeof value != "string") && (typeof value != "function"))
         throw new Error("Unsupported type for route: " + route);
 
-    return router.route(route, route, function(){
+    return router.route(route + "(/)", route, function(){
         loadModule($('.main'), Backbone.history.getFragment() + window.location.search, value);
     });
 }
