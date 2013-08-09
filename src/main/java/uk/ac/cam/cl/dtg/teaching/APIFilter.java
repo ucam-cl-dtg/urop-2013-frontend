@@ -31,7 +31,12 @@ public class APIFilter implements Filter {
 	 * Base URL used to access dashboard API.
 	 */
 	private String dashboardUrl;
-	
+
+	/**
+	 * A list of comma separated URLs to allow through
+	 */
+	private String[] excludePrefixes;
+
 	/**
 	 * API key with global permissions for checking other API keys.
 	 */
@@ -49,6 +54,17 @@ public class APIFilter implements Filter {
 		
 		if(dashboardUrl == null) {
 			log.error("Missing dashboard URL from context parameters.");
+		}
+		
+		// Load dashboard API URLs to exclude from filter from servlet context.
+		// Trims blank space
+		String prefixes = config.getServletContext().getInitParameter("excludePrefixes");
+		if(prefixes != null) {
+			excludePrefixes = prefixes.split(",");
+		}
+		
+		for (int i = 0; i < excludePrefixes.length; i++) {
+			excludePrefixes[i] = excludePrefixes[i].trim();
 		}
 		
 		// Load global API key from servlet context for accessing dashboard.
@@ -81,13 +97,23 @@ public class APIFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) servletReq;
 		HttpServletResponse response = (HttpServletResponse) servletResp;
 		HttpSession session = request.getSession();
-
+		
+		// Check whether the URL should be excluded from the filter
+		// If so, chain through
+		for (String p:excludePrefixes) {
+			if(request.getRequestURI().startsWith(p)) {
+				log.info("Chaining request through API filter with prefix: " + request.getRequestURI());
+				chain.doFilter(request, response);
+				return;
+			}
+		}
+		
 		// API key provided.
 		if(request.getParameter("key") != null) {
 			String key = (String) request.getParameter("key");
 			
 			ClientRequestFactory crf = new ClientRequestFactory(UriBuilder.fromUri(dashboardUrl).build());
-			ApiPermissions permissions = crf.createProxy(DashboardApi.class).getApiPermissions(key, apiKey);
+			ApiPermissions permissions = crf.createProxy(DashboardApi.class).getApiPermissions(key);
 			
 			// Global key
 			if(permissions.getType() == "global") {
