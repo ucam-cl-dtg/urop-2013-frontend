@@ -40,6 +40,8 @@ function fixLinks(router) {
     if (ROUTER_OPTIONS.pushState === undefined || ROUTER_OPTIONS.pushState === null)
         return ;
     $(document).on('click', 'a', function (evt) {
+    	if(evt.ctrlKey) return;
+    	
         var href = $(this).attr('href');
         var protocol = this.protocol + '//';
         var dataBypass = $(this).attr('data-bypass');
