@@ -149,7 +149,7 @@ function asyncLoad(elems) {
        })
     });
 }
-
+var SOY_GLOBALS = {};
 function applyTemplate(elem, template, data) {
     var templateFunc;
     var templateName;
@@ -163,7 +163,7 @@ function applyTemplate(elem, template, data) {
       return ;
     }
     templateFunc = getTemplate(templateName);
-    elem.html(templateFunc(data));
+    elem.html(templateFunc(data, null, SOY_GLOBALS));
 
     postModuleLoad(elem, templateName);
     asyncLoad(elem.find(".async-loader"));
