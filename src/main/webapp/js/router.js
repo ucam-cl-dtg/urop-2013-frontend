@@ -51,7 +51,8 @@ function fixLinks(router) {
 
         if (href == undefined || href == null || href == "#")
             return ;
-
+        
+        href = href.slice(0, CONTEXT_PATH.length) == CONTEXT_PATH ? href.slice(CONTEXT_PATH.length) : href;
 
         if (href.slice(protocol.length) !== protocol) {
             evt.preventDefault();
