@@ -1,27 +1,8 @@
-.columns.no-padding {
-  padding: 0px;
-}
-
-.pdf-viewer { 
-  .marker {
-    background-color: rgba(255, 88, 0, 0.4);
-    border-top: 4px solid rgb(255, 88, 0);
-    border-bottom: 4px solid rgb(255, 88, 0);
-
-    display: block;
-    position: absolute;
-
-    width: 637px;
-    height: 250px;
-
-
-  }
-}
-
 
 .pdf-viewer {
   background-color: #404040;
   background-image: url("/css/images/texture.png");
+  height: 100%;
  
   input,
   button,
