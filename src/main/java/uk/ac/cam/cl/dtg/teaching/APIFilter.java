@@ -102,7 +102,7 @@ public class APIFilter implements Filter {
 		// If so, chain through
 		if(excludePrefixes != null) {
 			for (String p:excludePrefixes) {
-				if(request.getRequestURI().startsWith(p)) {
+				if(request.getRequestURI().startsWith(request.getContextPath() + p)) {
 					log.info("Chaining request through API filter with prefix: " + request.getRequestURI());
 					chain.doFilter(request, response);
 					return;
