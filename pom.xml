@@ -55,6 +55,12 @@
 			<artifactId>silken</artifactId>
 			<version>2013-03-05</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>uk.ac.cam.cl.dtg.teaching</groupId>
+			<artifactId>supervision-api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

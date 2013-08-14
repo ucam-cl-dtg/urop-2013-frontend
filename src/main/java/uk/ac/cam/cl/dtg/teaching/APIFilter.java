@@ -17,7 +17,8 @@ import org.jboss.resteasy.client.ClientRequestFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import uk.ac.cam.cl.dtg.teaching.DashboardApi.ApiPermissions;
+import uk.ac.cam.cl.dtg.teaching.api.DashboardApi;
+import uk.ac.cam.cl.dtg.teaching.api.DashboardApi.ApiPermissions;
 
 public class APIFilter implements Filter {
 	private static Logger log = LoggerFactory.getLogger(APIFilter.class);
