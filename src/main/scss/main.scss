@@ -226,3 +226,16 @@ body {
 	width: 100%;
 	max-width: 100%;
 }
+
+
+//
+// Token input overrides
+//
+
+ul.token-input-list-facebook li input:focus {
+	background-color: white !important;
+	border-color: white !important;
+	-webkit-box-shadow: none !important;
+	   -mox-box-shadow: none !important;
+	        box-shadow: none !important;
+}
