@@ -20,3 +20,9 @@
         }
     }
 }());
+
+function encodeAjaxFormDataBeforeSubmit(arr) {
+	for (var i = 0; i < arr.length; i++) {
+        arr[i].value = encodeURIComponent(arr[i].value);
+    }
+}

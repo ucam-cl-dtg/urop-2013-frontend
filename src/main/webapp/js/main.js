@@ -42,7 +42,15 @@ $(document).ready(function() {
 		$('.upload-marked-work-form').slideToggle();
 	});
 
-	// AJAX loader
+	// 
+	// AJAX setup
+	//
+	
+	$.ajaxSetup({ 
+		scriptCharset: "utf-8" , 
+		contentType: "application/json; charset=utf-8"
+	});
+	
 	/*
 	$(document).ajaxStart(function() {
 		$(".ajax-loader").clearQueue().fadeIn(200);
