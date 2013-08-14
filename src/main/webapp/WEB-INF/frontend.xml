@@ -1,8 +1,7 @@
-<!-- Raven Authentication
-       Note that this should be after Htmleasy in the filter chain to ensure
-       that API requests that are expected to return JSON are not redirected
-       to the Raven login page. The APIFilter should be placed before Htmleasy
-       mapped to /api/* to deal with authentication of API requests. -->
+<!-- Raven Authentication Note that this should be after Htmleasy in the 
+	filter chain to ensure that API requests that are expected to return JSON 
+	are not redirected to the Raven login page. The APIFilter should be placed 
+	before Htmleasy mapped to /api/* to deal with authentication of API requests. -->
 <filter>
 	<filter-name>raven</filter-name>
 	<filter-class>uk.ac.cam.ucs.webauth.RavenFilter</filter-class>
@@ -17,10 +16,9 @@
 	<url-pattern>/*</url-pattern>
 </filter-mapping>
 
-<!-- Silken
-       Deals with compilation of templates, including use from within
-       Javascript. Unfortunately, these may sometimes be redirected to Raven
-       (ideally, the Raven filter above would exclude /soy/*). -->
+<!-- Silken Deals with compilation of templates, including use from within 
+	Javascript. Unfortunately, these may sometimes be redirected to Raven (ideally, 
+	the Raven filter above would exclude /soy/*). -->
 <servlet>
 	<servlet-name>soy</servlet-name>
 	<servlet-class>com.papercut.silken.SilkenServlet</servlet-class>
@@ -36,28 +34,29 @@
 	<url-pattern>/soy/*</url-pattern>
 </servlet-mapping>
 
-<!-- Static resources are dealt with in the normal way (this excludes them from
-	 the frontend filter below. -->
+<!-- Static resources are dealt with in the normal way (this excludes them 
+	from the frontend filter below. -->
 <servlet-mapping>
-  <servlet-name>default</servlet-name>
-  <url-pattern>/js/*</url-pattern>
+	<servlet-name>default</servlet-name>
+	<url-pattern>/js/*</url-pattern>
 </servlet-mapping>
 
 <servlet-mapping>
-  <servlet-name>default</servlet-name>
-  <url-pattern>/img/*</url-pattern>
+	<servlet-name>default</servlet-name>
+	<url-pattern>/img/*</url-pattern>
 </servlet-mapping>
 
 <servlet-mapping>
-  <servlet-name>default</servlet-name>
-  <url-pattern>/css/*</url-pattern>
+	<servlet-name>default</servlet-name>
+	<url-pattern>/css/*</url-pattern>
 </servlet-mapping>
 
-<!-- All other requests are rendered as the frontend template. The Javascript
-	 deals with getting the correct content. -->
+<!-- All other requests are rendered as the frontend template. The Javascript 
+	deals with getting the correct content. -->
 <servlet>
 	<servlet-name>frontend</servlet-name>
-	<servlet-class>uk.ac.cam.cl.dtg.teaching.FrontendServlet</servlet-class>
+	<servlet-class>uk.ac.cam.cl.dtg.teaching.FrontendServlet
+	</servlet-class>
 	<load-on-startup>1</load-on-startup>
 </servlet>
 
