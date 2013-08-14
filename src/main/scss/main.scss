@@ -232,7 +232,7 @@ body {
 // Token input overrides
 //
 
-ul.token-input-list-facebook li input:focus {
+ul.token-input-list-facebook li input, ul.token-input-list-facebook li input:focus {
 	background-color: white !important;
 	border-color: white !important;
 	-webkit-box-shadow: none !important;
