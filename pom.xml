@@ -63,6 +63,10 @@
 		</dependency>
 	</dependencies>
 
+	<scm>
+		<developerConnection>scm:git:ssh://git@github.com/ucam-cl-dtg/urop-2013-frontend</developerConnection>
+	</scm>
+
 	<build>
 		<plugins>
 			<plugin>
