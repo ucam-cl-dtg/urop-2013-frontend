@@ -102,7 +102,7 @@ public class APIFilter implements Filter {
 		// If so, chain through
 		if(excludePrefixes != null) {
 			for (String p:excludePrefixes) {
-				if(request.getRequestURI().startsWith(p)) {
+				if(request.getRequestURI().startsWith(request.getContextPath() + p)) {
 					log.info("Chaining request through API filter with prefix: " + request.getRequestURI());
 					chain.doFilter(request, response);
 					return;
@@ -115,10 +115,27 @@ public class APIFilter implements Filter {
 			String key = (String) request.getParameter("key");
 			
 			ClientRequestFactory crf = new ClientRequestFactory(UriBuilder.fromUri(dashboardUrl).build());
-			ApiPermissions permissions = crf.createProxy(DashboardApi.class).getApiPermissions(key);
-						
+			DashboardApi dApi = crf.createProxy(DashboardApi.class);
+			ApiPermissions permissions;
+			
+			try {
+				permissions = dApi.getApiPermissions(key);
+			} catch(Exception e) {
+				log.error("Error checking key: " + e.getMessage());
+				response.sendError(500, "Error checking key");
+				return;
+			}
+			
+			// Empty response
+			if(permissions == null) {
+				log.error("Error checking key: empty response");
+				response.sendError(500, "Error checking key");
+			// Key was invalid
+		    } else if(permissions.getError() != null) {
+				log.error("Request with invalid API key = " + key);
+				response.sendError(401, "Invalid API key.");
 			// Global key
-			if(permissions.getType().equals("global")) {
+			} else if(permissions.getType().equals("global")) {
 				// Global supported, allow request with null user.
 				if(allowGlobal) {
 					log.debug("API request permitted for global key.");
@@ -136,10 +153,6 @@ public class APIFilter implements Filter {
 				log.debug("API request permitted with key for " + userId);
 				request.setAttribute(USER_ATTR, userId);
 				chain.doFilter(request, response);
-			// Key was invalid
-			} else {
-				log.error("Request with invalid API key = " + key);
-				response.sendError(401, "Invalid API key.");
 			}
 		// Check whether we're logged in with Raven.
 		} else if(session.getAttribute("RavenRemoteUser") != null) {

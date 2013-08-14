@@ -40,6 +40,8 @@ function fixLinks(router) {
     if (ROUTER_OPTIONS.pushState === undefined || ROUTER_OPTIONS.pushState === null)
         return ;
     $(document).on('click', 'a', function (evt) {
+    	if(evt.ctrlKey) return;
+    	
         var href = $(this).attr('href');
         var protocol = this.protocol + '//';
         var dataBypass = $(this).attr('data-bypass');
@@ -49,7 +51,8 @@ function fixLinks(router) {
 
         if (href == undefined || href == null || href == "#")
             return ;
-
+        
+        href = href.slice(0, CONTEXT_PATH.length) == CONTEXT_PATH ? href.slice(CONTEXT_PATH.length) : href;
 
         if (href.slice(protocol.length) !== protocol) {
             evt.preventDefault();
@@ -149,7 +152,7 @@ function asyncLoad(elems) {
        })
     });
 }
-
+var SOY_GLOBALS = {};
 function applyTemplate(elem, template, data) {
     var templateFunc;
     var templateName;
@@ -163,7 +166,7 @@ function applyTemplate(elem, template, data) {
       return ;
     }
     templateFunc = getTemplate(templateName);
-    elem.html(templateFunc(data));
+    elem.html(templateFunc(data, null, SOY_GLOBALS));
 
     postModuleLoad(elem, templateName);
     asyncLoad(elem.find(".async-loader"));

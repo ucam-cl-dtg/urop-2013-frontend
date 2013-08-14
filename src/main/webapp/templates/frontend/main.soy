@@ -109,9 +109,9 @@
 								{/if}
 								{$menuItem.name}
 							</div>
-							<div class="columns large-2 text-right notifications">{$menuItem.notificationCount}</div>
+							<div class="columns large-2 text-right notifications">{if $menuItem.notificationCount > 0}{$menuItem.notificationCount}{/if}</div>
 						</div>
-						<ul class="sidebar-sub-navigation expanded">
+						<ul class="sidebar-sub-navigation {if $menuItem.notificationCount > 0}expanded{/if}">
 							{foreach $subMenuItem in $menuItem.links}
 							<li class="sidebar-sub-navigation-item">
 								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="{$subMenuItem.link}">
@@ -123,7 +123,7 @@
 										{/if}
 										{$subMenuItem.name}
 									</div>
-									<div class="columns large-2 text-right notifications">{$subMenuItem.notificationCount}</div>
+									<div class="columns large-2 text-right notifications">{if $subMenuItem.notificationCount > 0}{$subMenuItem.notificationCount}{/if}</div>
 								</div>
 							</li>
 							{/foreach}
@@ -199,6 +199,7 @@
 		        }
 
 		        var BASE_PATH="{/literal}{$contextPath}/api/{literal}"
+		        var CONTEXT_PATH="{/literal}{$contextPath}"{literal}
 		    {/literal}
 		</script>
 
