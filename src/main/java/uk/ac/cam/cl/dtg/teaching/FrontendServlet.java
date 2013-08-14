@@ -14,6 +14,9 @@ import org.jboss.resteasy.client.ClientRequestFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import uk.ac.cam.cl.dtg.teaching.NotificationApi.CreateNotification;
+import uk.ac.cam.cl.dtg.teaching.NotificationApi.NotificationApiWrapper;
+
 import com.google.common.collect.ImmutableMap;
 
 public class FrontendServlet extends HttpServlet {
@@ -66,7 +69,7 @@ public class FrontendServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
-
+		
 		ClientRequestFactory crf = new ClientRequestFactory(UriBuilder.fromUri(dashboardUrl).build());
 		String userId = (String) req.getSession().getAttribute("RavenRemoteUser");
 		
