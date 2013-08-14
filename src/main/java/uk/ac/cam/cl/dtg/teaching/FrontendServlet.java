@@ -15,6 +15,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import uk.ac.cam.cl.dtg.teaching.api.DashboardApi;
+import uk.ac.cam.cl.dtg.teaching.api.NotificationApi.GetNotification;
+import uk.ac.cam.cl.dtg.teaching.api.NotificationApi.Notification;
+import uk.ac.cam.cl.dtg.teaching.api.NotificationApi.NotificationApiWrapper;
 
 import com.google.common.collect.ImmutableMap;
 

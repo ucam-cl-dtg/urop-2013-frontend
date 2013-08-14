@@ -189,13 +189,12 @@
 		<script type="text/javascript" src="{$contextPath}/js/plugins.js"></script>
 		<script type="text/javascript" src="{$contextPath}/js/popups.js"></script>
 		<script type="text/javascript" src="{$contextPath}/js/main.js"></script>
-		<script type="text/javascript" src="{$contextPath}/js/notifications.js"></script>
 
 		<script type="text/javascript">
 		    {literal}
 		        var ROUTER_OPTIONS = {
 		            root: "{/literal}{$contextPath}/{literal}",
-                pushState: true
+                	pushState: true
 		        }
 
 		        var BASE_PATH="{/literal}{$contextPath}/api/{literal}"
@@ -212,7 +211,6 @@
 		    {else}
 		        <script type="text/javascript" src="{$contextPath}{$js}"></script>
 		    {/if}
-
 		{/foreach}
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
