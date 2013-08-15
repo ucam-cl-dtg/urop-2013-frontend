@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
 import org.jboss.resteasy.client.ClientRequestFactory;
@@ -72,6 +73,16 @@ public class FrontendServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		
+		// Handle logout
+		String expectedLink = req.getContextPath() + "/logout";
+		String actualLink = req.getRequestURI().toString();
+		if ( expectedLink != null && actualLink != null && expectedLink.equals(actualLink) ) {
+			log.debug("Logging user out");
+			req.getSession().invalidate();
+			resp.sendRedirect("http://www.cam.ac.uk");
+			return;
+		}
+		
 		ClientRequestFactory crf = new ClientRequestFactory(UriBuilder.fromUri(dashboardUrl).build());
 		String userId = (String) req.getSession().getAttribute("RavenRemoteUser");
 		
@@ -88,4 +99,5 @@ public class FrontendServlet extends HttpServlet {
 		getServletContext().getRequestDispatcher("/soy/frontend.main")
 		                   .forward(req, resp);
 	}
+	
 }
