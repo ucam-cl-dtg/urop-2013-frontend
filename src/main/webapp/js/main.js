@@ -7,15 +7,6 @@ $(document).ready(function() {
 	$('.sidebar-navigation-item-header').on('click', function() {
 		$(this).next('.sidebar-sub-navigation').slideToggle();
 	});
-
-    // 
-    // Support for .module-loader
-    //
-
-    $(document).on("click", ".module-loader", function() {
-        var location = $(this).attr('data-target');
-        router.navigate(location, {trigger: true});
-    });
     
 	//
 	// Mobile navigation bar
@@ -25,7 +16,7 @@ $(document).ready(function() {
 		$('.mobile-nav-wrapper').slideToggle();
 	});
 
-	$('.mobile-nav-wrapper .module-loader').on('click', function() {
+	$('.mobile-nav-wrapper a').on('click', function() {
 		$('.mobile-nav-wrapper').slideUp();
 	});
 
