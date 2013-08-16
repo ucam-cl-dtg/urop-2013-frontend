@@ -45,9 +45,11 @@
 		<header class="header full-width">
 			<div class="header-logo">
 				<div class="row">
-					<div class="columns large-12 small-6 header-logo-inner module-loader" data-target="dashboard">
-						<img src="img/ajax-loader.gif" class="ajax-loader" />Supervisions
-					</div>
+					<a href="/dashboard" data-absolute>
+						<div class="columns large-12 small-6 header-logo-inner">
+							<img src="img/ajax-loader.gif" class="ajax-loader" />Supervisions
+						</div>
+					</a>
 					<div class="columns hide-for-large hide-for-xlarge small-6 show-for-small text-right">
 						<div class="icon-button-wrapper">
 							<a class="icon-button header-icon-button mobile-nav-options-button"><span class="websymbols-icon">&#178;</span>Options</a>
@@ -57,8 +59,8 @@
 			</div>
 			<div class="header-extra hide-for-small text-right">
 				<div class="icon-button-wrapper">
-					<a class="icon-button header-icon-button icon-button-array module-loader" data-target="dashboard/account"><span class="websymbols-icon">&#85;</span>Account</a>
-					<a class="icon-button header-icon-button module-loader" data-target="dashboard/logout"><span class="websymbols-icon">&#88;</span>Logout</a>
+					<a class="icon-button header-icon-button icon-button-array" href="/dashboard/account" data-absolute><span class="websymbols-icon">&#85;</span>Account</a>
+					<a class="icon-button header-icon-button" href="{$contextPath}/logout" data-absolute data-bypass><span class="websymbols-icon">&#88;</span>Logout</a>
 				</div>
 			</div>
 		</header>
@@ -77,14 +79,16 @@
 						{$menuItem.name}
 					</li>
 						{foreach $subMenuItem in $menuItem.links}
-						<li class="mobile-nav-item module-loader" data-target="{$subMenuItem.link}">
-							{if ($subMenuItem.iconType == 1)}
-							<div class="fixed-width-icon"><i class="icon {$subMenuItem.icon}"></i></div>
-							{else}
-							<div class="websymbols-icon fixed-width-icon">{$subMenuItem.icon}</div>
-							{/if}
-							{$subMenuItem.name}
-						</li>
+						<a href="{$subMenuItem.link}" data-absolute class="black-link">
+							<li class="mobile-nav-item">
+								{if ($subMenuItem.iconType == 1)}
+								<div class="fixed-width-icon"><i class="icon {$subMenuItem.icon}"></i></div>
+								{else}
+								<div class="websymbols-icon fixed-width-icon">{$subMenuItem.icon}</div>
+								{/if}
+								{$subMenuItem.name}
+							</li>
+						</a>
 						{/foreach}
 					{/foreach}
 					{else}
@@ -114,17 +118,19 @@
 						<ul class="sidebar-sub-navigation {if $menuItem.notificationCount > 0}expanded{/if}">
 							{foreach $subMenuItem in $menuItem.links}
 							<li class="sidebar-sub-navigation-item">
-								<div class="sidebar-sub-navigation-item-header row module-loader" data-target="{$subMenuItem.link}">
-									<div class="columns large-10">
-										{if ($subMenuItem.iconType == 1)}
-										<div class="fixed-width-icon"><i class="icon {$subMenuItem.icon}"></i></div>
-										{else}
-										<div class="websymbols-icon fixed-width-icon">{$subMenuItem.icon}</div>
-										{/if}
-										{$subMenuItem.name}
+								<a href="{$subMenuItem.link}" data-absolute>
+									<div class="sidebar-sub-navigation-item-header row">
+										<div class="columns large-10">
+											{if ($subMenuItem.iconType == 1)}
+											<div class="fixed-width-icon"><i class="icon {$subMenuItem.icon}"></i></div>
+											{else}
+											<div class="websymbols-icon fixed-width-icon">{$subMenuItem.icon}</div>
+											{/if}
+											{$subMenuItem.name}
+										</div>
+										<div class="columns large-2 text-right notifications">{if $subMenuItem.notificationCount > 0}{$subMenuItem.notificationCount}{/if}</div>
 									</div>
-									<div class="columns large-2 text-right notifications">{if $subMenuItem.notificationCount > 0}{$subMenuItem.notificationCount}{/if}</div>
-								</div>
+								</a>
 							</li>
 							{/foreach}
 						</ul>
@@ -189,13 +195,12 @@
 		<script type="text/javascript" src="{$contextPath}/js/plugins.js"></script>
 		<script type="text/javascript" src="{$contextPath}/js/popups.js"></script>
 		<script type="text/javascript" src="{$contextPath}/js/main.js"></script>
-		<script type="text/javascript" src="{$contextPath}/js/notifications.js"></script>
 
 		<script type="text/javascript">
 		    {literal}
 		        var ROUTER_OPTIONS = {
 		            root: "{/literal}{$contextPath}/{literal}",
-                pushState: true
+                	pushState: true
 		        }
 
 		        var BASE_PATH="{/literal}{$contextPath}/api/{literal}"
@@ -212,7 +217,6 @@
 		    {else}
 		        <script type="text/javascript" src="{$contextPath}{$js}"></script>
 		    {/if}
-
 		{/foreach}
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID.

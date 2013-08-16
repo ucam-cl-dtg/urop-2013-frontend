@@ -45,12 +45,24 @@ function fixLinks(router) {
         var href = $(this).attr('href');
         var protocol = this.protocol + '//';
         var dataBypass = $(this).attr('data-bypass');
+        var absolute = $(this).attr('data-absolute');
         if (dataBypass != undefined &&  dataBypass != null) {
             return true;
         }
 
         if (href == undefined || href == null || href == "#")
-            return ;
+            return;
+
+        if (absolute != undefined && absolute != null) {
+        	var shouldNotReload = href.slice(0, CONTEXT_PATH.length) == CONTEXT_PATH;
+        	if (shouldNotReload) {
+        		href = href.slice(CONTEXT_PATH.length);
+        		router.navigate(href, {trigger: true});
+        	} else {
+        		return;
+        	}
+        }
+        
         
         href = href.slice(0, CONTEXT_PATH.length) == CONTEXT_PATH ? href.slice(CONTEXT_PATH.length) : href;
 
