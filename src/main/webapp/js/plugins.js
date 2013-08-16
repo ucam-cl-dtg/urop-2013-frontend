@@ -28,19 +28,18 @@ function refreshNotificationCount(section) {
         	url: '/dashboard/api/notifications',
         	data: {'section': section[i]},
         	success: function(data) {
-        		console.log(data);
         		if (data.error || data.formErrors) {
-        			console.log("Could not referesh notification count for section " + section);
+        			console.log("Could not refresh notification count");
         		} else {
         			if (data.total === 0) {
-        				$('.sidebar-navigation-item[data-section=' + section + '] .sidebar-navigation-item-header .notifications').text("");
+        				$('.sidebar-navigation-item[data-section=' + data.section + '] .sidebar-navigation-item-header .notifications').text("");
         			} else {
-        				$('.sidebar-navigation-item[data-section=' + section + '] .sidebar-navigation-item-header .notifications').text(data.total);
+        				$('.sidebar-navigation-item[data-section=' + data.section + '] .sidebar-navigation-item-header .notifications').text(data.total);
         			}
         		}
         	}, 
         	error: function() {
-        		console.log("Could not referesh notification count for section " + section);
+        		console.log("Could not refresh notification count");
         	}
 		});	
 	}

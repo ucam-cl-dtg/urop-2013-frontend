@@ -33,6 +33,15 @@ $(document).ready(function() {
 		$('.upload-marked-work-form').slideToggle();
 	});
 
+	//
+	// Update notifications every 'refresh' seconds
+	//
+	
+	var refresh = 30;
+	setInterval(function() {
+		refreshNotificationCount(['dashboard', 'signups', 'questions', 'handins']);
+	}, refresh*1000);
+
 	// AJAX loader
 	/*
 	$(document).ajaxStart(function() {
