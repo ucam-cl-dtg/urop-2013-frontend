@@ -20,3 +20,27 @@
         }
     }
 }());
+
+function refreshNotificationCount(section) {
+	for (var i = 0; i < section.length; i++) {
+		$.ajax({
+        	type: 'GET',
+        	url: '/dashboard/api/notifications',
+        	data: {'section': section[i]},
+        	success: function(data) {
+        		if (data.error || data.formErrors) {
+        			console.log("Could not refresh notification count");
+        		} else {
+        			if (data.total === 0) {
+        				$('.sidebar-navigation-item[data-section=' + data.section + '] .sidebar-navigation-item-header .notifications').text("");
+        			} else {
+        				$('.sidebar-navigation-item[data-section=' + data.section + '] .sidebar-navigation-item-header .notifications').text(data.total);
+        			}
+        		}
+        	}, 
+        	error: function() {
+        		console.log("Could not refresh notification count");
+        	}
+		});	
+	}
+}
