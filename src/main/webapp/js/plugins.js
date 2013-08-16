@@ -33,9 +33,9 @@ function refreshNotificationCount(section) {
         			console.log("Could not referesh notification count for section " + section);
         		} else {
         			if (data.total === 0) {
-        				$('.sidebar-navigation-item-header .notifications').text("");
+        				$('.sidebar-navigation-item[data-section=' + section + '] .sidebar-navigation-item-header .notifications').text("");
         			} else {
-        				$('.sidebar-navigation-item-header .notifications').text(data.total);
+        				$('.sidebar-navigation-item[data-section=' + section + '] .sidebar-navigation-item-header .notifications').text(data.total);
         			}
         		}
         	}, 
