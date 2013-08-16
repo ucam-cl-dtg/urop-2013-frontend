@@ -14,6 +14,8 @@ import org.jboss.resteasy.client.ClientRequestFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import uk.ac.cam.cl.dtg.teaching.api.DashboardApi;
+
 import com.google.common.collect.ImmutableMap;
 
 public class FrontendServlet extends HttpServlet {
