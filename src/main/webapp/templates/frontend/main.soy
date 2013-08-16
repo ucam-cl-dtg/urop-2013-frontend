@@ -103,7 +103,7 @@
 				<ul class="sidebar-navigation">
 					{if $settings.sidebar}
 					{foreach $menuItem in $settings.sidebar}
-					<li class="sidebar-navigation-item">
+					<li class="sidebar-navigation-item" data-section="$menuItem.section}">
 						<div class="sidebar-navigation-item-header row">
 							<div class="columns large-10">
 								{if ($menuItem.iconType == 1)}

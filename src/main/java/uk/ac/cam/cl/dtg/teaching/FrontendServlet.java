@@ -8,17 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
 import org.jboss.resteasy.client.ClientRequestFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import uk.ac.cam.cl.dtg.teaching.api.DashboardApi;
-import uk.ac.cam.cl.dtg.teaching.api.NotificationApi.GetNotification;
-import uk.ac.cam.cl.dtg.teaching.api.NotificationApi.Notification;
-import uk.ac.cam.cl.dtg.teaching.api.NotificationApi.NotificationApiWrapper;
 
 import com.google.common.collect.ImmutableMap;
 
