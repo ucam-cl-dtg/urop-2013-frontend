@@ -189,7 +189,7 @@ public class APIFilter implements Filter {
 
 	@Override
 	public void destroy() {
-		// Nothing to do.
+		sess.close();
 	}
 	
 	private void logRequest(String crsid, String url) {
@@ -199,6 +199,5 @@ public class APIFilter implements Filter {
 		
 		sess.save(rl);
 		sess.getTransaction().commit();
-		sess.close();
 	}
 }
