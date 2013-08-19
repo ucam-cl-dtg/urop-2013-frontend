@@ -27,6 +27,7 @@ import uk.ac.cam.cl.dtg.teaching.api.DashboardApi.ApiPermissions;
 
 public class APIFilter implements Filter {
 	private static Logger log = LoggerFactory.getLogger(APIFilter.class);
+	private Session sess;
 	
 	/**
 	 * Name of the request attribute populated with the current user.
@@ -92,6 +93,15 @@ public class APIFilter implements Filter {
 				log.warn("allowGlobal init-param should either be 'true' or 'false'.");
 			}
 		}
+		
+		// Initialise the session
+		Configuration configuration = new Configuration();
+		configuration.configure("/hibernateRequestLog.cfg.xml");
+		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
+        								  .applySettings(configuration.getProperties())
+        								  .buildServiceRegistry();
+		SessionFactory sf = configuration.buildSessionFactory(serviceRegistry);
+		sess = sf.openSession();
 		
 		log.info("API filter initialised.");
 	}
@@ -183,13 +193,6 @@ public class APIFilter implements Filter {
 	}
 	
 	private void logRequest(String crsid, String url) {
-		Configuration configuration = new Configuration();
-		configuration.configure("/hibernateRequestLog.cfg.xml");
-		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
-        								  .applySettings(configuration.getProperties())
-        								  .buildServiceRegistry();
-		SessionFactory sf = configuration.buildSessionFactory(serviceRegistry);
-		Session sess = sf.openSession();
 		sess.beginTransaction();
 		
 		RequestLog rl = new RequestLog(crsid, url);
