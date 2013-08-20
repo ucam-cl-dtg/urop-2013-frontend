@@ -94,15 +94,6 @@ public class APIFilter implements Filter {
 			}
 		}
 		
-		// Initialise the session
-		Configuration configuration = new Configuration();
-		configuration.configure("/hibernateRequestLog.cfg.xml");
-		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
-        								  .applySettings(configuration.getProperties())
-        								  .buildServiceRegistry();
-		SessionFactory sf = configuration.buildSessionFactory(serviceRegistry);
-		sess = sf.openSession();
-		
 		log.info("API filter initialised.");
 	}
 
@@ -189,15 +180,15 @@ public class APIFilter implements Filter {
 
 	@Override
 	public void destroy() {
-		sess.close();
+		// Nothing to do
 	}
 	
 	private void logRequest(String crsid, String url) {
-		sess.beginTransaction();
+		Session s = HibernateUtil.getTransactionSession(); 
 		
 		RequestLog rl = new RequestLog(crsid, url);
 		
-		sess.save(rl);
-		sess.getTransaction().commit();
+		s.save(rl);
+		HibernateUtil.commit();
 	}
 }
