@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,8 +19,8 @@ import org.hibernate.annotations.GenericGenerator;
 public class RequestLog {
 	
 	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy="increment")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="logIdSeq") 
+	@SequenceGenerator(name="logIdSeq",sequenceName="LOG_ID")
 	private int id;
 	
 	private String crsid;
@@ -35,6 +37,7 @@ public class RequestLog {
 	}
 	
 	// Setters and getters
+	public int getId() {return id;}
 	
 	public String getCrsid() {return crsid;}
 	public void setCrsid(String crsid) {this.crsid = crsid;}
