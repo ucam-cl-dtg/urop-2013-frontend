@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.UriBuilder;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 import org.jboss.resteasy.client.ClientRequestFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +27,7 @@ import uk.ac.cam.cl.dtg.teaching.api.DashboardApi.ApiPermissions;
 
 public class APIFilter implements Filter {
 	private static Logger log = LoggerFactory.getLogger(APIFilter.class);
+	private Session sess;
 	
 	/**
 	 * Name of the request attribute populated with the current user.
@@ -94,6 +100,7 @@ public class APIFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest servletReq, ServletResponse servletResp,
 			FilterChain chain) throws IOException, ServletException {
+		
 		// Convert arguments to HTTP ones to allow grabbing session etc.
 		HttpServletRequest request = (HttpServletRequest) servletReq;
 		HttpServletResponse response = (HttpServletResponse) servletResp;
@@ -140,6 +147,7 @@ public class APIFilter implements Filter {
 				// Global supported, allow request with null user.
 				if(allowGlobal) {
 					log.debug("API request permitted for global key.");
+					logRequest("GLOBAL", request.getRequestURL().toString());
 					request.setAttribute(USER_ATTR, null);
 					chain.doFilter(request, response);
 				// Global unsupported, return 405 (unsupported method).
@@ -152,6 +160,7 @@ public class APIFilter implements Filter {
 				String userId = permissions.getUserId();
 				
 				log.debug("API request permitted with key for " + userId);
+				logRequest(userId, request.getRequestURL().toString());
 				request.setAttribute(USER_ATTR, userId);
 				chain.doFilter(request, response);
 			}
@@ -160,9 +169,8 @@ public class APIFilter implements Filter {
 			String crsid = (String) session.getAttribute("RavenRemoteUser");
 			
 			log.debug("API request permitted for user " + crsid);
-			
+			logRequest(crsid, request.getRequestURL().toString());
 			request.setAttribute(USER_ATTR, crsid);
-			
 			chain.doFilter(request, response);
 		// No other authorisation options.
 		} else {
@@ -172,6 +180,15 @@ public class APIFilter implements Filter {
 
 	@Override
 	public void destroy() {
-		// Nothing to do.
+		// Nothing to do
+	}
+	
+	private void logRequest(String crsid, String url) {
+		Session s = HibernateUtil.getTransactionSession(); 
+		
+		RequestLog rl = new RequestLog(crsid, url);
+		
+		s.save(rl);
+		HibernateUtil.commit();
 	}
 }
