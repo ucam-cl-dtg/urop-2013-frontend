@@ -165,7 +165,10 @@ function asyncLoad(elems) {
     });
 }
 var SOY_GLOBALS = {};
-function applyTemplate(elem, template, data) {
+function applyTemplate(elem, template, data, appendFunc) {
+		if(typeof(appendFunc) === "undefined")
+			appendFunc = "html";
+
     var templateFunc;
     var templateName;
     if (typeof template == "string") {
@@ -178,7 +181,7 @@ function applyTemplate(elem, template, data) {
       return ;
     }
     templateFunc = getTemplate(templateName);
-    elem.html(templateFunc(data, null, SOY_GLOBALS));
+    elem[appendFunc](templateFunc(data, null, SOY_GLOBALS));
 
     postModuleLoad(elem, templateName);
     asyncLoad(elem.find(".async-loader"));
