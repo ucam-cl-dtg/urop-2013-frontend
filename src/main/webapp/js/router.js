@@ -70,6 +70,8 @@ function fixLinks(router) {
             evt.preventDefault();
             if (href[0] == "#")
                 href[0] = "/";
+            if (href == Backbone.history.fragment) 
+              Backbone.history.fragment = null;
             router.navigate(href, {trigger: true});
         }
     });
