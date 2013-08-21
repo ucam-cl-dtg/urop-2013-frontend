@@ -20,7 +20,7 @@ public class RequestLog {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="logIdSeq") 
-	@SequenceGenerator(name="logIdSeq",sequenceName="LOG_ID", allocationSize=1)
+	@SequenceGenerator(name="logIdSeq",sequenceName="LOG_SEQ", allocationSize=1)
 	private int id;
 	
 	private String crsid;

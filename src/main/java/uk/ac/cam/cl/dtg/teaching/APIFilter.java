@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.UriBuilder;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.jboss.resteasy.client.ClientRequestFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -156,7 +157,6 @@ public class APIFilter implements Filter {
 				
 				log.debug("API request permitted with key for " + userId);
 				logRequest(userId, request.getRequestURL().toString());
-				request.setAttribute(USER_ATTR, userId);
 				chain.doFilter(request, response);
 			}
 		// Check whether we're logged in with Raven.
@@ -171,6 +171,7 @@ public class APIFilter implements Filter {
 		} else {
 			response.sendError(401, "Unauthorised API request.");
 		}
+		
 	}
 
 	@Override
@@ -183,11 +184,11 @@ public class APIFilter implements Filter {
 		// Commented out provisionally
 		// 
 		
-		//Session s = HibernateUtil.getTransactionSession(); 
+		Session s = HibernateUtil.getTransactionSession(); 
 		
-		//RequestLog rl = new RequestLog(crsid, url);
+		RequestLog rl = new RequestLog(crsid, url);
 		
-		//s.save(rl);
-		//HibernateUtil.commit();
+		s.save(rl);
+		HibernateUtil.commit();
 	}
 }
