@@ -21,13 +21,13 @@
 
 	<context-param>
 		<param-name>dashboardUrl</param-name>
-		<param-value>http://www.cl.cam.ac.uk/research/dtg/berrycider/dashboard/api/dashboard</param-value>
+		<param-value>http://www.cl.cam.ac.uk/research/dtg/berrycider/dashboard/api</param-value>
 	</context-param>
 
-	<context-param>
-		<param-name>apiKey</param-name>
-		<param-value>blablabla</param-value>
-	</context-param>
+  <context-param>
+    <param-name>apiKey</param-name>
+    <param-value>4870v534lmomthfssb27ho4vjtidhujlmmssasuf</param-value>
+  </context-param>
 
 	<filter>
 		<filter-name>apiauth</filter-name>
