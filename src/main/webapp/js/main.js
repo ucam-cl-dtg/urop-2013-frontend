@@ -45,6 +45,8 @@ $(document).ready(function() {
 	//
 	// AJAX loader
 	//
+
+	NProgress.configure({ showSpinner: false });
 	
 	$(document).ajaxStart(function() {
 		NProgress.start();
