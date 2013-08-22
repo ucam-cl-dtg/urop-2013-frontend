@@ -49,7 +49,7 @@
 
           if (section.children(self.settings.content_selector).length > 0) {
             self.toggle_active.call(this, e, self);
-            self.reflow();
+            self.reflow(self.scope);
           }
         });
 
