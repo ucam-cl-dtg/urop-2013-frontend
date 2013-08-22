@@ -13,7 +13,7 @@ function executeModuleScripts(elem, templateName) {
     var selected = moduleScripts;
     var haveFunctions = true;
 
-    for (i = 0; i < templateNamePath.length; i++) {
+    for (var i = 0; i < templateNamePath.length; i++) {
       if (! selected[templateNamePath[i]]) {
         haveFunctions = false;
         break;
@@ -21,7 +21,7 @@ function executeModuleScripts(elem, templateName) {
       selected = selected[templateNamePath[i]];
     }
     if (haveFunctions && selected.length) {
-      for (j = 0; j < selected.length; j++) {
+      for (var j = 0; j < selected.length; j++) {
         selected[j].call(elem, elem);
       }
     }
@@ -33,7 +33,7 @@ function executeModuleScripts(elem, templateName) {
 
 function postModuleLoad (elem, templateName) {
   executeModuleScripts(elem, templateName);
-  $(document).foundation();
+  elem.foundation();
 }
 
 function fixLinks(router) {
