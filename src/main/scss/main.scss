@@ -24,6 +24,7 @@ html {
 body {
 	min-height: 100%;
 	background: url('../img/content-bg.png') left repeat-y #ffffff;
+	overflow-y: scroll;
 }
 
 .clearfix { @include clearfix(); }
