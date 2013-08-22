@@ -42,12 +42,14 @@ $(document).ready(function() {
 		refreshNotificationCount(['dashboard', 'signups', 'questions', 'handins']);
 	}, refresh*1000);
 
+	//
 	// AJAX loader
-	/*
+	//
+	
 	$(document).ajaxStart(function() {
-		$(".ajax-loader").clearQueue().fadeIn(200);
+		NProgress.start();
 	}).ajaxComplete(function() {
-		$(".ajax-loader").clearQueue().fadeOut(200);
+		NProgress.done();
 	});
-	*/
+	
 });
