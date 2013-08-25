@@ -8,7 +8,7 @@
     <relativePath></relativePath><!-- this is needed to stop maven warning that the parent pom conflicts with ../pom.xml -->
   </parent>
   <groupId>uk.ac.cam.cl.dtg.teaching</groupId>
-  <artifactId>frontent-backup</artifactId>
+  <artifactId>frontend-backup</artifactId>
   <packaging>pom</packaging>
   <!-- This version number is left on SNAPSHOT because we re-run the
        job nightly and replace the previous artifact with this one -->
