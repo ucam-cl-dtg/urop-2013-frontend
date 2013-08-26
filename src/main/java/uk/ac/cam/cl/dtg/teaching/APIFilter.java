@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.UriBuilder;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.jboss.resteasy.client.ClientRequestFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
