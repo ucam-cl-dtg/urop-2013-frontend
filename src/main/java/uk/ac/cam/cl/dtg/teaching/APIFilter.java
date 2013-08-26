@@ -109,6 +109,16 @@ public class APIFilter implements Filter {
 		log.info("API filter initialised.");
 	}
 
+	private static boolean isSessionValid(HttpSession session) {
+		try {
+			session.getCreationTime();
+			return true;
+		}
+		catch (IllegalStateException e) {
+			return false;
+		}
+	}
+	
 	@Override
 	public void doFilter(ServletRequest servletReq, ServletResponse servletResp,
 			FilterChain chain) throws IOException, ServletException {
@@ -175,6 +185,9 @@ public class APIFilter implements Filter {
 				logRequest(userId, request.getRequestURI().toString());
 				chain.doFilter(request, response);
 			}
+		} else if (!isSessionValid(session)) {
+			// an earlier filter invalidates sessions if the user has logged out (for example)
+			response.sendError(401, "Unauthorised API request.");
 		// Check whether we're logged in with Raven.
 		} else if(session.getAttribute("RavenRemoteUser") != null) {
 			String crsid = (String) session.getAttribute("RavenRemoteUser");
