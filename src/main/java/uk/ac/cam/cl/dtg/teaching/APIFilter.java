@@ -1,6 +1,7 @@
 package uk.ac.cam.cl.dtg.teaching;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -39,6 +40,11 @@ public class APIFilter implements Filter {
 	 * A list of comma separated URLs to allow through
 	 */
 	private String[] excludePrefixes;
+	
+	/**
+	 * A list of comma separated URLs to ignore in the logger
+	 */
+	private String[] excludeFromLogger;
 
 	/**
 	 * API key with global permissions for checking other API keys.
@@ -67,6 +73,17 @@ public class APIFilter implements Filter {
 			
 			for (int i = 0; i < excludePrefixes.length; i++) {
 				excludePrefixes[i] = excludePrefixes[i].trim();
+			}
+		}
+		
+		// Load API URLs to exclude from logger from servlet context.
+		// Trims blank space
+		String exclude = config.getServletContext().getInitParameter("excludeFromLogger");
+		if(exclude != null) {
+			excludeFromLogger = exclude.split(",");
+			
+			for (int i = 0; i < excludeFromLogger.length; i++) {
+				excludeFromLogger[i] = excludeFromLogger[i].trim();
 			}
 		}
 		
@@ -143,7 +160,7 @@ public class APIFilter implements Filter {
 				// Global supported, allow request with null user.
 				if(allowGlobal) {
 					log.debug("API request permitted for global key.");
-					logRequest("GLOBAL", request.getRequestURL().toString());
+					logRequest("GLOBAL", request.getRequestURI().toString());
 					request.setAttribute(USER_ATTR, null);
 					chain.doFilter(request, response);
 				// Global unsupported, return 405 (unsupported method).
@@ -156,7 +173,7 @@ public class APIFilter implements Filter {
 				String userId = permissions.getUserId();
 				
 				log.debug("API request permitted with key for " + userId);
-				logRequest(userId, request.getRequestURL().toString());
+				logRequest(userId, request.getRequestURI().toString());
 				chain.doFilter(request, response);
 			}
 		// Check whether we're logged in with Raven.
@@ -164,7 +181,7 @@ public class APIFilter implements Filter {
 			String crsid = (String) session.getAttribute("RavenRemoteUser");
 			
 			log.debug("API request permitted for user " + crsid);
-			logRequest(crsid, request.getRequestURL().toString());
+			logRequest(crsid, request.getRequestURI().toString());
 			request.setAttribute(USER_ATTR, crsid);
 			chain.doFilter(request, response);
 		// No other authorisation options.
@@ -179,16 +196,16 @@ public class APIFilter implements Filter {
 		// Nothing to do
 	}
 	
-	private void logRequest(String crsid, String url) {
-		// 
-		// Commented out provisionally
-		// 
-		
-		Session s = HibernateUtil.getTransactionSession(); 
-		
-		RequestLog rl = new RequestLog(crsid, url);
-		
-		s.save(rl);
-		HibernateUtil.commit();
+	private void logRequest(String crsid, String uri) {
+		System.out.println(uri);
+		if (excludeFromLogger != null && !Arrays.asList(excludeFromLogger).contains(uri) || excludeFromLogger == null) {
+			Session s = HibernateUtil.getTransactionSession(); 
+			
+			RequestLog rl = new RequestLog(crsid, uri);
+			
+			s.save(rl);
+			HibernateUtil.commit();
+		}
+
 	}
 }
