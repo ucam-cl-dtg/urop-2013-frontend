@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -75,6 +76,19 @@ public class FrontendServlet extends HttpServlet {
 		if ( expectedLink != null && actualLink != null && expectedLink.equals(actualLink) ) {
 			log.debug("Logging user out");
 			req.getSession().invalidate();
+			
+			// Destroy all cookies
+			Cookie[] cookies = req.getCookies();
+			if (cookies != null) {
+				for (Cookie cookie : cookies) {
+					cookie.setValue(null);
+					cookie.setPath("/");
+					cookie.setMaxAge(0);
+					
+					resp.addCookie(cookie);
+				}
+			}
+			
 			resp.sendRedirect("http://www.cam.ac.uk");
 			return;
 		}
