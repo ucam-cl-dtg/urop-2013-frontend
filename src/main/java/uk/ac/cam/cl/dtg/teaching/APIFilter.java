@@ -209,7 +209,7 @@ public class APIFilter implements Filter {
 	}
 	
 	private void logRequest(String crsid, String uri) {
-		System.out.println(uri);
+		
 		if (excludeFromLogger != null && !Arrays.asList(excludeFromLogger).contains(uri) || excludeFromLogger == null) {
 			Session s = HibernateUtil.getTransactionSession(); 
 			
