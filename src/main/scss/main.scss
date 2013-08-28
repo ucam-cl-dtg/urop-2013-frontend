@@ -10,6 +10,7 @@
 //
 
 $header-height: 40px;
+$header-logo-height: 19px;
 $sidebar-width: 270px;
 
 //
@@ -73,7 +74,7 @@ body {
 
 .header-logo {
 	background-color: darken($primary-color, 10%);
-	font-size: 19px;
+	font-size: $header-logo-height;
 	font-weight: bold;
 	float: left;
 	width: $sidebar-width;
@@ -81,11 +82,21 @@ body {
 
 .header-logo-inner {
 	color: #ffffff;
+	height: $header-height;
+	position: relative;
 }
 
-.header img {
-	height: 19px;
-	padding: 0 10px 0 0;
+.header-logo-inner .logo-image {
+	position: absolute;
+	top: ($header-height - $header-logo-height) / 2;
+	height: $header-logo-height;
+}
+
+.header-logo-inner .logo-text {
+	position: absolute;
+	line-height: $header-logo-height;
+	top: ($header-height - $header-logo-height) / 2 - 1;
+	margin-left: ($header-height - $header-logo-height) / 2 + $header-logo-height; 
 }
 
 .header-icon-button {
