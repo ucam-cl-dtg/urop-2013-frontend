@@ -115,7 +115,7 @@
 							</div>
 							<div class="columns large-2 text-right notifications">{if $menuItem.notificationCount > 0}{$menuItem.notificationCount}{/if}</div>
 						</div>
-						<ul class="sidebar-sub-navigation {if $menuItem.notificationCount > 0}expanded{/if}">
+						<ul class="sidebar-sub-navigation {if $menuItem.notificationCount > 0 or $contextPath == $menuItem.section}expanded{/if}">
 							{foreach $subMenuItem in $menuItem.links}
 							<li class="sidebar-sub-navigation-item">
 								<a href="{$subMenuItem.link}" data-absolute>
