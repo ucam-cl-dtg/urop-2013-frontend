@@ -7,7 +7,7 @@ $(document).ready(function() {
 	$('.sidebar-navigation-item-header').on('click', function() {
 		$(this).next('.sidebar-sub-navigation').slideToggle();
 	});
-    
+
 	//
 	// Mobile navigation bar
 	//
@@ -36,7 +36,7 @@ $(document).ready(function() {
 	//
 	// Update notifications every 'refresh' seconds
 	//
-	
+
 	var refresh = 30;
 	setInterval(function() {
 		refreshNotificationCount(['dashboard', 'signups', 'questions', 'handins']);
@@ -47,11 +47,19 @@ $(document).ready(function() {
 	//
 
 	NProgress.configure({ showSpinner: false });
-	
+
 	$(document).ajaxStart(function() {
 		NProgress.start();
-	}).ajaxComplete(function() {
+	}).ajaxComplete(function(event, resp) {
 		NProgress.done();
+        try {
+            var data = JSON.parse(resp.responseText);
+            if (data.redirectTo) {
+                router.navigate(data.redirectTo, {trigger: true});
+            }
+        } catch (err) {
+            // Do nothing
+        }
 	});
-	
+
 });
