@@ -55,6 +55,7 @@ $(document).ready(function() {
         try {
             var data = JSON.parse(resp.responseText);
             if (data.redirectTo) {
+            		Backbone.history.fragment = null;
                 router.navigate(data.redirectTo, {trigger: true});
             }
         } catch (err) {
