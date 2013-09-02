@@ -59,6 +59,7 @@ $(document).ready(function() {
             }
         } catch (err) {
             // Do nothing
+            console.log("Error in ajax", err);
         }
 	});
 
