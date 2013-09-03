@@ -183,6 +183,7 @@ public class APIFilter implements Filter {
 				
 				log.debug("API request permitted with key for " + userId);
 				logRequest(userId, request.getRequestURI().toString());
+			  request.setAttribute(USER_ATTR, userId);
 				chain.doFilter(request, response);
 			}
 		} else if (!isSessionValid(session)) {
