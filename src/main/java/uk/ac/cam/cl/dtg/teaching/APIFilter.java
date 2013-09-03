@@ -24,12 +24,12 @@ import uk.ac.cam.cl.dtg.teaching.api.DashboardApi.ApiPermissions;
 
 public class APIFilter implements Filter {
 	private static Logger log = LoggerFactory.getLogger(APIFilter.class);
-	
+
 	/**
 	 * Name of the request attribute populated with the current user.
 	 */
 	public static final String USER_ATTR = "userId";
-	
+
 	/**
 	 * Base URL used to access dashboard API.
 	 */
@@ -39,7 +39,7 @@ public class APIFilter implements Filter {
 	 * A list of comma separated URLs to allow through
 	 */
 	private String[] excludePrefixes;
-	
+
 	/**
 	 * A list of comma separated URLs to ignore in the logger
 	 */
@@ -49,7 +49,7 @@ public class APIFilter implements Filter {
 	 * API key with global permissions for checking other API keys.
 	 */
 	private String apiKey;
-	
+
 	/**
 	 * Whether the service supports global API keys (defaults to true).
 	 */
@@ -59,43 +59,43 @@ public class APIFilter implements Filter {
 	public void init(FilterConfig config) throws ServletException {
 		// Load dashboard API URL from servlet context.
 		dashboardUrl = config.getServletContext().getInitParameter("dashboardUrl");
-		
+
 		if(dashboardUrl == null) {
 			log.error("Missing dashboard URL from context parameters.");
 		}
-		
+
 		// Load dashboard API URLs to exclude from filter from servlet context.
 		// Trims blank space
 		String prefixes = config.getServletContext().getInitParameter("excludePrefixes");
 		if(prefixes != null) {
 			excludePrefixes = prefixes.split(",");
-			
+
 			for (int i = 0; i < excludePrefixes.length; i++) {
 				excludePrefixes[i] = excludePrefixes[i].trim();
 			}
 		}
-		
+
 		// Load API URLs to exclude from logger from servlet context.
 		// Trims blank space
 		String exclude = config.getServletContext().getInitParameter("excludeFromLogger");
 		if(exclude != null) {
 			excludeFromLogger = exclude.split(",");
-			
+
 			for (int i = 0; i < excludeFromLogger.length; i++) {
 				excludeFromLogger[i] = excludeFromLogger[i].trim();
 			}
 		}
-		
+
 		// Load global API key from servlet context for accessing dashboard.
 		apiKey = config.getServletContext().getInitParameter("apiKey");
-		
+
 		if(apiKey == null) {
 			log.error("Missing API key from context parameters.");
 		}
-		
+
 		// Determine whether service supports global API key.
 		String sAllowGlobal = config.getInitParameter("allowGlobal");
-		
+
 		if(sAllowGlobal != null) {
 			if(sAllowGlobal.toLowerCase().equals("false")) {
 				allowGlobal = false;
@@ -105,7 +105,7 @@ public class APIFilter implements Filter {
 				log.warn("allowGlobal init-param should either be 'true' or 'false'.");
 			}
 		}
-		
+
 		log.info("API filter initialised.");
 	}
 
@@ -118,16 +118,16 @@ public class APIFilter implements Filter {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public void doFilter(ServletRequest servletReq, ServletResponse servletResp,
 			FilterChain chain) throws IOException, ServletException {
-		
+
 		// Convert arguments to HTTP ones to allow grabbing session etc.
 		HttpServletRequest request = (HttpServletRequest) servletReq;
 		HttpServletResponse response = (HttpServletResponse) servletResp;
 		HttpSession session = request.getSession();
-		
+
 		// Check whether the URL should be excluded from the filter
 		// If so, chain through
 		if(excludePrefixes != null) {
@@ -139,15 +139,15 @@ public class APIFilter implements Filter {
 				}
 			}
 		}
-			
+
 		// API key provided.
 		if(request.getParameter("key") != null) {
 			String key = (String) request.getParameter("key");
-			
+
 			ClientRequestFactory crf = new ClientRequestFactory(UriBuilder.fromUri(dashboardUrl).build());
 			DashboardApi dApi = crf.createProxy(DashboardApi.class);
 			ApiPermissions permissions;
-			
+
 			try {
 				permissions = dApi.getApiPermissions(key);
 			} catch(Exception e) {
@@ -155,7 +155,7 @@ public class APIFilter implements Filter {
 				response.sendError(500, "Error checking key");
 				return;
 			}
-			
+
 			// Empty response
 			if(permissions == null) {
 				log.error("Error checking key: empty response");
@@ -167,10 +167,12 @@ public class APIFilter implements Filter {
 			// Global key
 			} else if(permissions.getType().equals("global")) {
 				// Global supported, allow request with null user.
+                // Allow global api keys to fake users.
+                String fakeUser = request.getParameter("impostorUser");
 				if(allowGlobal) {
 					log.debug("API request permitted for global key.");
 					logRequest("GLOBAL", request.getRequestURI().toString());
-					request.setAttribute(USER_ATTR, null);
+					request.setAttribute(USER_ATTR, fakeUser);
 					chain.doFilter(request, response);
 				// Global unsupported, return 405 (unsupported method).
 				} else {
@@ -180,7 +182,7 @@ public class APIFilter implements Filter {
 			// User-specific key.
 			} else if(permissions.getType().equals("user")) {
 				String userId = permissions.getUserId();
-				
+
 				log.debug("API request permitted with key for " + userId);
 				logRequest(userId, request.getRequestURI().toString());
 			  request.setAttribute(USER_ATTR, userId);
@@ -192,7 +194,7 @@ public class APIFilter implements Filter {
 		// Check whether we're logged in with Raven.
 		} else if(session.getAttribute("RavenRemoteUser") != null) {
 			String crsid = (String) session.getAttribute("RavenRemoteUser");
-			
+
 			log.debug("API request permitted for user " + crsid);
 			logRequest(crsid, request.getRequestURI().toString());
 			request.setAttribute(USER_ATTR, crsid);
@@ -201,21 +203,21 @@ public class APIFilter implements Filter {
 		} else {
 			response.sendError(401, "Unauthorised API request.");
 		}
-		
+
 	}
 
 	@Override
 	public void destroy() {
 		// Nothing to do
 	}
-	
+
 	private void logRequest(String crsid, String uri) {
-		
+
 		if (excludeFromLogger != null && !Arrays.asList(excludeFromLogger).contains(uri) || excludeFromLogger == null) {
-			Session s = HibernateUtil.getTransactionSession(); 
-			
+			Session s = HibernateUtil.getTransactionSession();
+
 			RequestLog rl = new RequestLog(crsid, uri);
-			
+
 			s.save(rl);
 			HibernateUtil.commit();
 		}
