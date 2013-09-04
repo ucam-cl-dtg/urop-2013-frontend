@@ -1,0 +1,44 @@
+// Import libraries
+
+@import "foundation",
+		"font",
+		"modules",
+	    "pdf";
+
+
+
+html, body {
+	height: 100%;
+}
+body {
+	padding: 50px 0px 0px 0px;
+}	    
+.splash-section {
+	height: 100%;
+}
+.footer {
+	padding-bottom: 100px;
+}
+.splash-section-title {
+	display: inline-block;
+	text-align: left;
+}
+.back-to-top {
+	display: inline-block;
+	text-align: right;
+}
+.login {
+	padding: 30px 30px;
+}
+.login a:link,
+.login a:visited {
+	color: #000;
+}
+.logo {
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+}
+.pad-icon {
+	padding: 0px 5px;
+}

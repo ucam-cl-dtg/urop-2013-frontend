@@ -53,6 +53,11 @@
 	<url-pattern>/css/*</url-pattern>
 </servlet-mapping>
 
+<servlet-mapping>
+	<servlet-name>default</servlet-name>
+	<url-pattern>/index.html</url-pattern>
+</servlet-mapping>
+
 <!-- All other requests are rendered as the frontend template. The Javascript 
 	deals with getting the correct content. -->
 <servlet>
