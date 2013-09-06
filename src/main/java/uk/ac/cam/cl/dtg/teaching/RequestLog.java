@@ -22,16 +22,20 @@ public class RequestLog {
 	private int id;
 	
 	private String crsid;
+	private String method;
+	private String queryString;
 	private String url;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timestamp;
 	
 	public RequestLog() {}
-	public RequestLog(String crsid, String url) {
+	public RequestLog(String crsid, String url, String queryString, String method) {
 		this.crsid = crsid;
 		this.url = url;
 		this.timestamp = Calendar.getInstance().getTime();
+		this.queryString = queryString;
+		this.method = method;
 	}
 	
 	// Setters and getters
@@ -45,5 +49,11 @@ public class RequestLog {
 
 	public Date getTimestamp() {return timestamp;}
 	public void setTimestamp(Date timestamp) {this.timestamp = timestamp;}
+	
+	public String getQueryString() {return queryString;}
+	public void setQueryString(String queryString) {this.queryString = queryString;}
+	
+	public String getMethod() {return method;}
+	public void setMethod(String method) {this.method = method;}
 
 }

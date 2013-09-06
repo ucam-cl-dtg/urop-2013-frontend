@@ -2,6 +2,7 @@ package uk.ac.cam.cl.dtg.teaching;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Enumeration;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -171,7 +172,7 @@ public class APIFilter implements Filter {
                 String fakeUser = request.getParameter("impostorUser");
 				if(allowGlobal) {
 					log.debug("API request permitted for global key.");
-					logRequest("GLOBAL", request.getRequestURI().toString());
+					logRequest("GLOBAL", request.getRequestURI().toString(), request.getMethod(), request.getQueryString());
 					request.setAttribute(USER_ATTR, fakeUser);
 					chain.doFilter(request, response);
 				// Global unsupported, return 405 (unsupported method).
@@ -184,7 +185,7 @@ public class APIFilter implements Filter {
 				String userId = permissions.getUserId();
 
 				log.debug("API request permitted with key for " + userId);
-				logRequest(userId, request.getRequestURI().toString());
+				logRequest(userId, request.getRequestURI().toString(), request.getMethod(), request.getQueryString());
 			  request.setAttribute(USER_ATTR, userId);
 				chain.doFilter(request, response);
 			}
@@ -196,7 +197,8 @@ public class APIFilter implements Filter {
 			String crsid = (String) session.getAttribute("RavenRemoteUser");
 
 			log.debug("API request permitted for user " + crsid);
-			logRequest(crsid, request.getRequestURI().toString());
+
+			logRequest(crsid, request.getRequestURI().toString(), request.getMethod(), request.getQueryString());
 			request.setAttribute(USER_ATTR, crsid);
 			chain.doFilter(request, response);
 		// No other authorisation options.
@@ -211,12 +213,12 @@ public class APIFilter implements Filter {
 		// Nothing to do
 	}
 
-	private void logRequest(String crsid, String uri) {
+	private void logRequest(String crsid, String uri, String method, String queryString) {
 
 		if (excludeFromLogger != null && !Arrays.asList(excludeFromLogger).contains(uri) || excludeFromLogger == null) {
 			Session s = HibernateUtil.getTransactionSession();
 
-			RequestLog rl = new RequestLog(crsid, uri);
+			RequestLog rl = new RequestLog(crsid, uri, queryString, method);
 
 			s.save(rl);
 			HibernateUtil.commit();
