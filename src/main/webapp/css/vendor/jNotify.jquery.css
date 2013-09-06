@@ -1,7 +1,7 @@
 /*****************/
 /** jNotify CSS **/
 /*****************/
-#jNotify {
+.jNotify {
 	position:absolute;
 	background:#d8e6fc  url('../../img/info.png') no-repeat 15px center;
 	color:#35517c;
@@ -14,12 +14,12 @@
 	border-radius:5px;
 	-webkit-border-radius:5px;
 }
-#jNotify a {color:#35517c !important;text-decoration:none;}
+.jNotify a {color:#35517c !important;text-decoration:none;}
 
 /******************/
 /** jSuccess CSS **/
 /******************/
-#jSuccess {
+.jSuccess {
 	position:absolute;
 	background:#E6EFC2  url('../../img/success.png') no-repeat 15px center;
 	color:#264409;
@@ -32,14 +32,14 @@
 	border-radius:5px;
 	-webkit-border-radius:5px;
 }
-#jSuccess a {color:#264409 !important;text-decoration:none;}
+.jSuccess a {color:#264409 !important;text-decoration:none;}
 
 
 
 /****************/
 /** jError CSS **/
 /****************/
-#jError {
+.jError {
 	position:absolute;
 	background:#FBE3E4  url('../../img/error.png') no-repeat 15px center;
 	color:#8a1f11;
@@ -52,7 +52,7 @@
 	border-radius:5px;
 	-webkit-border-radius:5px;
 }
-#jError a {color:#8a1f11 !important;text-decoration:none;}
+.jError a {color:#8a1f11 !important;text-decoration:none;}
 
 /** OVERLAY **/
 #jOverlay {
