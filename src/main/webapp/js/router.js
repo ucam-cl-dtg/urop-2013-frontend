@@ -195,14 +195,21 @@ function applyTemplate(elem, template, data, appendFunc) {
 // template can either be a string with the name of the template
 // or a function that returns the name of the template.
 
-function loadModule(elem, route, template, callback) {
-   var location = getLocation(route);
-
+var lastMainRequestTime = 0;
+function loadModule(elem, location, template, callback) {
+   var location = getLocation(location);
+   var thisRequestTime = new Date().getTime();
+   
+   if(elem.hasClass("main")){
+	   lastMainRequestTime = thisRequestTime;
+   }
+   
    $.get(location, function(data) {
-       applyTemplate(elem, template, data);
-       if (callback)
-            callback.call(elem);
-   }).fail(function(data) {
+	   if(!elem.hasClass("main") || lastMainRequestTime == thisRequestTime){
+		   applyTemplate(elem, template, data);
+		   if (callback) callback.call(elem);
+	   }
+   }).fail(function() {
 	   if (data.status == 401) {
 		   elem.html("<h3>401 &ndash; not authorised</h3><p>You are not authorised to view this page.</p>");
 	   } else if (data.status == 404) {
