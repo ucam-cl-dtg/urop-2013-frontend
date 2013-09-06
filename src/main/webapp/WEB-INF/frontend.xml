@@ -17,6 +17,11 @@
 	<url-pattern>/*</url-pattern>
 </filter-mapping>
 
+<error-page>
+	<error-code>410</error-code>
+	<location>/index.html</location>
+</error-page> 
+
 <!-- Silken 
 	Deals with compilation of templates, including use from within 
 	Javascript. Unfortunately, these may sometimes be redirected to Raven (ideally, 
