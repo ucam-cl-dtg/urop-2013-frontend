@@ -103,7 +103,7 @@ function initializeHistory(router) {
     fixLinks(router);
     // Current page wasn't matched by the router
     if (! ok ) {
-        $('.main').html("<h3> Error: could not match route: " + Backbone.history.getFragment() + "</h3>");
+        $('.main').html("<h3>404 &ndash; page not found</h3><p>"+location+" was not found.</p>");
     }
 }
 
@@ -195,14 +195,24 @@ function applyTemplate(elem, template, data, appendFunc) {
 // template can either be a string with the name of the template
 // or a function that returns the name of the template.
 
-function loadModule(elem, location, template, callback) {
-   var location = getLocation(location);
+function loadModule(elem, route, template, callback) {
+   var location = getLocation(route);
 
    $.get(location, function(data) {
        applyTemplate(elem, template, data);
        if (callback)
             callback.call(elem);
-   }).fail(function() {
-       elem.html('<h3>Error: could not load ' + location + '</h3>');
+   }).fail(function(data) {
+	   if (data.status == 401) {
+		   elem.html("<h3>401 &ndash; not authorised</h3><p>You are not authorised to view this page.</p>");
+	   } else if (data.status == 404) {
+		   elem.html("<h3>404 &ndash; page not found</h3><p>Page was not found.</p>");
+	   } else if (data.status == 500) {
+		   elem.html("<h3>500 &ndash; Internal server error</h3>");
+	   } else if (data.status) {
+		   elem.html('<h3>Error ('+data.status+'): could not load this page.</h3>');
+	   } else {
+		   elem.html('<h3>Unknown error: could not load this page.</h3>');
+	   }
    });
 }
