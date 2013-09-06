@@ -39,7 +39,7 @@ $(document).ready(function() {
 
 	var refresh = 30;
 	setInterval(function() {
-		refreshNotificationCount(['dashboard', 'signups', 'questions', 'handins']);
+		refreshNotificationCount(['dashboard', 'signapp', 'questions', 'handins']);
 	}, refresh*1000);
 
 	//
