@@ -37,7 +37,7 @@ public class ResourceFilter implements Filter {
 			log.info("Stopping filter chain for " + path);
 			String context = request.getContextPath();
 			path = path.replaceFirst(context, ""); // Trim context path from request forwarder
-						
+					
 			request.getRequestDispatcher(path).forward(request, response);
 		}
 	}

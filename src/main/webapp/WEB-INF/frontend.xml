@@ -51,7 +51,7 @@
 
 <error-page>
 	<error-code>410</error-code>
-	<location>/index.html</location>
+	<location>/about.html</location>
 </error-page> 
 
 <!-- Silken 
@@ -92,7 +92,7 @@
 
 <servlet-mapping>
 	<servlet-name>default</servlet-name>
-	<url-pattern>/index.html</url-pattern>
+	<url-pattern>/about.html</url-pattern>
 </servlet-mapping>
 
 <!-- All other requests are rendered as the frontend template. The Javascript 
