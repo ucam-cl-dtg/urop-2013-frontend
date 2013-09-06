@@ -194,14 +194,20 @@ function applyTemplate(elem, template, data, appendFunc) {
 //
 // template can either be a string with the name of the template
 // or a function that returns the name of the template.
-
+var lastMainRequestTime = 0;
 function loadModule(elem, location, template, callback) {
    var location = getLocation(location);
-
+   var thisRequestTime = new Date().getTime();
+   
+   if(elem.hasClass("main")){
+	   lastMainRequestTime = thisRequestTime;
+   }
+   
    $.get(location, function(data) {
-       applyTemplate(elem, template, data);
-       if (callback)
-            callback.call(elem);
+	   if(!elem.hasClass("main") || lastMainRequestTime == thisRequestTime){
+		   applyTemplate(elem, template, data);
+		   if (callback) callback.call(elem);
+	   }
    }).fail(function() {
        elem.html('<h3>Error: could not load ' + location + '</h3>');
    });
