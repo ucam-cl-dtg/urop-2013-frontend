@@ -76,15 +76,3 @@
 	<url-pattern>/about.html</url-pattern>
 </servlet-mapping>
 
-<!-- All other requests are rendered as the frontend template. The Javascript 
-	deals with getting the correct content. -->
-<servlet>
-	<servlet-name>frontend</servlet-name>
-	<servlet-class>uk.ac.cam.cl.dtg.teaching.FrontendServlet</servlet-class>
-	<load-on-startup>1</load-on-startup>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>frontend</servlet-name>
-	<url-pattern>/*</url-pattern>
-</servlet-mapping>
