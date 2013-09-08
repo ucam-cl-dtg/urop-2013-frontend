@@ -54,25 +54,6 @@
 	<location>/about.html</location>
 </error-page> 
 
-<!-- Silken 
-	Deals with compilation of templates, including use from within 
-	Javascript. Unfortunately, these may sometimes be redirected to Raven (ideally, 
-	the Raven filter above would exclude /soy/*). -->
-<servlet>
-	<servlet-name>soy</servlet-name>
-	<servlet-class>com.papercut.silken.SilkenServlet</servlet-class>
-	<load-on-startup>1</load-on-startup>
-	<init-param>
-		<param-name>disableCaching</param-name>
-		<param-value>true</param-value>
-	</init-param>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>soy</servlet-name>
-	<url-pattern>/soy/*</url-pattern>
-</servlet-mapping>
-
 <!-- Static resources are dealt with in the normal way (this excludes them 
 	from the frontend filter below). -->
 <servlet-mapping>
