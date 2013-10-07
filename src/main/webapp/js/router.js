@@ -1,6 +1,6 @@
 var BASE_PATH = "/";
 var ROUTER_OPTIONS = {
-    //pushState: true
+// pushState: true
 };
 var moduleScripts = {};
 
@@ -9,186 +9,203 @@ var moduleScripts = {};
 //
 
 function executeModuleScripts(elem, templateName) {
-    var templateNamePath = templateName.split('.');
-    var selected = moduleScripts;
-    var haveFunctions = true;
+	var templateNamePath = templateName.split('.');
+	var selected = moduleScripts;
+	var haveFunctions = true;
 
-    for (var i = 0; i < templateNamePath.length; i++) {
-      if (! selected[templateNamePath[i]]) {
-        haveFunctions = false;
-        break;
-      }
-      selected = selected[templateNamePath[i]];
-    }
-    if (haveFunctions && selected.length) {
-      for (var j = 0; j < selected.length; j++) {
-        selected[j].call(elem, elem);
-      }
-    }
+	for ( var i = 0; i < templateNamePath.length; i++) {
+		if (!selected[templateNamePath[i]]) {
+			haveFunctions = false;
+			break;
+		}
+		selected = selected[templateNamePath[i]];
+	}
+	if (haveFunctions && selected.length) {
+		for ( var j = 0; j < selected.length; j++) {
+			selected[j].call(elem, elem);
+		}
+	}
 }
 
 //
 // Call JavaScript after module has been loaded
 //
 
-function postModuleLoad (elem, templateName) {
-  executeModuleScripts(elem, templateName);
-  elem.foundation();
+function postModuleLoad(elem, templateName) {
+	executeModuleScripts(elem, templateName);
+	elem.foundation();
 }
 
 function fixLinks(router) {
-    if (ROUTER_OPTIONS.pushState === undefined || ROUTER_OPTIONS.pushState === null)
-        return ;
-    $(document).on('click', 'a', function (evt) {
-    	if(evt.ctrlKey) return;
-    	
-        var href = $(this).attr('href');
-        var protocol = this.protocol + '//';
-        var dataBypass = $(this).attr('data-bypass');
-        var absolute = $(this).attr('data-absolute');
-        if (dataBypass != undefined &&  dataBypass != null) {
-            return true;
-        }
+	if (ROUTER_OPTIONS.pushState === undefined
+			|| ROUTER_OPTIONS.pushState === null)
+		return;
+	$(document)
+			.on(
+					'click',
+					'a',
+					function(evt) {
+						if (evt.ctrlKey)
+							return;
 
-        if (href == undefined || href == null || href == "#")
-            return;
+						var href = $(this).attr('href');
+						var protocol = this.protocol + '//';
+						var dataBypass = $(this).attr('data-bypass');
+						var absolute = $(this).attr('data-absolute');
+						if (dataBypass != undefined && dataBypass != null) {
+							return true;
+						}
 
-        if (absolute != undefined && absolute != null) {
-        	var shouldNotReload = href.slice(0, CONTEXT_PATH.length) == CONTEXT_PATH;
-        	if (shouldNotReload) {
-        		href = href.slice(CONTEXT_PATH.length);
-        		router.navigate(href, {trigger: true});
-        	} else {
-        		return;
-        	}
-        }
-        
-        
-        href = href.slice(0, CONTEXT_PATH.length) == CONTEXT_PATH ? href.slice(CONTEXT_PATH.length) : href;
+						if (href == undefined || href == null || href == "#")
+							return;
 
-        if (href.slice(protocol.length) !== protocol) {
-            evt.preventDefault();
-            if (href[0] == "#")
-                href[0] = "/";
-            if (href[0] == "/")
-            	href = href.slice(1);
-            if (href == Backbone.history.fragment) 
-              Backbone.history.fragment = null;
-            router.navigate(href, {trigger: true});
-        }
-    });
+						if (absolute != undefined && absolute != null) {
+							var shouldNotReload = href.slice(0,
+									CONTEXT_PATH.length) == CONTEXT_PATH;
+							if (shouldNotReload) {
+								href = href.slice(CONTEXT_PATH.length);
+								router.navigate(href, {
+									trigger : true
+								});
+							} else {
+								return;
+							}
+						}
+
+						href = href.slice(0, CONTEXT_PATH.length) == CONTEXT_PATH ? href
+								.slice(CONTEXT_PATH.length)
+								: href;
+
+						if (href.slice(protocol.length) !== protocol) {
+							evt.preventDefault();
+							if (href[0] == "#")
+								href[0] = "/";
+							if (href[0] == "/")
+								href = href.slice(1);
+							if (href == Backbone.history.fragment)
+								Backbone.history.fragment = null;
+							router.navigate(href, {
+								trigger : true
+							});
+						}
+					});
 }
 
 //
 // Router
 //
 
+function Router(routes) {
+	var router = new Backbone.Router;
 
-function Router (routes) {
-    var router = new Backbone.Router;
+	var route, value;
+	for (route in routes) {
+		value = routes[route];
+		config(router, route, value);
+	}
 
-    var route, value;
-    for (route in routes) {
-        value = routes[route];
-        config(router, route, value);
-    }
-
-    initializeHistory(router);
-    return router;
+	initializeHistory(router);
+	return router;
 }
 
-
 function initializeHistory(router) {
-    var ok = Backbone.history.start(ROUTER_OPTIONS);
-    fixLinks(router);
-    // Current page wasn't matched by the router
-    if (! ok ) {
-        $('.main').html("<h3>404 &ndash; page not found</h3><p>"+location+" was not found.</p>");
-    }
+	var ok = Backbone.history.start(ROUTER_OPTIONS);
+	fixLinks(router);
+	// Current page wasn't matched by the router
+	if (!ok) {
+		$('.main').html(
+				"<h3>404 &ndash; page not found</h3><p>" + location
+						+ " was not found.</p>");
+	}
 }
 
 // Create a proper Backbone route from a given route
 
-function config (router, route, value) {
-    if ((typeof value != "string") && (typeof value != "function"))
-        throw new Error("Unsupported type for route: " + route);
+function config(router, route, value) {
+	if ((typeof value != "string") && (typeof value != "function"))
+		throw new Error("Unsupported type for route: " + route);
 
-    return router.route(route + "(/)", route, function(){
-        loadModule($('.main'), Backbone.history.getFragment() + window.location.search, value);
-    });
+	return router.route(route + "(/)", route, function() {
+		loadModule($('.main'), Backbone.history.getFragment()
+				+ window.location.search, value);
+	});
 }
 
 function prepareURL(url) {
-    return getLocation(url);
+	return getLocation(url);
 }
 function getLocation(location) {
-    if (location[0] == "#" || location[0] == "/")
-        location = location.slice(1);
-    return window.location.protocol + "//" + window.location.host + BASE_PATH + location;
+	if (location[0] == "#" || location[0] == "/")
+		location = location.slice(1);
+	return window.location.protocol + "//" + window.location.host + BASE_PATH
+			+ location;
 }
 
 function getRouteParams() {
-    var fragment = Backbone.history.fragment,
-         routes = _.map(Backbone.history.handlers, function(x) { return x.route });
-    var matched = _.find(routes, function(handler) {
-        return handler.test(fragment);
-    });
+	var fragment = Backbone.history.fragment, routes = _.map(
+			Backbone.history.handlers, function(x) {
+				return x.route
+			});
+	var matched = _.find(routes, function(handler) {
+		return handler.test(fragment);
+	});
 
-
-    return router._extractParameters(matched, Backbone.history.fragment);
+	return router._extractParameters(matched, Backbone.history.fragment);
 }
 
 function getTemplate(name) {
-    var names = name.split('.');
-    var res = window;
-    for (var i=0; i<names.length; i++) {
-        res = res[names[i]];
-    }
-    return res;
+	var names = name.split('.');
+	var res = window;
+	for ( var i = 0; i < names.length; i++) {
+		res = res[names[i]];
+	}
+	return res;
 }
 
 function asyncLoad(elems) {
-    elems.each(function(i) {
-       var elem = $(elems[i]),
-           data_path = getLocation(elem.attr("data-path")),
-           template_name = elem.attr("template-name"),
-           template_function = elem.attr("template-function"),
-           template;
+	elems
+			.each(function(i) {
+				var elem = $(elems[i]), data_path = getLocation(elem
+						.attr("data-path")), template_name = elem
+						.attr("template-name"), template_function = elem
+						.attr("template-function"), template;
 
-       if (template_function)
-            template = getTemplate(template_function);
-       else
-            template = template_name;
+				if (template_function)
+					template = getTemplate(template_function);
+				else
+					template = template_name;
 
-       $.get(data_path, function(json) {
-            applyTemplate(elem, template, json);
-       }).fail(function(err) {
-            console.log(err);
-            applyTemplate(elem, template, {});
-       })
-    });
+				$.get(data_path, function(json) {
+					applyTemplate(elem, template, json);
+				}).fail(function(err) {
+					console.log(err);
+					applyTemplate(elem, template, {});
+				})
+			});
 }
 var SOY_GLOBALS = {};
 function applyTemplate(elem, template, data, appendFunc) {
-		if(typeof(appendFunc) === "undefined")
-			appendFunc = "html";
+	if (typeof (appendFunc) === "undefined")
+		appendFunc = "html";
+	
+	var templateFunc;
+	var templateName;
+	if (typeof template == "string") {
+		templateName = template;
+	} else if (typeof template == "function") {
+		templateName = template(data);
+	}
+	if (data.redirectTo) {
+		router.navigate(data.redirectTo, {
+			trigger : true
+		});
+		return;
+	}
+	templateFunc = getTemplate(templateName);
+	elem[appendFunc](templateFunc(data, null, SOY_GLOBALS));
 
-    var templateFunc;
-    var templateName;
-    if (typeof template == "string") {
-        templateName = template;
-    } else if(typeof template == "function") {
-        templateName = template(data);
-    }
-    if (data.redirectTo) {
-      router.navigate(data.redirectTo, {trigger: true});
-      return ;
-    }
-    templateFunc = getTemplate(templateName);
-    elem[appendFunc](templateFunc(data, null, SOY_GLOBALS));
-
-    postModuleLoad(elem, templateName);
-    asyncLoad(elem.find(".async-loader"));
+	postModuleLoad(elem, templateName);
+	asyncLoad(elem.find(".async-loader"));
 }
 
 //
@@ -196,19 +213,20 @@ function applyTemplate(elem, template, data, appendFunc) {
 // or a function that returns the name of the template.
 
 var lastMainRequestTime = 0;
-function loadModule(elem, location, template, callback) {
-   var location = getLocation(location);
-   var thisRequestTime = new Date().getTime();
-   
-   if(elem.hasClass("main")){
-	   lastMainRequestTime = thisRequestTime;
-   }
-   
-   $.get(location, function(data) {
-	   if(!elem.hasClass("main") || lastMainRequestTime == thisRequestTime){
-		   applyTemplate(elem, template, data);
-		   if (callback) callback.call(elem);
-	   }
+function loadModule(elem, apiPath, template, callback) {
+	var location = getLocation(apiPath);
+	var thisRequestTime = new Date().getTime();
+
+	if (elem.hasClass("main")) {
+		lastMainRequestTime = thisRequestTime;
+	}
+
+	$.get(location, function(data) {
+		if (!elem.hasClass("main") || lastMainRequestTime == thisRequestTime) {
+			applyTemplate(elem, template, data);
+			if (callback)
+				callback.call(elem);
+		}
 	}).fail(function(data) {
 		displayError(data, elem);
 	});
