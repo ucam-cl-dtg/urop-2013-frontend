@@ -209,17 +209,37 @@ function loadModule(elem, location, template, callback) {
 		   applyTemplate(elem, template, data);
 		   if (callback) callback.call(elem);
 	   }
-   }).fail(function() {
-	   if (data.status == 401) {
-		   elem.html("<h3>401 &ndash; not authorised</h3><p>You are not authorised to view this page.</p>");
-	   } else if (data.status == 404) {
-		   elem.html("<h3>404 &ndash; page not found</h3><p>Page was not found.</p>");
-	   } else if (data.status == 500) {
-		   elem.html("<h3>500 &ndash; Internal server error</h3>");
-	   } else if (data.status) {
-		   elem.html('<h3>Error ('+data.status+'): could not load this page.</h3>');
-	   } else {
-		   elem.html('<h3>Unknown error: could not load this page.</h3>');
-	   }
-   });
+	}).fail(function(data) {
+		displayError(data, elem);
+	});
+}
+
+function displayError(data, elem) {
+	obj = $.parseJSON(data.responseText);
+	if (obj.message) {
+		t = "<h3>An error occurred: " + obj.message + "</h3>";
+		if (obj.cause) {
+			t += "<p>Reasons reported by server:</p><ul>";
+			c = obj.cause;
+			while (c) {
+				t += "<li>" + c.message + "</li>";
+				c = c.cause;
+			}
+			t += "</ul>";
+		}
+		elem.html(t);
+	} else if (data.status == 401) {
+		elem
+				.html("<h3>401 &ndash; not authorised</h3><p>You are not authorised to view this page.</p>");
+	} else if (data.status == 404) {
+		elem
+				.html("<h3>404 &ndash; page not found</h3><p>Page was not found.</p>");
+	} else if (data.status == 500) {
+		elem.html("<h3>500 &ndash; Internal server error</h3>");
+	} else if (data.status) {
+		elem.html('<h3>Error (' + data.status
+				+ '): could not load this page.</h3>');
+	} else {
+		elem.html('<h3>Unknown error: could not load this page.</h3>');
+	}
 }
