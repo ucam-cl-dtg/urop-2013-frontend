@@ -98,9 +98,8 @@ function fixLinks(router) {
 function Router(routes) {
 	var router = new Backbone.Router;
 
-	var route, value;
-	for (route in routes) {
-		value = routes[route];
+	for ( var route in routes) {
+		var value = routes[route];
 		config(router, route, value);
 	}
 
@@ -144,7 +143,7 @@ function getLocation(location) {
 function getRouteParams() {
 	var fragment = Backbone.history.fragment, routes = _.map(
 			Backbone.history.handlers, function(x) {
-				return x.route
+				return x.route;
 			});
 	var matched = _.find(routes, function(handler) {
 		return handler.test(fragment);
@@ -180,20 +179,20 @@ function asyncLoad(elems) {
 				}).fail(function(err) {
 					console.log(err);
 					applyTemplate(elem, template, {});
-				})
+				});
 			});
 }
 var SOY_GLOBALS = {};
 function applyTemplate(elem, template, data, appendFunc) {
 	if (typeof (appendFunc) === "undefined")
 		appendFunc = "html";
-	
+
 	var templateFunc;
 	var templateName;
-	if (typeof template == "string") {
-		templateName = template;
-	} else if (typeof template == "function") {
+	if (typeof template == "function") {
 		templateName = template(data);
+	} else { // if (typeof template == "string")
+		templateName = template;
 	}
 	if (data.redirectTo) {
 		router.navigate(data.redirectTo, {
