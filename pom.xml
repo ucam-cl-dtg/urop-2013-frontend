@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>frontend</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.8</version>
+	<version>1.0.9-SNAPSHOT</version>
 	<name>Unified Frontend for Teaching Applications</name>
 
 	<dependencies>
