@@ -281,7 +281,8 @@ public class APIFilter implements Filter {
 				s.getTransaction().commit();
 			}
 		} catch (HibernateException e) {
-			if (s != null) s.getTransaction().rollback();
+			if (s != null)
+				s.getTransaction().rollback();
 			throw new AuthFailException(new ApiFailureMessage(
 					"A database problem occurred when logging request", e));
 		}
