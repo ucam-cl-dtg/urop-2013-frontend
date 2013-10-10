@@ -71,7 +71,7 @@ public class APIFilter implements Filter {
 	private boolean allowGlobal = true;
 
 	private static Logger log = LoggerFactory.getLogger(APIFilter.class);
-	
+
 	private HibernateUtil hibernateUtil;
 
 	@Override
@@ -119,14 +119,17 @@ public class APIFilter implements Filter {
 
 		try {
 			boolean authorized = false;
-
+			boolean credentialsFound = false;
 			if (matchesExcludedPrefix(request)) {
 				authorized = true;
-			} else if ((request.getParameter("key") != null)
-					&& checkKey(request)) {
-				authorized = true;
+			} else if (request.getParameter("key") != null) {
+				credentialsFound = true;
+				if (checkKey(request)) {
+					authorized = true;
+				}
 			} else if (isSessionValid(session)
 					&& session.getAttribute("RavenRemoteUser") != null) {
+				credentialsFound = true;
 				// We have a Raven login active
 				String crsid = (String) session.getAttribute("RavenRemoteUser");
 				log.debug("API request permitted for user " + crsid);
@@ -139,9 +142,15 @@ public class APIFilter implements Filter {
 			if (authorized) {
 				chain.doFilter(request, response);
 			} else {
-				throw new AuthFailException(new ApiFailureMessage(
-						"Failed to authorize request.  Key provided was: "
-								+ request.getParameter("key")));
+				if (credentialsFound) {
+					throw new AuthFailException(new ApiFailureMessage(
+							"Failed to authorize request.  Key provided was: "
+									+ request.getParameter("key")));
+				} else {
+					throw new AuthFailException(
+							new ApiFailureMessage(
+									"No authentication information provided.  Login required"));
+				}
 			}
 		} catch (AuthFailException e) {
 
@@ -260,7 +269,7 @@ public class APIFilter implements Filter {
 
 	private void logRequest(String crsid, String uri, String method,
 			String queryString) throws AuthFailException {
-		
+
 		Session s = null;
 		try {
 			if (excludeFromLogger != null
