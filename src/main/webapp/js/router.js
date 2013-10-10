@@ -156,6 +156,9 @@ function getTemplate(name) {
 	var names = name.split('.');
 	var res = window;
 	for ( var i = 0; i < names.length; i++) {
+		if (typeof(res) === "undefined") {
+			return res;
+		}
 		res = res[names[i]];
 	}
 	return res;
@@ -201,10 +204,14 @@ function applyTemplate(elem, template, data, appendFunc) {
 		return;
 	}
 	templateFunc = getTemplate(templateName);
-	elem[appendFunc](templateFunc(data, null, SOY_GLOBALS));
-
-	postModuleLoad(elem, templateName);
-	asyncLoad(elem.find(".async-loader"));
+	if (typeof(templateFunc) === "undefined") {
+		elem.html("<h3>An error occurred: failed to load template "+templateName);
+	}
+	else {
+		elem[appendFunc](templateFunc(data, null, SOY_GLOBALS));
+		postModuleLoad(elem, templateName);
+		asyncLoad(elem.find(".async-loader"));
+	}
 }
 
 //
