@@ -40,8 +40,8 @@ function refreshNotificationCount(section) {
 				url: '/dashboard/api/notifications',
 				data: {'section': s},
 				success: function(data) {
-					if (data.error || data.formErrors || !data.success) {
-						showNotificationError(e,data.message);
+					if (data.error || data.formErrors || (data.success && data.success == false)) {
+						showNotificationError(e,data.message || data.error || JSON.stringify(data.formErrors));
 					} else {
 						e.text(data.total == 0 ? "" : data.total);
 					}
