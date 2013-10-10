@@ -21,26 +21,36 @@
     }
 }());
 
+function showNotificationError(element,message) {
+	element.html("<div class='fixed-width-icon'>" +
+			"<span data-tooltip class='has-tip' title='"+message+"'>" +
+			"<i class='icon icon-warning'></i>" +
+			"</span>" +
+			"</div>");					
+}
+
 function refreshNotificationCount(section) {
 	for (var i = 0; i < section.length; i++) {
-		$.ajax({
-        	type: 'GET',
-        	url: '/dashboard/api/notifications',
-        	data: {'section': section[i]},
-        	success: function(data) {
-        		if (data.error || data.formErrors) {
-        			console.log("Could not refresh notification count");
-        		} else {
-        			if (data.total === 0) {
-        				$('.sidebar-navigation-item[data-section=' + data.section + '] .sidebar-navigation-item-header .notifications').text("");
-        			} else {
-        				$('.sidebar-navigation-item[data-section=' + data.section + '] .sidebar-navigation-item-header .notifications').text(data.total);
-        			}
-        		}
-        	}, 
-        	error: function() {
-        		console.log("Could not refresh notification count");
-        	}
-		});	
+		var sectionName = section[i];
+		var element = $('.sidebar-navigation-item[data-section=' + sectionName + '] .sidebar-navigation-item-header .notifications');
+		// use function to let-bind sectionName and element otherwise they get mutated by future iterations of this loop
+		(function(s,e) {
+			$.ajax({
+				type: 'GET',
+				url: '/dashboard/api/notifications',
+				data: {'section': s},
+				success: function(data) {
+					if (data.error || data.formErrors || !data.success) {
+						showNotificationError(e,data.message);
+					} else {
+						e.text(data.total == 0 ? "" : data.total);
+					}
+				}, 
+				error: function(data) {
+					obj = $.parseJSON(data.responseText);
+					showNotificationError(e,obj.message);
+				}
+			});	
+		})(sectionName,element);
 	}
 }
