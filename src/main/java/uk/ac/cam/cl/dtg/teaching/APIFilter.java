@@ -170,8 +170,9 @@ public class APIFilter implements Filter {
 			for (String p : excludePrefixes) {
 				if (request.getRequestURI().startsWith(
 						request.getContextPath() + p)) {
-					log.info("Chaining request through API filter with prefix: "
-							+ request.getRequestURI());
+					log.debug(
+							"Chaining request through API filter with prefix: {}",
+							request.getRequestURI());
 					return true;
 				}
 			}
