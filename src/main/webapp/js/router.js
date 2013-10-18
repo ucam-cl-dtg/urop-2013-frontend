@@ -214,6 +214,22 @@ function applyTemplate(elem, template, data, appendFunc) {
 	}
 }
 
+function getTemplateResult(template,data) {
+	var templateName;
+	if (typeof template == "function") {
+		templateName = template(data);
+	} else { // if (typeof template == "string")
+		templateName = template;
+	}
+	var templateFunc = getTemplate(templateName);
+	if (typeof(templateFunc) === "undefined") {
+		return "<h3>An error occurred: failed to load template "+templateName;
+	}
+	else {
+		return templateFunc(data, null, SOY_GLOBALS).trim();
+	}
+}
+
 //
 // template can either be a string with the name of the template
 // or a function that returns the name of the template.
