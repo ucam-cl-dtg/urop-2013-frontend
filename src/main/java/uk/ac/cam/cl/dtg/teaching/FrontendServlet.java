@@ -18,6 +18,7 @@ import org.jboss.resteasy.client.ClientResponseFailure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import uk.ac.cam.cl.dtg.teaching.api.APIUtil;
 import uk.ac.cam.cl.dtg.teaching.api.ApiFailureMessage;
 import uk.ac.cam.cl.dtg.teaching.api.DashboardApi;
 import uk.ac.cam.cl.dtg.teaching.api.DashboardApi.Settings;
@@ -135,10 +136,7 @@ public class FrontendServlet extends HttpServlet {
 			settings = crf.createProxy(DashboardApi.class).getSettings(userId,
 					apiKey);
 		} catch (ClientResponseFailure e) {
-			@SuppressWarnings("unchecked")
-			ApiFailureMessage message = (ApiFailureMessage) e.getResponse()
-					.getEntity(ApiFailureMessage.class);
-						
+			ApiFailureMessage message = APIUtil.getApiFailureMessage(e);
 			StringBuffer s = new StringBuffer("API call failed when loading user settings from "+dashboardUrl+".\n\nError message trace:\n");
 			while(message != null) {
 				s.append(message.getMessage()+"\n");

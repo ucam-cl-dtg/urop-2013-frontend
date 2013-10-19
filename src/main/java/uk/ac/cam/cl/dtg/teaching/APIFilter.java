@@ -23,6 +23,7 @@ import org.jboss.resteasy.client.ClientResponseFailure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import uk.ac.cam.cl.dtg.teaching.api.APIUtil;
 import uk.ac.cam.cl.dtg.teaching.api.ApiFailureMessage;
 import uk.ac.cam.cl.dtg.teaching.api.DashboardApi;
 import uk.ac.cam.cl.dtg.teaching.api.DashboardApi.ApiPermissions;
@@ -258,15 +259,11 @@ public class APIFilter implements Filter {
 			}
 			return permissions;
 		} catch (ClientResponseFailure e) {
-			@SuppressWarnings("unchecked")
-			ApiFailureMessage message = (ApiFailureMessage) e.getResponse()
-					.getEntity(ApiFailureMessage.class);
-			throw new AuthFailException(
-					new ApiFailureMessage(
-							"Failed to read API permissions when checking key",
-							message));
+			ApiFailureMessage failMessage = APIUtil.getApiFailureMessage(e);
+			throw new AuthFailException(new ApiFailureMessage("Failed make getApiPermissions call",failMessage));
 		}
 	}
+
 
 	private void logRequest(String crsid, String uri, String method,
 			String queryString) throws AuthFailException {
