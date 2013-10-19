@@ -37,7 +37,7 @@ $(document).ready(function() {
 	// Update notifications every 'refresh' seconds
 	//
 
-	var refresh = 30;
+	var refresh = 60*10;
 	setInterval(function() {
 		refreshNotificationCount(['dashboard', 'signups', 'questions', 'handins']);
 	}, refresh*1000);
