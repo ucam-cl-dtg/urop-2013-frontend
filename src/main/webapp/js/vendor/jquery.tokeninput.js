@@ -1,6 +1,6 @@
 /*
  * jQuery Plugin: Tokenizing Autocomplete Text Entry
- * Version 1.6.1
+ * Version 1.6.1-1
  *
  * Copyright (c) 2009 James Smith (http://loopj.com)
  * Licensed jointly under the GPL and MIT licenses,
@@ -253,13 +253,15 @@ $.TokenList = function (input, url_or_data, settings) {
             outline: "none"
         })
         .attr("id", $(input).data("settings").idPrefix + input.id)
-        .attr("placeholder", $(input).attr("placeholder"))
         .focus(function () {
             if ($(input).data("settings").disabled) {
                 return false;
             } else
             if ($(input).data("settings").tokenLimit === null || $(input).data("settings").tokenLimit !== token_count) {
-                show_dropdown_hint();
+		if ($(input).data("settings").minChars === 0)
+		    setTimeout(function(){do_search();},5);
+		else
+                    show_dropdown_hint();
             }
             token_list.addClass($(input).data("settings").classes.focused);
         })
@@ -330,7 +332,10 @@ $.TokenList = function (input, url_or_data, settings) {
 
                         return false;
                     } else if($(this).val().length === 1) {
-                        hide_dropdown();
+			if ($(input).data("settings").minChars === 0)
+			    setTimeout(function(){do_search();},5);
+			else
+                            hide_dropdown();
                     } else {
                         // set a timeout just long enough to let this function finish.
                         setTimeout(function(){do_search();}, 5);
@@ -401,14 +406,6 @@ $.TokenList = function (input, url_or_data, settings) {
     var token_list = $("<ul />")
         .addClass($(input).data("settings").classes.tokenList)
         .click(function (event) {
-            // Check if clicked on input box in category input (search field for questions, for ex, and then don't focus on input box)
-            $eventItem = $(event.target);
-            if($eventItem.parents().hasClass("token-input-token")){
-                if($eventItem.hasClass("token-input-list-facebook")){
-                    focus_with_timeout($eventItem.find("#token-input-"));
-                }
-                return true;
-            }
             var li = $(event.target).closest("li");
             if(li && li.get(0) && $.data(li.get(0), "tokeninput")) {
                 toggle_select_token(li);
@@ -571,7 +568,7 @@ $.TokenList = function (input, url_or_data, settings) {
         // Get width left on the current line
         var width_left = token_list.width() - input_box.offset().left - token_list.offset().left;
         // Enter new content into resizer and resize input accordingly
-        input_resizer.html(_escapeHTML(input_val));
+        input_resizer.html(_escapeHTML(input_val) || _escapeHTML(settings.placeholder));
         // Get maximum width, minimum the size of input and maximum the widget's width
         input_box.width(Math.min(token_list.width(),
                                  Math.max(width_left, input_resizer.width() + 30)));
@@ -926,7 +923,7 @@ $.TokenList = function (input, url_or_data, settings) {
     function do_search() {
         var query = input_box.val();
 
-        if(query && query.length) {
+        if(typeof(query) == "string" && query.length >= $(input).data("settings").minChars) {
             if(selected_token) {
                 deselect_token($(selected_token), POSITION.AFTER);
             }
@@ -993,6 +990,11 @@ $.TokenList = function (input, url_or_data, settings) {
                       populate_dropdown(query, $(input).data("settings").jsonContainer ? results[$(input).data("settings").jsonContainer] : results);
                   }
                 };
+
+                // Provide a beforeSend callback
+                if (settings.onSend) {
+                  settings.onSend(ajax_params);
+                }
 
                 // Make the request
                 $.ajax(ajax_params);
@@ -1062,3 +1064,4 @@ $.TokenList.Cache = function (options) {
     };
 };
 }(jQuery));
+
